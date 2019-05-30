@@ -52,6 +52,12 @@ before_script:
   - cd ~/catkin_ws
 
 script:
+  - source /opt/ros/$ROS_DISTRO/setup.bash
+  - cd ~/catkin_ws
+  - catkin build --summarize  --no-notify|| build_failed "Could not build workspace"
+  - source devel/setup.bash
+  - cd march_tutorials
+
   # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
   - sphinx-build -W -b html . native_build
   # Test build with ROS-version of Sphinx command so that it is generated same as ros.org
