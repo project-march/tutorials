@@ -68,6 +68,13 @@ script:
   - cd ~/catkin_ws
   - catkin build --summarize
   - source devel/setup.bash
+  - cd ~/catkin_ws
+  - ls
+  - cd /src
+  - ls
+  - cd tutorials
+  - ls
+  - cd march_tutorials
   # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
   - sphinx-build -W -b html . native_build
   # Test build with ROS-version of Sphinx command so that it is generated same as ros.org
