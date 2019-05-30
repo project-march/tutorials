@@ -56,7 +56,14 @@ script:
   - cd ~/catkin_ws
   - catkin build --summarize  --no-notify|| build_failed "Could not build workspace"
   - source devel/setup.bash
-  - cd src/march_tutorials
+  - ls
+  - cd ~/catkin_ws
+  - ls
+  - cd src
+  - ls
+  - cd tutorials
+  - ls
+  - cd /march_tutorials
 
   # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
   - sphinx-build -W -b html . native_build
