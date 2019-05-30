@@ -39,7 +39,7 @@ install:
   - catkin build
   - source devel/setup.bash
   - cd ~/catkin_ws/src
-
+  - ln -s $CI_SOURCE_PATH .
 before_script:
   - cd ~/catkin_ws/src
   - wstool init
