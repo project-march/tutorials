@@ -32,11 +32,25 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - sudo apt-get -qq install ros-kinetic-rosdoc-lite
   - source /opt/ros/kinetic/setup.bash
 
+install:
+  - mkdir -p ~/catkin_ws/src
+  - cd ~/catkin_ws
+  - catkin init
+  - catkin build
+  - source devel/setup.bash
+  - cd ~/catkin_ws/src
+  - ln -s $CI_SOURCE_PATH .
+
 before_script:
   - cd ~/catkin_ws/src
   - wstool init
   - if [[ -f $ROSINSTALL_FILE ]] ; then wstool merge $ROSINSTALL_FILE ; fi
   - wstool up
+  - cd ~/catkin_ws
+  - rosdep update
+  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+  - cd src
+  - cd ~/catkin_ws
 
 script:
   # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
