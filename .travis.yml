@@ -70,7 +70,7 @@ script:
   - source devel/setup.bash
   - cd ~/catkin_ws
   - ls
-  - cd /src
+  - cd src
   - ls
   - cd tutorials
   - ls
