@@ -37,6 +37,7 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - gem update --system
   - gem --version
   - gem install html-proofer
+  - gem pristine --all
 
   # Install ROS's version of sphinx
   - sudo apt-get -qq install ros-kinetic-rosdoc-lite
