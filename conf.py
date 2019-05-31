@@ -1,9 +1,11 @@
 import sys, os
-import pygit2
 
 # Make sure we only check if linked webpages exist on this branch, as they might not exist on develop
-branch_name = pygit2.Repository('.').head.shorthand
-
+branch_name = os.environ['BRANCH']
+print "---------"
+print os.environ['TRAVIS_BRANCH']
+print os.environ['BRANCH']
+print "---------"
 sys.path += [ os.path.abspath( '_scripts' )]
 
 extensions = [ 'sphinx.ext.extlinks',

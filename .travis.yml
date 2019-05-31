@@ -22,6 +22,7 @@ env:
     ROS_PARALLEL_JOBS: "-j8 -l6"
     PYTHONPATH: "$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages"
     NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+    BRANCH: $TRAVIS_BRANCH
 
 
 before_install: # Use this to prepare the system to install prerequisites or dependencies
