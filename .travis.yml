@@ -45,6 +45,7 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   # Install ROS's version of sphinx
   - sudo apt-get -qq install ros-kinetic-rosdoc-lite
   - source /opt/ros/kinetic/setup.bash
+  - pip install pygit2 --user
 
 #install:
 #  - mkdir -p ~/catkin_ws/src
