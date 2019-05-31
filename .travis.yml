@@ -75,13 +75,15 @@ script:
 #  - catkin build --summarize
 #  - source devel/setup.bash
 #  - cd ~/catkin_ws/src/tutorials
-  # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
-  - sphinx-build -W -b html . native_build
-  # Test build with ROS-version of Sphinx command so that it is generated same as ros.org
-  - rosdoc_lite -o build .
-  # Run HTML tests on generated build output to check for 404 errors, etc
-  - htmlproofer ./build --only-4xx --check-html --file-ignore ./build/html/genindex.html,./build/html/search.html,./build/html/index-msg.html --alt-ignore '/.*/' --url-ignore '#'
 
+  # Test build with non-ROS wrapped Sphinx command to allow warnings and errors to be caught
+  # Test build with ROS-version of Sphinx command so that it is generated same as ros.org
+  # Run HTML tests on generated build output to check for 404 errors, etc
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ];
+  - then sphinx-build -W -b html . native_build;
+  - rosdoc_lite -o build .;
+  - htmlproofer ./build --only-4xx --check-html --file-ignore ./build/html/genindex.html,./build/html/search.html,./build/html/index-msg.html --alt-ignore '/.*/' --url-ignore '#';
+  - fi
 # after_success and deploy are skipped if build is broken
 
 #after_success:
