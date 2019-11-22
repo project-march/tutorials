@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Testing &mdash; march_tutorials Kinetic documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/override.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="next" title="Add a new gait" href="add_a_new_gait.html"/>
+        <link rel="prev" title="Continuous Integration" href="../continuous_integration/continuous_integration.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108532843-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108532843-1');
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        <a href="../../index.html">
+          <img src="../../_static/logo.png"/>
+          <span>Exoskeleton Technology</span>
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/create_your_workspace.html">Create your workspace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#install-ros-and-colcon">Install ROS and Colcon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#create-a-workspace">Create A Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#download-the-march-source-code">Download the march source code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/create_your_workspace.html#with-write-access">With write access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/create_your_workspace.html#without-write-access">Without write access</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#build-your-workspace">Build your Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#automated-script">Automated script</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Useful ROS tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/robot_model.html">Robot model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#tf2">tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#urdf">urdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#joint-state-publisher">joint_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-state-publisher">robot_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#rviz">rviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/ros_bag.html">ROS bag</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/ros_bag.html#recording-bags">Recording bags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/smach.html">SMACH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/smach.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/smach.html#smach-viewer">smach_viewer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html">High level overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html#input-device">Input Device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html">Connecting to the exoskeleton</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#preparation-before-connecting">Preparation before connecting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#running-commands-on-the-exoskeleton-computer-ssh">Running commands on the exoskeleton computer (SSH)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#ros-master-uri">ROS Master URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#ros-ip">ROS IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#add-march-network-to-hosts-file">Add March network to hosts file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#test-ros-on-multiple-devices">Test ROS on multiple devices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html">How to airgait</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#airgait-on-the-exoskeleton-directly">Airgait on the exoskeleton directly</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#the-setup">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#start-up">Start up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#remote-airgait">Remote Airgait</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#id1">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#id2">Start up</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html">How to view live data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#id1">rqt_multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/log_files.html">Log files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#rosbag">Rosbag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#exoskeleton">Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#cloudstation">Cloudstation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#uploading-the-logs">Uploading the logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html">Using the gait generator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#duration">Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#velocity-markers">Velocity Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#mirroring">Mirroring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#import-export">Import/Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#publish">Publish</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#building-locally">Building locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#clone-the-repository">Clone the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#install-rosdoc-lite-and-sphinx">Install rosdoc_lite and Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#install-gem-and-html-proofer">Install Gem and html-proofer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#install-additional-dependencies">Install Additional dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#generate-the-html">Generate the html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation.html#browser-sync-optional">Browser sync (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#deploy-with-travis">Deploy with Travis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#add-a-new-tutorial">Add a new tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_integration/continuous_integration.html">Continuous Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#setup">Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#build-notifications">Build Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#configuring-industrial-ci">Configuring Industrial CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#running-industrial-ci">Running Industrial CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#complete-travis-configuration">Complete Travis Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#setting-up-travis-ci-on-repository">Setting up Travis CI on Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-tests-locally">Running the tests locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-roslint">Running roslint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-catkin-lint">Running catkin_lint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-guidelines-to-writing-tests">General guidelines to writing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-tests">Writing your own tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-c-unit-tests">Writing C++ unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-c-node-tests">Writing C++ node tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-python-unit-tests">Writing python unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-python-node-tests">Writing python node tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="add_a_new_gait.html">Add a new gait</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="add_a_new_gait.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_a_new_gait.html#create-new-gait-files">Create new gait files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_a_new_gait.html#extend-the-state-machine">Extend the state machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_a_new_gait.html#add-a-gait-button-to-the-developer-input-device">Add a gait button to the developer input device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_a_new_gait.html#add-the-gait-to-the-input-device">Add the gait to the input device</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">March Packages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_gait_files.html">march_gait_files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_gait_files.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_gait_files.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_gait_files.html#structure">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_gait_files.html#clarification">Clarification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_hardware.html">march_hardware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#class-structure">Class Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#example-usage">Example usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#ethercat">EtherCAT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_hardware.html#ethercatmaster">EthercatMaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_hardware.html#pdo-messages">PDO messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_hardware.html#sdo-messages">SDO messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#power-distribution-board">Power Distribution Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware.html#ros-api">ROS API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_hardware_builder.html">march_hardware_builder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware_builder.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware_builder.html#ros-api">ROS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_hardware_builder.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_hardware_builder.html#using-the-package">Using the package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_hardware_interface.html">march_hardware_interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_input_device.html">march_input_device</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_input_device.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_input_device.html#communication">Communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#sending-messages">Sending messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#receiving-messages">Receiving messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_input_device.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#set-correct-ubuntu-permissions">Set correct ubuntu permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#how-to-run-wired">How to run wired</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_input_device.html#upload-the-code-on-the-input-device">Upload the code on the input device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_input_device.html#start-the-software">Start the software</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#how-to-run-wireless">How to run wireless</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_input_device.html#id1">Upload the code on the input device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_input_device.html#id2">Start the software</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_input_device.html#how-to-add-a-gait">How to add a gait</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_launch.html">march_launch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_launch.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_launch.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_launch.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_launch.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_launch.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_launch.html#adding-a-software-check">Adding a software check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_launch.html#add-it-to-the-ui">Add it to the UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_launch.html#creating-your-software-check">Creating your software check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_launch.html#add-it-to-the-checkrunner">Add it to the CheckRunner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_launch.html#creating-the-executable-optional">Creating the executable (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_launch.html#faq">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_launch.html#how-do-i-see-which-checks-exist">How do I see which checks exist?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_rqt_input_device.html">march_rqt_input_device</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#launching">Launching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#published-topics">Published Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#add-a-new-button">Add a new button</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#create-a-new-publisher">Create a new publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#create-a-publish-function">Create a publish function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#create-a-button-object">Create a button object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../march_packages/march_rqt_input_device.html#add-it-to-the-march-button-layout">Add it to the march_button_layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html">march_rqt_launch_menu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#adding-a-new-qcheckbox">Adding a new QCheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#adding-a-new-qgroupbox">Adding a new QGroupBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#adding-a-new-qradiobutton">Adding a new QRadioButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_rqt_launch_menu.html#adding-a-new-run-configuration">Adding a new run configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_safety.html">march_safety</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_safety.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_safety.html#error-severity">Error severity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#warning">Warning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#non-fatal">Non-Fatal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#fatal">Fatal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_safety.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#published-topics">Published Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_safety.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#add-new-safety-rule-to-existing-safetytype">Add new safety rule to existing SafetyType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_safety.html#create-new-safetytype">Create new SafetyType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_shared_resources.html">march_shared_resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_shared_resources.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_state_machine.html">march_state_machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_state_machine.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_state_machine.html#behavior">Behavior</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_state_machine.html#launch">LAUNCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_state_machine.html#healthy">HEALTHY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_state_machine.html#error">ERROR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_state_machine.html#shutdown">SHUTDOWN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_state_machine.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_state_machine.html#add-a-state-to-the-state-machine">Add a state to the state machine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_simulation.html">march_simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_simulation.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_simulation.html#ros-control">ROS Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_simulation.html#upload-joint-names">Upload joint names</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_simulation.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_simulation.html#sending-commands-through-the-action-topic">Sending commands through the action topic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">march_tutorials</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="header-override">
+          <p>
+            <a href="http://projectmarch.nl">March Website</a><br/>
+          </p>
+        </div>
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/testing.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      
+    </li>
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Testing</li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p>This page describes the process of running and writing automated tests for
+the march packages.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>In order to run the tests you must have already have a workspace setup.
+See <a class="reference internal" href="../getting_started/create_your_workspace.html#create-your-workspace-label"><span>Create your workspace</span></a>.</p>
+</div>
+<div class="section" id="running-the-tests-locally">
+<h2>Running the tests locally<a class="headerlink" href="#running-the-tests-locally" title="Permalink to this headline">¶</a></h2>
+<p>Running all the tests within your workspace can be done by the following commands:</p>
+<div class="code highlight-python"><div class="highlight"><pre># colcon must be run from your workspace root
+cd ~/march_ws
+colcon build
+colcon test
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">build</span></code> step also builds the automated tests, so it is important to run
+<code class="docutils literal"><span class="pre">build</span></code> when you modify tests. The <code class="docutils literal"><span class="pre">test</span></code> step will run all the tests and
+will fail when tests fail. Colcon also gives the possibility to review the test
+results and give more information on any failing tests.</p>
+<div class="code highlight-python"><div class="highlight"><pre>colcon test-result --all
+</pre></div>
+</div>
+<p>This will output every test result of every package that includes tests.</p>
+<p>When you are writing tests for a specific package you do not want to run all
+the tests every time. Colcon also gives an option to only build tests for
+specified packages.</p>
+<div class="code highlight-python"><div class="highlight"><pre>colcon test --packages-select march_some_package march_some_other_package
+</pre></div>
+</div>
+<div class="section" id="running-roslint">
+<h3>Running roslint<a class="headerlink" href="#running-roslint" title="Permalink to this headline">¶</a></h3>
+<p>All march packages are also checked for code style with
+<a class="reference external" href="https://wiki.ros.org/roslint">roslint</a>. The <code class="docutils literal"><span class="pre">roslint</span></code> target should also
+be run from the workspace root like so.</p>
+<div class="code highlight-python"><div class="highlight"><pre>colcon build --event-handlers console_direct+ --cmake-target-skip-unavailable --cmake-target roslint
+</pre></div>
+</div>
+<p>This command will run the <code class="docutils literal"><span class="pre">roslint</span></code> target on any packages that use
+<code class="docutils literal"><span class="pre">roslint</span></code>. It will also output any linter warnings that you should fix,
+otherwise the build will fail.</p>
+</div>
+<div class="section" id="running-catkin-lint">
+<h3>Running catkin_lint<a class="headerlink" href="#running-catkin-lint" title="Permalink to this headline">¶</a></h3>
+<p>Another tool that is used to lint packages is <a class="reference external" href="https://github.com/fkie/catkin_lint">catkin_lint</a>.
+<code class="docutils literal"><span class="pre">catkin_lint</span></code> checks the package manifest and cmake configuration files for
+any common errors. This command can be run anywhere in the workspace and will recurse into directories.
+So in order to check all packages you should run this command in the root of the workspace.</p>
+<div class="code highlight-python"><div class="highlight"><pre>catkin_lint -W2 --explain .
+</pre></div>
+</div>
+<p>This will output any notes, warnings or errors with an explanation. This
+command is normally run when you have created a new package or made changes to
+a <code class="docutils literal"><span class="pre">package.xml</span></code> or <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="general-guidelines-to-writing-tests">
+<h2>General guidelines to writing tests<a class="headerlink" href="#general-guidelines-to-writing-tests" title="Permalink to this headline">¶</a></h2>
+<p>Here are some rules of thumb to follow when writing tests:</p>
+<ol class="arabic simple">
+<li>Write short understandable tests.</li>
+<li>Seperate setup code that is necessary for every test.</li>
+<li>Do not depend on writing and reading from external files.</li>
+<li>Do not depend on timing in your tests.</li>
+<li>Use one <code class="docutils literal"><span class="pre">assert</span></code> per test (i.e. only test one function)</li>
+<li>If possible, every method should have at least one unit test</li>
+<li>Make a test for every edge case!</li>
+<li>Usually, your test code is about as long as your normal code.</li>
+</ol>
+</div>
+<div class="section" id="writing-your-own-tests">
+<h2>Writing your own tests<a class="headerlink" href="#writing-your-own-tests" title="Permalink to this headline">¶</a></h2>
+<p>For testing ROS packages we make a distinction between two different kinds of tests.</p>
+<ol class="arabic simple">
+<li>Unit tests (library level)</li>
+<li>Integration tests (node level)</li>
+</ol>
+<p>Also see the <a class="reference external" href="https://wiki.ros.org/Quality/Tutorials/UnitTesting">ROS wiki on testing</a>.
+The unit tests are different for C++ and python projects. C++ projects use the
+<a class="reference external" href="https://github.com/google/googletest">gtest</a> framework, whereas Python projects use
+<a class="reference external" href="http://pythontesting.net/framework/unittest/unittest-introduction/">unittest</a>.
+For node level tests, <a class="reference external" href="https://wiki.ros.org/rostest">rostest</a> is used.
+Rostest uses launch files to launch the nodes under test and the actual tests.</p>
+<p>The next sections will describe the process of writing tests. For this
+tutorial we will use the <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/doc/development/ros_test_tutorial">ros_test_tutorial package</a>.
+This package already includes some C++ and python code to write tests for.</p>
+<div class="section" id="writing-c-unit-tests">
+<h3>Writing C++ unit tests<a class="headerlink" href="#writing-c-unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>As an example we will create tests for the <code class="docutils literal"><span class="pre">Add.cpp</span></code> class that is located in
+this repository. Tests are always located in the <code class="docutils literal"><span class="pre">test/</span></code> directory of a
+package. To create a test we create a new cpp file in the <code class="docutils literal"><span class="pre">test</span></code> directory
+called <code class="docutils literal"><span class="pre">AddTest.cpp</span></code> with the following contents.</p>
+<div class="code highlight-python"><div class="highlight"><pre>#include &lt;gtest/gtest.h&gt;
+
+#include &quot;ros_test_tutorial/Add.h&quot;
+
+TEST(AddTest, addTwoAndOne)
+{
+    Add add;
+    ASSERT_EQ(add.add(2, 1), 3);
+}
+
+int main(int argc, char* argv[])
+{
+    testing::InitGoogleTest(&amp;argc, argv);
+    return RUN_ALL_TESTS();
+}
+</pre></div>
+</div>
+<p>Feel free to experiment with writing tests. The actual test is written using
+the <code class="docutils literal"><span class="pre">TEST</span></code> macro.  The first argument is the test suite, the same as the
+filename in this case.  The second argument is name of the actual test. So this
+would be another example of a test.</p>
+<div class="code highlight-python"><div class="highlight"><pre>TEST(AddTest, addNegative)
+{
+    Add add;
+    ASSERT_EQ(add.add(0, -1), -1);
+}
+</pre></div>
+</div>
+<p>In order to build and run the unit tests we must add <code class="docutils literal"><span class="pre">rosunit</span></code> as test
+dependency to our package. So normally we would add the following to the
+<code class="docutils literal"><span class="pre">package.xml</span></code>. However, this has already been done in the highlevel
+<code class="docutils literal"><span class="pre">package.xml</span></code> for this repository, so this is not necessary in this example.</p>
+<div class="code highlight-python"><div class="highlight"><pre>&lt;test_depend&gt;rosunit&lt;/test_depend&gt;
+</pre></div>
+</div>
+<p>Next we must tell cmake which tests it has to build. So add the following to the <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre>if(CATKIN_ENABLE_TESTING)
+    catkin_add_gtest(add_test test/AddTest.cpp)
+    target_link_libraries(add_test ros_test_tutorial ${catkin_LIBRARIES})
+endif()
+</pre></div>
+</div>
+<p>Here we tell <code class="docutils literal"><span class="pre">cmake</span></code> to build the test and use our library. The
+<code class="docutils literal"><span class="pre">catkin_add_gtest</span></code> command creates a new test called <code class="docutils literal"><span class="pre">add_test</span></code> from the
+source file <code class="docutils literal"><span class="pre">AddTest.cpp</span></code>. Now when <code class="docutils literal"><span class="pre">colcon</span> <span class="pre">test</span></code> is run from the workspace
+root you should see tests passing.</p>
+</div>
+<div class="section" id="writing-c-node-tests">
+<h3>Writing C++ node tests<a class="headerlink" href="#writing-c-node-tests" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="writing-python-unit-tests">
+<h3>Writing python unit tests<a class="headerlink" href="#writing-python-unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>As an example we will create tests for the function <code class="docutils literal"><span class="pre">Multiply.py</span></code> that is
+located in this repository. Tests are always located in the <code class="docutils literal"><span class="pre">test/</span></code>
+directory. We will first start by writing our test. So create the
+<code class="docutils literal"><span class="pre">MultiplyTest.py</span></code> file to your <code class="docutils literal"><span class="pre">test/</span></code> directory and fill it with the
+following contents.</p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">import</span> <span class="nn">rosunit</span>
+
+<span class="kn">from</span> <span class="nn">ros_test_tutorial</span> <span class="kn">import</span> <span class="n">multiply</span>
+
+<span class="k">class</span> <span class="nc">MultiplyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_multiply_one_and_one</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">rosunit</span><span class="o">.</span><span class="n">unitrun</span><span class="p">(</span><span class="n">PKG</span><span class="p">,</span> <span class="s1">&#39;test_multiply&#39;</span><span class="p">,</span> <span class="n">MultiplyTest</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The last line will run all test methods inside the <code class="docutils literal"><span class="pre">MultiplyTest</span></code> class that
+start with <code class="docutils literal"><span class="pre">test</span></code>, where <code class="docutils literal"><span class="pre">'test_multiply'</span></code> is the name of the test case.
+See if you can add more tests (and make them fail). See the <a class="reference external" href="https://docs.python.org/3/library/unittest.html">python unittest
+documentation</a> for more
+information on writing tests.</p>
+<p>Next we must tell <code class="docutils literal"><span class="pre">cmake</span></code> how to build the tests. We do this by adding
+<code class="docutils literal"><span class="pre">catkin_add_nosetests()</span></code> inside our <code class="docutils literal"><span class="pre">CATKIN_ENABLE_TESTING</span></code> of <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>.</p>
+<div class="code highlight-python"><div class="highlight"><pre>if(CATKIN_ENABLE_TESTING)
+    ...
+    catkin_add_nosetests(test/MultiplyTest.py)
+    ...
+endif()
+</pre></div>
+</div>
+<p>After building, the tests can now be run with <code class="docutils literal"><span class="pre">colcon</span> <span class="pre">test</span></code>.
+Also see the <a class="reference external" href="https://wiki.ros.org/unittest#Code-level_Python_Unit_Tests">ros wiki on writing unit tests for python</a>.</p>
+</div>
+<div class="section" id="writing-python-node-tests">
+<h3>Writing python node tests<a class="headerlink" href="#writing-python-node-tests" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+            
+            <div class="admonition note">
+              <p class="first admonition-title">Open Source Feedback</p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/testing.rst" class="fa fa-github"> GitHub page</a></p>
+            </div>
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="add_a_new_gait.html" class="btn btn-neutral float-right" title="Add a new gait" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../continuous_integration/continuous_integration.html" class="btn btn-neutral" title="Continuous Integration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'Kinetic',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

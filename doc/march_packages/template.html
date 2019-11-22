@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;Package Name&gt; &mdash; march_tutorials Kinetic documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/override.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108532843-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108532843-1');
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        <a href="../../index.html">
+          <img src="../../_static/logo.png"/>
+          <span>Exoskeleton Technology</span>
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/create_your_workspace.html">Create your workspace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#install-ros-and-colcon">Install ROS and Colcon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#create-a-workspace">Create A Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#download-the-march-source-code">Download the march source code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/create_your_workspace.html#with-write-access">With write access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/create_your_workspace.html#without-write-access">Without write access</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#build-your-workspace">Build your Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/create_your_workspace.html#automated-script">Automated script</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Useful ROS tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/robot_model.html">Robot model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#tf2">tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#urdf">urdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#joint-state-publisher">joint_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-state-publisher">robot_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#rviz">rviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/robot_model.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/ros_bag.html">ROS bag</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/ros_bag.html#recording-bags">Recording bags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_ros_tools/smach.html">SMACH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/smach.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_ros_tools/smach.html#smach-viewer">smach_viewer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html">High level overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/high_level_overview.html#input-device">Input Device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html">Connecting to the exoskeleton</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#preparation-before-connecting">Preparation before connecting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#running-commands-on-the-exoskeleton-computer-ssh">Running commands on the exoskeleton computer (SSH)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#ros-master-uri">ROS Master URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#ros-ip">ROS IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#add-march-network-to-hosts-file">Add March network to hosts file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/connecting_to_the_exoskeleton.html#test-ros-on-multiple-devices">Test ROS on multiple devices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html">How to airgait</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#airgait-on-the-exoskeleton-directly">Airgait on the exoskeleton directly</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#the-setup">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#start-up">Start up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#remote-airgait">Remote Airgait</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#id1">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#id2">Start up</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html">How to view live data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#id1">rqt_multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/how_to_view_live_data.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/log_files.html">Log files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#rosbag">Rosbag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#exoskeleton">Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#cloudstation">Cloudstation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/log_files.html#uploading-the-logs">Uploading the logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html">Using the gait generator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#duration">Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#velocity-markers">Velocity Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#mirroring">Mirroring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#import-export">Import/Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#publish">Publish</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/documentation.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/documentation.html#building-locally">Building locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#clone-the-repository">Clone the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#install-rosdoc-lite-and-sphinx">Install rosdoc_lite and Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#install-gem-and-html-proofer">Install Gem and html-proofer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#install-additional-dependencies">Install Additional dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#generate-the-html">Generate the html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/documentation.html#browser-sync-optional">Browser sync (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development/documentation.html#deploy-with-travis">Deploy with Travis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/documentation.html#add-a-new-tutorial">Add a new tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_integration/continuous_integration.html">Continuous Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#setup">Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#build-notifications">Build Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#configuring-industrial-ci">Configuring Industrial CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#running-industrial-ci">Running Industrial CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../continuous_integration/continuous_integration.html#complete-travis-configuration">Complete Travis Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration/continuous_integration.html#setting-up-travis-ci-on-repository">Setting up Travis CI on Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/testing.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/testing.html#running-the-tests-locally">Running the tests locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#running-roslint">Running roslint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#running-catkin-lint">Running catkin_lint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development/testing.html#general-guidelines-to-writing-tests">General guidelines to writing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/testing.html#writing-your-own-tests">Writing your own tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#writing-c-unit-tests">Writing C++ unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#writing-c-node-tests">Writing C++ node tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#writing-python-unit-tests">Writing python unit tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development/testing.html#writing-python-node-tests">Writing python node tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/add_a_new_gait.html">Add a new gait</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/add_a_new_gait.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/add_a_new_gait.html#create-new-gait-files">Create new gait files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/add_a_new_gait.html#extend-the-state-machine">Extend the state machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/add_a_new_gait.html#add-a-gait-button-to-the-developer-input-device">Add a gait button to the developer input device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/add_a_new_gait.html#add-the-gait-to-the-input-device">Add the gait to the input device</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">March Packages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="march_gait_files.html">march_gait_files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_gait_files.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_gait_files.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_gait_files.html#structure">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_gait_files.html#clarification">Clarification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#class-structure">Class Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#example-usage">Example usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ethercat">EtherCAT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#ethercatmaster">EthercatMaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#pdo-messages">PDO messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#sdo-messages">SDO messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#power-distribution-board">Power Distribution Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ros-api">ROS API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#ros-api">ROS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware_builder.html#using-the-package">Using the package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_input_device.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_input_device.html#communication">Communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#sending-messages">Sending messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#receiving-messages">Receiving messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_input_device.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#set-correct-ubuntu-permissions">Set correct ubuntu permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#how-to-run-wired">How to run wired</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="march_input_device.html#upload-the-code-on-the-input-device">Upload the code on the input device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_input_device.html#start-the-software">Start the software</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#how-to-run-wireless">How to run wireless</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="march_input_device.html#id1">Upload the code on the input device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_input_device.html#id2">Start the software</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="march_input_device.html#how-to-add-a-gait">How to add a gait</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_launch.html">march_launch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_launch.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_launch.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_launch.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_launch.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_launch.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_launch.html#adding-a-software-check">Adding a software check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="march_launch.html#add-it-to-the-ui">Add it to the UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_launch.html#creating-your-software-check">Creating your software check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_launch.html#add-it-to-the-checkrunner">Add it to the CheckRunner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_launch.html#creating-the-executable-optional">Creating the executable (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_launch.html#faq">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_launch.html#how-do-i-see-which-checks-exist">How do I see which checks exist?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_rqt_input_device.html">march_rqt_input_device</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_input_device.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_input_device.html#launching">Launching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_input_device.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_input_device.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_input_device.html#published-topics">Published Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_input_device.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_input_device.html#add-a-new-button">Add a new button</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="march_rqt_input_device.html#create-a-new-publisher">Create a new publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_rqt_input_device.html#create-a-publish-function">Create a publish function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_rqt_input_device.html#create-a-button-object">Create a button object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="march_rqt_input_device.html#add-it-to-the-march-button-layout">Add it to the march_button_layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_rqt_launch_menu.html">march_rqt_launch_menu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_launch_menu.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_launch_menu.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_rqt_launch_menu.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#adding-a-new-qcheckbox">Adding a new QCheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#adding-a-new-qgroupbox">Adding a new QGroupBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#adding-a-new-qradiobutton">Adding a new QRadioButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_rqt_launch_menu.html#adding-a-new-run-configuration">Adding a new run configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_safety.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_safety.html#error-severity">Error severity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#warning">Warning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#non-fatal">Non-Fatal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#fatal">Fatal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_safety.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#published-topics">Published Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_safety.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#add-new-safety-rule-to-existing-safetytype">Add new safety rule to existing SafetyType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#create-new-safetytype">Create new SafetyType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_shared_resources.html">march_shared_resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_shared_resources.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_state_machine.html">march_state_machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_state_machine.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_state_machine.html#behavior">Behavior</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_state_machine.html#launch">LAUNCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_state_machine.html#healthy">HEALTHY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_state_machine.html#error">ERROR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_state_machine.html#shutdown">SHUTDOWN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_state_machine.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_state_machine.html#add-a-state-to-the-state-machine">Add a state to the state machine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="march_simulation.html">march_simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_simulation.html#ros-control">ROS Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_simulation.html#upload-joint-names">Upload joint names</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_simulation.html#sending-commands-through-the-action-topic">Sending commands through the action topic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">march_tutorials</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="header-override">
+          <p>
+            <a href="http://projectmarch.nl">March Website</a><br/>
+          </p>
+        </div>
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/template.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      
+    </li>
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>&lt;Package Name&gt;</li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">make sure to remove this orphan tag when copying.</p>
+</div>
+<div class="section" id="package-name">
+<span id="march-package-name-label"></span><h1>&lt;Package Name&gt;<a class="headerlink" href="#package-name" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ros-api">
+<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nodes">
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
+<p><em>march_template_node</em> - Responsible for doing the thing.</p>
+</div>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/template/command</em> (template_msgs/TemplateCommand)</dt>
+<dd>Does the thing.</dd>
+<dt><em>/march/template/command/other</em> (template_msgs/TemplateCommand)</dt>
+<dd>Does the other thing.</dd>
+</dl>
+</div>
+<div class="section" id="published-topics">
+<h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/template/result</em> (template_msgs/Boolean)</dt>
+<dd>Tells you if it worked</dd>
+</dl>
+</div>
+<div class="section" id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/template/do</em> (template_msgs/Do)</dt>
+<dd>Does something</dd>
+</dl>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/template/counter</em> (<em>int</em>, required)</dt>
+<dd>How many to count</dd>
+<dt><em>/march/template/countings</em> (<em>int[]</em>, default: [])</dt>
+<dd>List of countings</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="do-x">
+<h3>Do x<a class="headerlink" href="#do-x" title="Permalink to this headline">¶</a></h3>
+<p>Doing x is very easy, just do it.</p>
+</div>
+<div class="section" id="do-y">
+<h3>Do y<a class="headerlink" href="#do-y" title="Permalink to this headline">¶</a></h3>
+<p>Doing y is a bit more difficult.</p>
+</div>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-do-i-x">
+<h3>How do I x?<a class="headerlink" href="#how-do-i-x" title="Permalink to this headline">¶</a></h3>
+<p>Please check the tutorials.</p>
+</div>
+<div class="section" id="how-do-i-z">
+<h3>How do I z?<a class="headerlink" href="#how-do-i-z" title="Permalink to this headline">¶</a></h3>
+<p>z is not available at the moment.</p>
+</div>
+</div>
+</div>
+
+
+            
+            <div class="admonition note">
+              <p class="first admonition-title">Open Source Feedback</p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/template.rst" class="fa fa-github"> GitHub page</a></p>
+            </div>
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'Kinetic',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
