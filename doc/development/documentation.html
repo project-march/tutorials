@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Documentation &mdash; march_tutorials Kinetic documentation</title>
+  <title>Documentation &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="Continuous Integration" href="../continuous_integration/continuous_integration.html"/>
         <link rel="prev" title="Using the gait generator" href="../using_the_march_iv/using_the_gait_generator.html"/> 
 
@@ -178,7 +181,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Documentation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-locally">Building locally</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">Clone the repository</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/documentation.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/development/documentation.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -464,20 +467,20 @@ You can either build the documentation locally when following the tutorials or d
 <div class="section" id="clone-the-repository">
 <h3>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>Add the following entry to your <code class="docutils literal"><span class="pre">.rosinstall</span></code> file (recommended):</p>
-<div class="code highlight-python"><div class="highlight"><pre>- git:
-    local-name: march_tutorials
-    uri: https://github.com/project-march/tutorials
-    version: develop
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">git</span><span class="p">:</span>
+    <span class="n">local</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">march_tutorials</span>
+    <span class="n">uri</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">develop</span>
 </pre></div>
 </div>
 <p>And use wstool to update your workspace:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd ~/march_ws
-wstool update -t src
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span>
+<span class="n">wstool</span> <span class="n">update</span> <span class="o">-</span><span class="n">t</span> <span class="n">src</span>
 </pre></div>
 </div>
 <p>Or clone the repository manually in your source directory:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd ~/march_ws/src
-git clone https://github.com/project-march/tutorials
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -488,7 +491,7 @@ git clone https://github.com/project-march/tutorials
 <div class="section" id="install-rosdoc-lite-and-sphinx">
 <h3>Install rosdoc_lite and Sphinx<a class="headerlink" href="#install-rosdoc-lite-and-sphinx" title="Permalink to this headline">¶</a></h3>
 <p>We use the package rosdoc_lite to generate the documentation with Sphinx</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo apt-get install ros-kinetic-rosdoc-lite
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">melodic</span><span class="o">-</span><span class="n">rosdoc</span><span class="o">-</span><span class="n">lite</span>
 </pre></div>
 </div>
 </div>
@@ -496,66 +499,65 @@ git clone https://github.com/project-march/tutorials
 <h3>Install Gem and html-proofer<a class="headerlink" href="#install-gem-and-html-proofer" title="Permalink to this headline">¶</a></h3>
 <p>Gem is a package manager for Ruby, we will use it to install <a class="reference external" href="https://github.com/gjtorikian/html-proofer">html-proofer</a>.
 html-proofer is a tool that can validate your generated html for mistakes like broken links or missing images.</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo apt-get update
-sudo apt install ruby-full
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ruby</span><span class="o">-</span><span class="n">full</span>
 
-# Check if ruby and gem got installed correctly
-ruby --version
-gem --version
+<span class="c1"># Check if ruby and gem got installed correctly</span>
+<span class="n">ruby</span> <span class="o">--</span><span class="n">version</span>
+<span class="n">gem</span> <span class="o">--</span><span class="n">version</span>
 
-sudo gem update --system
-sudo gem install html-proofer
+<span class="n">sudo</span> <span class="n">gem</span> <span class="n">update</span> <span class="o">--</span><span class="n">system</span>
+<span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">html</span><span class="o">-</span><span class="n">proofer</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-additional-dependencies">
 <h3>Install Additional dependencies<a class="headerlink" href="#install-additional-dependencies" title="Permalink to this headline">¶</a></h3>
 <p>Pygit is used so we can tell Sphinx what branch we are on. That way links to GitHub files can be verified against the proper branch.
-This prevents html-proofer from not being able to find newly added files on develop, as it checks against the current branch.</p>
-<p>sphinx-copybutton is used to allow you to copy the contents of code blocks to your clipboard with a single click.</p>
-<p>Install all additional dependencies with:</p>
-<div class="code highlight-python"><div class="highlight"><pre>./install.sh
+This prevents html-proofer from not being able to find newly added files on develop, as it checks against the current branch.
+Install Pygit from the Ubuntu repositories:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pygit2</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="generate-the-html">
 <h3>Generate the html<a class="headerlink" href="#generate-the-html" title="Permalink to this headline">¶</a></h3>
-<p>Simply run the <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/build_locally.sh">build_locally</a> script to generate the docs and automatically open them in your browser.</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd ~/march_ws/src/march_tutorials
-./build_locally.sh
+<p>Simply run the <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/build_locally.sh">build_locally</a> script to generate the docs and automatically open them in your browser.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">march_tutorials</span>
+<span class="o">./</span><span class="n">build_locally</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>If you already have sphinx installed, you might get the following error:</p>
-<div class="code highlight-python"><div class="highlight"><pre>Traceback (most recent call last):
-  File &quot;/home/march/.local/bin/sphinx-build&quot;, line 7, in &lt;module&gt;
-    from sphinx.cmd.build import main
-  File &quot;/home/march/.local/lib/python2.7/site-packages/sphinx/cmd/build.py&quot;, line 39
-    file=stderr)
-        ^
-SyntaxError: invalid syntax
-stdout:
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/march/.local/bin/sphinx-build&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">sphinx.cmd.build</span> <span class="k">import</span> <span class="n">main</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/march/.local/lib/python2.7/site-packages/sphinx/cmd/build.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">39</span>
+    <span class="n">file</span><span class="o">=</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+<span class="n">stdout</span><span class="p">:</span>
 </pre></div>
 </div>
 <p>Fix it by uninstalling sphinx</p>
-<div class="code last highlight-python"><div class="highlight"><pre>pip uninstall sphinx
+<div class="code last highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">sphinx</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>You might get the following error if sphinx is installed using pip3:</p>
-<div class="code highlight-python"><div class="highlight"><pre>Exception occurred:
-  File &quot;&lt;frozen importlib._bootstrap&gt;&quot;, line 222, in _call_with_frames_removed
-  File &quot;/home/olav/march_ws/src/march_tutorials/_scripts/tutorialformatter.py&quot;, line 121
-    print &#39;tutorialformatter.py error: sub-tutorial %s not found.&#39; % sub_name
-                                                                 ^
-SyntaxError: Missing parentheses in call to &#39;print&#39;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="ne">Exception</span> <span class="n">occurred</span><span class="p">:</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">222</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_call_with_frames_removed</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/olav/march_ws/src/march_tutorials/_scripts/tutorialformatter.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">121</span>
+    <span class="nb">print</span> <span class="s1">&#39;tutorialformatter.py error: sub-tutorial </span><span class="si">%s</span><span class="s1"> not found.&#39;</span> <span class="o">%</span> <span class="n">sub_name</span>
+                                                                 <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">Missing</span> <span class="n">parentheses</span> <span class="ow">in</span> <span class="n">call</span> <span class="n">to</span> <span class="s1">&#39;print&#39;</span>
 </pre></div>
 </div>
 <p>You can fix this by uninstalling python3 sphinx:</p>
-<div class="code last highlight-python"><div class="highlight"><pre>pip3 uninstall sphinx
+<div class="code last highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">uninstall</span> <span class="n">sphinx</span>
 </pre></div>
 </div>
 </div>
@@ -568,20 +570,20 @@ Push your files and build locally again to solve this problem.</p>
 <div class="section" id="browser-sync-optional">
 <h3>Browser sync (Optional)<a class="headerlink" href="#browser-sync-optional" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.browsersync.io/">Browser sync</a> is a tool that can refresh your browser when files get updated.
-We have a python script called <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/watch.py">watch.py</a> that will watch your doc files and rebuild them with Sphinx when something changes.
+We have a python script called <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/watch.py">watch.py</a> that will watch your doc files and rebuild them with Sphinx when something changes.
 Browser sync is then notified and will refresh the browser.</p>
 <p>Install it globally with npm:</p>
-<div class="code highlight-python"><div class="highlight"><pre>npm install -g browser-sync
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">browser</span><span class="o">-</span><span class="n">sync</span>
 </pre></div>
 </div>
 <p>Start the python watch script:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd ~/march_ws/src/march_tutorials
-python watch.py
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">march_tutorials</span>
+<span class="n">python</span> <span class="n">watch</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>In another terminal, start browser-sync:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd ~/march_ws/src/march_tutorials
-browser-sync start -s build/html -f &quot;build/html/*.html&quot;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">march_tutorials</span>
+<span class="n">browser</span><span class="o">-</span><span class="n">sync</span> <span class="n">start</span> <span class="o">-</span><span class="n">s</span> <span class="n">build</span><span class="o">/</span><span class="n">html</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;build/html/*.html&quot;</span>
 </pre></div>
 </div>
 <p>A localhost instance should now be opened, and refreshed whenever you change a <code class="docutils literal"><span class="pre">.rst</span></code> file.</p>
@@ -595,15 +597,15 @@ or change something in the file for it to start generating properly.</p>
 <div class="section" id="deploy-with-travis">
 <h2>Deploy with Travis<a class="headerlink" href="#deploy-with-travis" title="Permalink to this headline">¶</a></h2>
 <p>We make use of the <a class="reference external" href="http://docs.travis-ci.com/user/deployment">Travis deploy</a> feature to deploy our generated documentation to GitHub pages.
-Please check the <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/.travis.yml">.travis.yml of this repository</a> for the details.</p>
+Please check the <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/.travis.yml">.travis.yml of this repository</a> for the details.</p>
 </div>
 <div class="section" id="add-a-new-tutorial">
 <h2>Add a new tutorial<a class="headerlink" href="#add-a-new-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Adding a new tutorial is as simple as creating a new <code class="docutils literal"><span class="pre">.rst</span></code> file.
-To make sure it shows up in the Table of Contents, add it to the <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/index.rst">index.rst</a> under a <code class="docutils literal"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive</p>
+To make sure it shows up in the Table of Contents, add it to the <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/index.rst">index.rst</a> under a <code class="docutils literal"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">If you are creating a new package description, make sure to base it off the <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/doc/march_packages/template.rst">package template</a></p>
+<p class="last">If you are creating a new package description, make sure to base it off the <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/doc/march_packages/template.rst">package template</a></p>
 </div>
 </div>
 </div>
@@ -612,7 +614,7 @@ To make sure it shows up in the Table of Contents, add it to the <a class="refer
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/documentation.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/development/documentation.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -652,7 +654,7 @@ To make sure it shows up in the Table of Contents, add it to the <a class="refer
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -661,8 +663,6 @@ To make sure it shows up in the Table of Contents, add it to the <a class="refer
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

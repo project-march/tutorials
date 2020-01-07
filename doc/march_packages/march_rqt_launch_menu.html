@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_rqt_launch_menu &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_rqt_launch_menu &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_safety" href="march_safety.html"/>
         <link rel="prev" title="march_rqt_input_device" href="march_rqt_input_device.html"/> 
 
@@ -336,7 +339,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_rqt_launch_menu</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_rqt_launch_menu</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_rqt_launch_menu.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_rqt_launch_menu.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -489,9 +492,9 @@ The statusTip of the radio button is the value while the statusTip of the QGroup
 <div class="section" id="getting-started">
 <h3>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
 <p>It is highly advised to install Qt creator as it makes editing the .ui files very easy.</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo apt-get install build-essential
-sudo apt-get install qtcreator
-sudo apt-get install qt5-default
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">qtcreator</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">qt5</span><span class="o">-</span><span class="n">default</span>
 </pre></div>
 </div>
 <p>In Qt-creator navigate to Design and press <code class="docutils literal"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">O</span></code> to open the <code class="docutils literal"><span class="pre">launch_menu.ui</span></code> file.</p>
@@ -499,7 +502,7 @@ sudo apt-get install qt5-default
 </div>
 <div class="section" id="adding-a-new-qcheckbox">
 <h3>Adding a new QCheckBox<a class="headerlink" href="#adding-a-new-qcheckbox" title="Permalink to this headline">¶</a></h3>
-<p>You can add a new <code class="docutils literal"><span class="pre">QCheckBox</span></code> whenever you want to add a new option to the launch menu. It does not matter to which <code class="docutils literal"><span class="pre">QGroupBox</span></code> this checkbox belongs or where in the layout it&#8217;s placed.</p>
+<p>You can add a new <code class="docutils literal"><span class="pre">QCheckBox</span></code> whenever you want to add a new option to the launch menu. It does not matter to which <code class="docutils literal"><span class="pre">QGroupBox</span></code> this checkbox belongs or where in the layout it’s placed.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Drag a Check Box button from the left banner to the <code class="docutils literal"><span class="pre">QGroupBox</span></code> where you want it to be located.</li>
@@ -507,7 +510,7 @@ sudo apt-get install qt5-default
 <li>In the property editor in the bottom right, locate the <code class="docutils literal"><span class="pre">toolTip</span></code> and the <code class="docutils literal"><span class="pre">statusTip</span></code>.</li>
 <li>Change the <code class="docutils literal"><span class="pre">toolTip</span></code> to a description that fits your setting.</li>
 <li>Change the <code class="docutils literal"><span class="pre">statusTip</span></code> to the name of the parameter that will be uploaded to the parameter server starting with a <code class="docutils literal"><span class="pre">/</span></code> (e.g. <code class="docutils literal"><span class="pre">/ui/example_ui</span></code>).</li>
-<li>Run the launch menu and select the option. Accept by pressing &#8216;OK&#8217; in the bottom right.</li>
+<li>Run the launch menu and select the option. Accept by pressing ‘OK’ in the bottom right.</li>
 <li>Check if the parameter is set correctly in the parameter server (e.g. <code class="docutils literal"><span class="pre">rosparam</span> <span class="pre">get</span> <span class="pre">march/launch_menu/ui/example_ui</span></code>).</li>
 </ol>
 </div></blockquote>
@@ -548,7 +551,7 @@ sudo apt-get install qt5-default
 <dd><ol class="first arabic simple">
 <li>Navigate to <code class="docutils literal"><span class="pre">run_configuration_enum.py</span></code> and add your run configuration below the existing (e.g. <code class="docutils literal"><span class="pre">testjoint</span> <span class="pre">=</span> <span class="pre">&quot;testjoint&quot;</span></code>)</li>
 <li>Add a <code class="docutils literal"><span class="pre">QRadioButton</span></code> to the <code class="docutils literal"><span class="pre">RunConfigurationGroup</span></code> in Qt creator.</li>
-<li>Give it a name that matches the name of your run configuration. Spaces are stripped and it is case-insensitive (e.g. &#8220;Test Joint&#8221; and &#8220;TEs TJOin t&#8221; is fine, &#8220;test_joint&#8221; or &#8220;test-joint&#8221; is not.)</li>
+<li>Give it a name that matches the name of your run configuration. Spaces are stripped and it is case-insensitive (e.g. “Test Joint” and “TEs TJOin t” is fine, “test_joint” or “test-joint” is not.)</li>
 <li>Optionally give it a <code class="docutils literal"><span class="pre">toolTip</span></code> to give information to the user hovering over it.</li>
 <li>Add a new <code class="docutils literal"><span class="pre">QGroupBox</span></code> to the <code class="docutils literal"><span class="pre">RunConfigurationLayout</span></code>.</li>
 <li>Give this <code class="docutils literal"><span class="pre">QGroupBox</span></code> a sensible name in the property editor (e.g. <code class="docutils literal"><span class="pre">TestJointGroup</span></code>).</li>
@@ -557,10 +560,10 @@ sudo apt-get install qt5-default
 <li>In <code class="docutils literal"><span class="pre">launch_menu.py</span></code> locate <code class="docutils literal"><span class="pre">run_configuration_changed()</span></code> and add your group to the if statement.</li>
 </ol>
 <blockquote>
-<div><div class="code highlight-python"><div class="highlight"><pre>...
-elif enabled_configuration == run_configuration_enum.testjoint.name:
-    self._widget.TestJointGroup.setEnabled(True)
-...
+<div><div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="k">elif</span> <span class="n">enabled_configuration</span> <span class="o">==</span> <span class="n">run_configuration_enum</span><span class="o">.</span><span class="n">testjoint</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_widget</span><span class="o">.</span><span class="n">TestJointGroup</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -585,7 +588,7 @@ elif enabled_configuration == run_configuration_enum.testjoint.name:
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_rqt_launch_menu.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_rqt_launch_menu.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -625,7 +628,7 @@ elif enabled_configuration == run_configuration_enum.testjoint.name:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -634,8 +637,6 @@ elif enabled_configuration == run_configuration_enum.testjoint.name:
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

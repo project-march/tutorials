@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_input_device &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_input_device &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_launch" href="march_launch.html"/>
         <link rel="prev" title="march_hardware_interface" href="march_hardware_interface.html"/> 
 
@@ -267,7 +270,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_input_device</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_input_device</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#communication">Communication</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sending-messages">Sending messages</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_input_device.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_input_device.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -468,11 +471,11 @@ This can be run wired via usb cable or wireless via wifi connection.</p>
 <p class="first admonition-title">Todo</p>
 <p class="last">(Tim) link this to the march_safety documentation.</p>
 </div>
-<p><a class="reference external" href="http://docs.ros.org/kinetic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is send. This way <em>march_safety</em> can detect when the input device loses connection.</p>
+<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is send. This way <em>march_safety</em> can detect when the input device loses connection.</p>
 </div>
 <div class="section" id="receiving-messages">
 <h3>Receiving messages<a class="headerlink" href="#receiving-messages" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://docs.ros.org/kinetic/api/std_msgs/html/msg/Bool.html">Gait Instruction Response Message</a>  This message indicate that the last gait instruction is handled. The value represent successful handled or rejected.</p>
+<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Bool.html">Gait Instruction Response Message</a>  This message indicate that the last gait instruction is handled. The value represent successful handled or rejected.</p>
 </div>
 </div>
 <div class="section" id="tutorials">
@@ -480,12 +483,12 @@ This can be run wired via usb cable or wireless via wifi connection.</p>
 <div class="section" id="set-correct-ubuntu-permissions">
 <h3>Set correct ubuntu permissions<a class="headerlink" href="#set-correct-ubuntu-permissions" title="Permalink to this headline">¶</a></h3>
 <p>The following error can occur when trying to access the ttyUSB port:</p>
-<div class="code highlight-python"><div class="highlight"><pre>Cannot open /dev/ttyUSB0: Permission denied
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Cannot</span> <span class="nb">open</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
 </pre></div>
 </div>
 <p>To make sure your user is allowed to access the port, add your user to the required groups:</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo usermod -a -G tty &lt;your_username&gt;
-sudo usermod -a -G dialout &lt;your_username&gt;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">tty</span> <span class="o">&lt;</span><span class="n">your_username</span><span class="o">&gt;</span>
+<span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">dialout</span> <span class="o">&lt;</span><span class="n">your_username</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Now log out on your computer and log back in, the error should be resolved.</p>
@@ -509,7 +512,7 @@ to run and upload the code see the <a class="reference external" href="https://g
 <li>Connect the input device via usb cable, this powers and launches the input device automatically.</li>
 <li>Type in a terminal:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_launch serial_connection.launch tcp:=false
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span> <span class="n">tcp</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
 </pre></div>
 </div>
 </div>
@@ -527,12 +530,12 @@ to run and upload the code see the <a class="reference external" href="https://g
 <ul class="simple">
 <li>Type in terminal: <code class="code docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code> Remember the output, this is the hostname. You have to use this address for the next instructions. From this point we call this value <strong>your_hostname</strong>.</li>
 <li>Uncomment <code class="code docutils literal"><span class="pre">#define</span> <span class="pre">USE_WIRELESS</span></code> in the <em>main.cpp</em>.</li>
-<li>Change <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(x,</span> <span class="pre">x,</span> <span class="pre">x,</span> <span class="pre">x)</span></code> to <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(your_hostname)</span></code> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/WirelessConnection.h">WirelessConnection.h</a></li>
+<li>Change <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(x,</span> <span class="pre">x,</span> <span class="pre">x,</span> <span class="pre">x)</span></code> to <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(your_hostname)</span></code> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/wireless_connection.h">wireless_connection.h</a></li>
 <li>Upload to input device.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you want to change the network name and password that the input device uses: Change <strong>ssid</strong> and <strong>password</strong> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/WirelessConnection.h">WirelessConnection.h</a></p>
+<p class="last">If you want to change the network name and password that the input device uses: Change <strong>ssid</strong> and <strong>password</strong> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/wireless_connection.h">wireless_connection.h</a></p>
 </div>
 </div>
 <div class="section" id="id2">
@@ -540,13 +543,13 @@ to run and upload the code see the <a class="reference external" href="https://g
 <ul class="simple">
 <li>Type in every terminal you are going to use:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>export ROS_MASTER_URI=http://&lt;your_hostname&gt;:11311/
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">ROS_MASTER_URI</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">your_hostname</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">11311</span><span class="o">/</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Type in a terminal:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_launch serial_connection.launch
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -564,40 +567,40 @@ to run and upload the code see the <a class="reference external" href="https://g
 <li>Put the screens on the SD card. Use the 4D Systems Workshop4 IDE software for this.</li>
 <li>Create a new state, a new gait, in the <em>StateMachine.cpp</em>.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>case State::NewGait:;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">:;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Implement the correct button actions which cause state transitions to the code. For example:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>if(joystickPress == &quot;PUSH&quot;){
-    this-&gt;currentState = State::NewGaitSelected;
-}
-break;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">joystickPress</span> <span class="o">==</span> <span class="s2">&quot;PUSH&quot;</span><span class="p">){</span>
+    <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitSelected</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">break</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Create a new state for your selected and activated gait.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>case State::NewGaitSelected:
-         if(triggerPress == &quot;PUSH&quot;){
-             this-&gt;currentState = State::NewGaitActivated;
-         }
-         else if(joystickPress == &quot;DOUBLE&quot;){
-             this-&gt;currentState = State::NewGait;
-         }
-         break;
-case State::NewGaitActivated:
-         if(triggerPress == &quot;EXIT_GAIT&quot;){
-             this-&gt;currentState = State::StandUp;
-         }
-         break;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitSelected</span><span class="p">:</span>
+         <span class="k">if</span><span class="p">(</span><span class="n">triggerPress</span> <span class="o">==</span> <span class="s2">&quot;PUSH&quot;</span><span class="p">){</span>
+             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitActivated</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">joystickPress</span> <span class="o">==</span> <span class="s2">&quot;DOUBLE&quot;</span><span class="p">){</span>
+             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="k">break</span><span class="p">;</span>
+<span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitActivated</span><span class="p">:</span>
+         <span class="k">if</span><span class="p">(</span><span class="n">triggerPress</span> <span class="o">==</span> <span class="s2">&quot;EXIT_GAIT&quot;</span><span class="p">){</span>
+             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">StandUp</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="k">break</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Add a new entry to the <em>stateToGaitMapping</em>. Do this by adding a extra line in the constructor of the <em>StateMachine.cpp</em>:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>stateToGaitMapping[State::&lt;name_activated_state&gt;] = &quot;&lt;gait_name&gt;&quot;;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">stateToGaitMapping</span><span class="p">[</span><span class="n">State</span><span class="p">::</span><span class="o">&lt;</span><span class="n">name_activated_state</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&lt;gait_name&gt;&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>&lt;name_activated_state&gt;</strong> name of the activated state</p>
@@ -605,26 +608,26 @@ case State::NewGaitActivated:
 <ul class="simple">
 <li>Return the SD addresses of the image that should be drawn in the current state in the <em>getScreenImage()</em> method in <em>StateMachine.cpp</em>:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>case State::NewGait:
-    currentSdAddresses[0] = NewGait_Hi;
-    currentSdAddresses[1] = NewGait_Lo;
-    break;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">:</span>
+    <span class="n">currentSdAddresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewGait_Hi</span><span class="p">;</span>
+    <span class="n">currentSdAddresses</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewGait_Lo</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Add the created states in the <em>Statemachine.h</em>.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>enum class State {NewGait,
-                  NewGaitSelected,
-                  NewGaitActivated};
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="k">class</span> <span class="nc">State</span> <span class="p">{</span><span class="n">NewGait</span><span class="p">,</span>
+                  <span class="n">NewGaitSelected</span><span class="p">,</span>
+                  <span class="n">NewGaitActivated</span><span class="p">};</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Define the sector address of the images to be loaded on the screen in the <em>SD_sector_addresses.h</em>. These addresses can be found via the 4D Systems Workshop4 IDE software. First load the desired images on the uSD card, then find the sector addresses of said images via the generated .Gc file.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>// NewGait
-   #define NewGait_Hi     0x0000
-   #define NewGait_Lo     0x0051
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">NewGait</span>
+   <span class="c1">#define NewGait_Hi     0x0000</span>
+   <span class="c1">#define NewGait_Lo     0x0051</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +638,7 @@ case State::NewGaitActivated:
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_input_device.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_input_device.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -675,7 +678,7 @@ case State::NewGaitActivated:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -684,8 +687,6 @@ case State::NewGaitActivated:
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

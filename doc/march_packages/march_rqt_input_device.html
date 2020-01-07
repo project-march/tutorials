@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_rqt_input_device &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_rqt_input_device &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_rqt_launch_menu" href="march_rqt_launch_menu.html"/>
         <link rel="prev" title="march_launch" href="march_launch.html"/> 
 
@@ -314,7 +317,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_rqt_input_device</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_rqt_input_device</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#launching">Launching</a></li>
 </ul>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_rqt_input_device.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_rqt_input_device.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -462,13 +465,13 @@ It allows you to easily send gait instructions and stop commands, as well as fak
 <div class="section" id="launching">
 <h3>Launching<a class="headerlink" href="#launching" title="Permalink to this headline">¶</a></h3>
 <p>The <em>march_rqt_input_device</em> can be started just as every other package:</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_rqt_input_device march_rqt_input_device.launch
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_rqt_input_device</span> <span class="n">march_rqt_input_device</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
-<p>In case you don&#8217;t want to ping the <em>safety node</em> with an alive message you can set the launch parameter <strong>ping_safety_node</strong>.
+<p>In case you don’t want to ping the <em>safety node</em> with an alive message you can set the launch parameter <strong>ping_safety_node</strong>.
 This can be useful when you are using the normal input device and the <em>march_rqt_input_device</em> the same time and losing the
 normal input device should cause the <em>safety node</em> to throw an error.</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_rqt_input_device march_rqt_input_device.launch ping_safety_node:=false
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_rqt_input_device</span> <span class="n">march_rqt_input_device</span><span class="o">.</span><span class="n">launch</span> <span class="n">ping_safety_node</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
 </pre></div>
 </div>
 </div>
@@ -483,11 +486,11 @@ normal input device should cause the <em>safety node</em> to throw an error.</p>
 <h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">(Tim) Add link to march_safety when it&#8217;s done.</p>
+<p class="last">(Tim) Add link to march_safety when it’s done.</p>
 </div>
 <dl class="docutils">
-<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/kinetic/api/std_msgs/html/msg/Empty.html">std_msgs/Empty</a>)</dt>
-<dd>Publish empty alive messages so the Safety node doesn&#8217;t throw a warning.</dd>
+<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Empty.html">std_msgs/Empty</a>)</dt>
+<dd>Publish empty alive messages so the Safety node doesn’t throw a warning.</dd>
 <dt><em>/march/input_device/instruction</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">march_shared_resources/GaitInstruction</a>)</dt>
 <dd>Send instructions to the state machine.</dd>
 <dt><em>/march/error</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/Error.msg">march_shared_resources/Error</a>)</dt>
@@ -510,7 +513,7 @@ Make sure to check this file before you start as it contains many examples of ex
 <div class="section" id="create-a-new-publisher">
 <h4>Create a new publisher<a class="headerlink" href="#create-a-new-publisher" title="Permalink to this headline">¶</a></h4>
 <p>Create a new publisher in the <code class="docutils literal"><span class="pre">__init__</span></code>:</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Bool</span> <span class="c1"># Import the Bool msg if needed.</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="k">import</span> <span class="n">Bool</span> <span class="c1"># Import the Bool msg if needed.</span>
 
 <span class="bp">self</span><span class="o">.</span><span class="n">this_tutorial_works_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/march/this/tutorial/works&#39;</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -518,14 +521,14 @@ Make sure to check this file before you start as it contains many examples of ex
 </div>
 <div class="section" id="create-a-publish-function">
 <h4>Create a publish function<a class="headerlink" href="#create-a-publish-function" title="Permalink to this headline">¶</a></h4>
-<div class="code highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">publish_this_tutorial_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">this_tutorial_works_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Bool</span><span class="p">(</span><span class="bp">True</span><span class="p">))</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">publish_this_tutorial_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">this_tutorial_works_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Bool</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="create-a-button-object">
 <h4>Create a button object<a class="headerlink" href="#create-a-button-object" title="Permalink to this headline">¶</a></h4>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">this_tutorial_works_button</span> <span class="o">=</span> <span class="n">MarchButton</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Publish True&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish_this_tutorial_works</span><span class="p">())</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">this_tutorial_works_button</span> <span class="o">=</span> <span class="n">MarchButton</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Publish True&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish_this_tutorial_works</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -533,9 +536,9 @@ Make sure to check this file before you start as it contains many examples of ex
 <h4>Add it to the march_button_layout<a class="headerlink" href="#add-it-to-the-march-button-layout" title="Permalink to this headline">¶</a></h4>
 <p>A 2D array called <code class="docutils literal"><span class="pre">march_button_layout</span></code> defines the layout you will see on screen.
 Make sure to add your button and pad it out with <code class="docutils literal"><span class="pre">None</span></code> so its dimensions remain consistent. Example:</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">march_button_layout</span> <span class="o">=</span> <span class="p">[</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">march_button_layout</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">[</span><span class="n">home_sit_button</span><span class="p">,</span> <span class="n">home_stand_button</span><span class="p">,</span> <span class="n">gait_walk_button</span><span class="p">],</span>
-  <span class="p">[</span><span class="n">this_tutorial_works_button</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+  <span class="p">[</span><span class="n">this_tutorial_works_button</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -548,7 +551,7 @@ Make sure to add your button and pad it out with <code class="docutils literal">
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_rqt_input_device.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_rqt_input_device.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -588,7 +591,7 @@ Make sure to add your button and pad it out with <code class="docutils literal">
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -597,8 +600,6 @@ Make sure to add your button and pad it out with <code class="docutils literal">
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

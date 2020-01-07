@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_launch &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_launch &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_rqt_input_device" href="march_rqt_input_device.html"/>
         <link rel="prev" title="march_input_device" href="march_input_device.html"/> 
 
@@ -291,7 +294,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_launch</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_launch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_launch.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_launch.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -455,13 +458,13 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The march_launch package is a collection of launch files which are used to start the exoskeleton and validate its workings.</p>
 <p>The exoskeleton is launched with</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_launch march_iv.launch
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_iv</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
-<p>For more information on how to launch the exoskeleton, see <a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#how-to-airgait-label"><span>How to airgait</span></a>.</p>
+<p>For more information on how to launch the exoskeleton, see <a class="reference internal" href="../using_the_march_iv/how_to_airgait.html#how-to-airgait-label"><span class="std std-ref">How to airgait</span></a>.</p>
 <p>It also contains a plugin called the <code class="docutils literal"><span class="pre">march_rqt_software_check</span></code>.
 This plugin allows users to easily perform software checks without worrying about the underlying code.</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_launch march_rqt_software_check.launch
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_rqt_software_check</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
 <div class="figure align-center" id="id1">
@@ -537,7 +540,7 @@ An example can be found in <a class="reference external" href="https://github.co
 <div class="section" id="how-do-i-see-which-checks-exist">
 <h3>How do I see which checks exist?<a class="headerlink" href="#how-do-i-see-which-checks-exist" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way is to launch the software check plugin and look at which buttons are available:</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_launch march_rqt_software_check
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_rqt_software_check</span>
 </pre></div>
 </div>
 <p>Or take a look at the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/CheckRunner.py">CheckRunner source code</a>.</p>
@@ -549,7 +552,7 @@ An example can be found in <a class="reference external" href="https://github.co
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_launch.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_launch.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -589,7 +592,7 @@ An example can be found in <a class="reference external" href="https://github.co
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -598,8 +601,6 @@ An example can be found in <a class="reference external" href="https://github.co
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

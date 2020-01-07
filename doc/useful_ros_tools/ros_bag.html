@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ROS bag &mdash; march_tutorials Kinetic documentation</title>
+  <title>ROS bag &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="SMACH" href="smach.html"/>
         <link rel="prev" title="Robot model" href="robot_model.html"/> 
 
@@ -110,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="robot_model.html#see-also">See also</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">ROS bag</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROS bag</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#recording-bags">Recording bags</a></li>
 </ul>
 </li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/useful_ros_tools/ros_bag.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/ros_bag.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -467,19 +470,19 @@ The recorded topics are saved to a bagfile. These bags can be easily inspected w
 <h2>Recording bags<a class="headerlink" href="#recording-bags" title="Permalink to this headline">¶</a></h2>
 <p>There are many ways to record a rosbag: Using the RQT plugin, with the commandline, or adding it to the launchfile.</p>
 <p>Adding it to the launchfile is the least effort, and is done by starting the following node:</p>
-<div class="code highlight-python"><div class="highlight"><pre>&lt;node
-  pkg=&quot;rosbag&quot;
-  name=&quot;record&quot;
-  type=&quot;record&quot;
-  output=&quot;screen&quot;
-  args=&quot;-o &lt;output_directory&gt; /topic1 /topic2&quot;
-/&gt;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">node</span>
+  <span class="n">pkg</span><span class="o">=</span><span class="s2">&quot;rosbag&quot;</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
+  <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
+  <span class="n">output</span><span class="o">=</span><span class="s2">&quot;screen&quot;</span>
+  <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-o &lt;output_directory&gt; /topic1 /topic2&quot;</span>
+<span class="o">/&gt;</span>
 </pre></div>
 </div>
 <p>Use the option -a to record all topics.</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">If you don&#8217;t specify an output directory, the log files are located in the ros home folder (~/.ros)</p>
+<p class="last">If you don’t specify an output directory, the log files are located in the ros home folder (~/.ros)</p>
 </div>
 </div>
 </div>
@@ -488,7 +491,7 @@ The recorded topics are saved to a bagfile. These bags can be easily inspected w
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/useful_ros_tools/ros_bag.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/ros_bag.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -528,7 +531,7 @@ The recorded topics are saved to a bagfile. These bags can be easily inspected w
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -537,8 +540,6 @@ The recorded topics are saved to a bagfile. These bags can be easily inspected w
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

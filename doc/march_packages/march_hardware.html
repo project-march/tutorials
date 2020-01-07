@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_hardware &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_hardware &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_hardware_builder" href="march_hardware_builder.html"/>
         <link rel="prev" title="march_gait_files" href="march_gait_files.html"/> 
 
@@ -242,7 +245,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_hardware</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_hardware</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#class-structure">Class Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example usage</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_hardware.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -460,7 +463,7 @@ Its goal is to provide an api for actuating the exoskeleton without knowledge of
 <h2>Class Structure<a class="headerlink" href="#class-structure" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">The <a class="reference internal" href="march_hardware_builder.html#march-hardware-builder-label"><span>march_hardware_builder</span></a> can help with the class structure of the hardware package,
+<p class="last">The <a class="reference internal" href="march_hardware_builder.html#march-hardware-builder-label"><span class="std std-ref">march_hardware_builder</span></a> can help with the class structure of the hardware package,
 especially when looking at an <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots/march4.yaml">example yaml</a>.</p>
 </div>
 <p>The highest level class is the MarchRobot, it contains a list of Joints which can be accessed.
@@ -470,20 +473,20 @@ This is enough knowledge to start interacting with a MarchRobot.</p>
 <div class="section" id="example-usage">
 <h2>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
 <p>Here is an example of the commands you can use on a MarchRobot object when it is created with the correct joints.</p>
-<div class="code highlight-python"><div class="highlight"><pre>MarchRobot robot;
-robot.startEthercat();
-Joint rightKnee = robot.getJoint(&quot;right_knee&quot;);
-rightKnee.prepareActuation();
-rightKnee.actuateRad(0.2);
-float readAngle = rightKnee.getAngleRad();
-float readTemperature = rightKnee.getTemperature();
-robot.stopEthercat();
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">MarchRobot</span> <span class="n">robot</span><span class="p">;</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">startEthercat</span><span class="p">();</span>
+<span class="n">Joint</span> <span class="n">rightKnee</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">getJoint</span><span class="p">(</span><span class="s2">&quot;right_knee&quot;</span><span class="p">);</span>
+<span class="n">rightKnee</span><span class="o">.</span><span class="n">prepareActuation</span><span class="p">();</span>
+<span class="n">rightKnee</span><span class="o">.</span><span class="n">actuateRad</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="nb">float</span> <span class="n">readAngle</span> <span class="o">=</span> <span class="n">rightKnee</span><span class="o">.</span><span class="n">getAngleRad</span><span class="p">();</span>
+<span class="nb">float</span> <span class="n">readTemperature</span> <span class="o">=</span> <span class="n">rightKnee</span><span class="o">.</span><span class="n">getTemperature</span><span class="p">();</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">stopEthercat</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ethercat">
 <h2>EtherCAT<a class="headerlink" href="#ethercat" title="Permalink to this headline">¶</a></h2>
-<p>EtherCAT is the fieldbus protocol used to communicate with the local hardware (&#8216;slaves&#8217;) in the exoskeleton.
+<p>EtherCAT is the fieldbus protocol used to communicate with the local hardware (‘slaves’) in the exoskeleton.
 <a class="reference external" href="https://github.com/OpenEtherCATsociety/SOEM">SOEM</a> (short for Simple Open EtherCAT Master) is a C library used which provides most EtherCAT functionalities.
 As said, the hardware package is mainly a class structure on top of SOEM functioning as an api for controlling the exoskeleton.
 The interfaces can be roughly divided into three parts:</p>
@@ -499,7 +502,7 @@ EtherCAT can be started and stopped via the EthercatMaster.
 When EtherCAT is started, a parallel thread is started that continuously sends and receives the latest EtherCAT PDO data and monitors if all slaves are still present and operational.
 When EtherCAT is stopped, this parallel thread stops running.</p>
 <p>The EthercatMaster class expects several arguments in its constructor: a pointer to a vector of Joints of the robot, the network interface name (ifname) of your device, the number of EtherCAT slaves in  your robot, and the cycle time of the EtherCAT thread in milliseconds. An example is provided below.</p>
-<div class="code highlight-python"><div class="highlight"><pre>EthercatMaster ethercat(&amp;jointList, &quot;enp2s0&quot;, 14, 2); // 14 slaves, 2 ms cycle time
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">EthercatMaster</span> <span class="n">ethercat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">jointList</span><span class="p">,</span> <span class="s2">&quot;enp2s0&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="o">//</span> <span class="mi">14</span> <span class="n">slaves</span><span class="p">,</span> <span class="mi">2</span> <span class="n">ms</span> <span class="n">cycle</span> <span class="n">time</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -537,9 +540,9 @@ The generic SDO messaging functions can be found in <a class="reference external
 <p>The PowerDistributionBoard class contains all functionality for communicating with the Power Distribution Board over EtherCAT.
 For example, high voltage nets can be turned on and off via this class, and the currents that the Power Distribution Board measures can be read.
 The PowerDistributionBoard class contains a HighVoltage and a LowVoltage class which contain methods for controlling the high voltage and low voltage nets.</p>
-<div class="code highlight-python"><div class="highlight"><pre>PowerDistributionBoard pdb;
-float readCurrent = pdb.getPowerDistributionBoardCurrent();
-pdb.getHighVoltage().setNetOnOff(true, 2); // Turn on net 2
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">PowerDistributionBoard</span> <span class="n">pdb</span><span class="p">;</span>
+<span class="nb">float</span> <span class="n">readCurrent</span> <span class="o">=</span> <span class="n">pdb</span><span class="o">.</span><span class="n">getPowerDistributionBoardCurrent</span><span class="p">();</span>
+<span class="n">pdb</span><span class="o">.</span><span class="n">getHighVoltage</span><span class="p">()</span><span class="o">.</span><span class="n">setNetOnOff</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="o">//</span> <span class="n">Turn</span> <span class="n">on</span> <span class="n">net</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -555,7 +558,7 @@ See the <a class="reference external" href="https://github.com/project-march/eth
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>Because safety is very important, the march_hardware package will throw an exception whenever it encounters something that shouldn&#8217;t happen.</p>
+<p>Because safety is very important, the march_hardware package will throw an exception whenever it encounters something that shouldn’t happen.</p>
 <p>The main exceptions are</p>
 <blockquote>
 <div><ul class="simple">
@@ -577,7 +580,7 @@ The package does depend on ROS for logging, but that can be easily changed if ne
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_hardware.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -617,7 +620,7 @@ The package does depend on ROS for logging, but that can be easily changed if ne
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -626,8 +629,6 @@ The package does depend on ROS for logging, but that can be easily changed if ne
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

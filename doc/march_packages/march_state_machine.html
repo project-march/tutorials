@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_state_machine &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_state_machine &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_simulation" href="march_simulation.html"/>
         <link rel="prev" title="march_shared_resources" href="march_shared_resources.html"/> 
 
@@ -380,7 +383,7 @@
 <li class="toctree-l2"><a class="reference internal" href="march_shared_resources.html#overview">Overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_state_machine</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_state_machine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior">Behavior</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#launch">LAUNCH</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_state_machine.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_state_machine.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -456,7 +459,7 @@
 <p>The march_state_machine contains the general behavior of the March IV exoskeleton. Simply put after launching the exoskeleton gait can be performed.
 The state machine also knows which gait can be executed in every possible state. For example after sitting you can stand-up, but you cannot walk.</p>
 <p>We are using an hierarchical state machine, which is a state machines whose states are them- selves state machines. We also use SMACH  this is a task-level
-architecture for rapidly creating complex robot behavior(see <a class="reference internal" href="../useful_ros_tools/smach.html#smach-label"><span>SMACH</span></a>).</p>
+architecture for rapidly creating complex robot behavior(see <a class="reference internal" href="../useful_ros_tools/smach.html#smach-label"><span class="std std-ref">SMACH</span></a>).</p>
 </div>
 <div class="section" id="behavior">
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
@@ -468,7 +471,7 @@ As mentioned above this is possible in a hierarchical state machine.</p>
 <div class="section" id="launch">
 <h3>LAUNCH<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h3>
 <p>Launch starts with a <strong>WAIT ON SETTINGS</strong> state. This state waits on user input to select what to start and what to skip. After the input is received the state machine
-continues. Depending on the the user&#8217;s input, the <strong>HARDWARE SEQUENCE</strong> or the <strong>SIMULATION SEQUENCE</strong> is started.
+continues. Depending on the the user’s input, the <strong>HARDWARE SEQUENCE</strong> or the <strong>SIMULATION SEQUENCE</strong> is started.
 Read <a class="reference external" href="http://wiki.ros.org/smach/Tutorials/Sequence%20container">SMACH sequences</a> to understand sequences. Both sequences start the required or requested packages.
 After this the last sequence starts all remaining packages that are required or requested. This is done in the <strong>DEFAULT SEQUENCE</strong>.</p>
 </div>
@@ -476,14 +479,14 @@ After this the last sequence starts all remaining packages that are required or 
 <h3>HEALTHY<a class="headerlink" href="#healthy" title="Permalink to this headline">¶</a></h3>
 <p>When launched successful the <strong>HEALTHY</strong> state machine is active. This part contains all possible gaits. Besides gaits we also have <em>idle</em> states such as <strong>STANDING</strong>, <strong>SITTING</strong>, <strong>UNKNOWN</strong>.
 <strong>UNKNOWN</strong> is the state in which the current position is not known. This can be on start-up, but also after an error is thrown and the March IV exoskeleton did not fully execute the intended gait.
-Transitions between <em>idle-states</em> to <em>gait-states</em> are present only when it&#8217;s safe to execute this gait at that moment.</p>
+Transitions between <em>idle-states</em> to <em>gait-states</em> are present only when it’s safe to execute this gait at that moment.</p>
 <p>In this state machine the <strong>SAFETY</strong> state is always active. However, this is not the only active state.
 Multiple active states the same time are called <a class="reference external" href="http://wiki.ros.org/smach/Tutorials/Concurrent%20States">concurrent states</a>. The <strong>SAFETY</strong> state is responsible for
-monitoring possible errors (see <a class="reference internal" href="march_safety.html#march-safety-label"><span>march_safety</span></a>). This is done in a concurrent state, this way not every states in <strong>HEALTHY</strong> needs to have this responsibility.</p>
+monitoring possible errors (see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a>). This is done in a concurrent state, this way not every states in <strong>HEALTHY</strong> needs to have this responsibility.</p>
 </div>
 <div class="section" id="error">
 <h3>ERROR<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h3>
-<p>After an error is thrown (see <a class="reference internal" href="march_safety.html#march-safety-label"><span>march_safety</span></a> when this happens) <strong>ERROR</strong> will become active instead of <strong>HEALTHY</strong>. After 5 seconds the state machine will try to recover.
+<p>After an error is thrown (see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> when this happens) <strong>ERROR</strong> will become active instead of <strong>HEALTHY</strong>. After 5 seconds the state machine will try to recover.
 This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</strong>.</p>
 </div>
 <div class="section" id="shutdown">
@@ -495,7 +498,7 @@ This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="add-a-state-to-the-state-machine">
 <h3>Add a state to the state machine<a class="headerlink" href="#add-a-state-to-the-state-machine" title="Permalink to this headline">¶</a></h3>
-<p>See <a class="reference internal" href="../development/add_a_new_gait.html#add-gait-label"><span>Add a new gait</span></a> on how to add a gait state to the <strong>HEALTY</strong> state machine. Adding other non-gait states is similar.</p>
+<p>See <a class="reference internal" href="../development/add_a_new_gait.html#add-gait-label"><span class="std std-ref">Add a new gait</span></a> on how to add a gait state to the <strong>HEALTY</strong> state machine. Adding other non-gait states is similar.</p>
 </div>
 </div>
 </div>
@@ -504,7 +507,7 @@ This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_state_machine.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_state_machine.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -544,7 +547,7 @@ This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -553,8 +556,6 @@ This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

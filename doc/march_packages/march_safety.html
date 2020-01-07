@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_safety &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_safety &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_shared_resources" href="march_shared_resources.html"/>
         <link rel="prev" title="march_rqt_launch_menu" href="march_rqt_launch_menu.html"/> 
 
@@ -353,7 +356,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_safety</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_safety</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a></li>
 </ul>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_safety.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_safety.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -512,11 +515,11 @@ Therefore, the system should terminate.</p>
 <h3>Add new safety rule to existing SafetyType<a class="headerlink" href="#add-new-safety-rule-to-existing-safetytype" title="Permalink to this headline">¶</a></h3>
 <p>This is pretty straightforward to do. This tutorial will mostly give remarks and tips:</p>
 <ul class="simple">
-<li>Add your new rule to the most suited <strong>SafetyType</strong>, if no <em>SafetyTypes</em> are suited create a new one (see <a class="reference internal" href="#march-safety-add-new-rule-label"><span>Create new SafetyType</span></a>).</li>
+<li>Add your new rule to the most suited <strong>SafetyType</strong>, if no <em>SafetyTypes</em> are suited create a new one (see <a class="reference internal" href="#march-safety-add-new-rule-label"><span class="std std-ref">Create new SafetyType</span></a>).</li>
 <li>When using values that are probably going to change in the future place them as parameter in the <strong>march_safety.launch</strong> file.
 Definitely do this with values that are probably going to be changed by other team members, by placing the value in the
 launch file you make it much easier for them.</li>
-<li>It&#8217;s possible that the new rule is automatically called, for example because it&#8217;s a callback. However, when this is not the case
+<li>It’s possible that the new rule is automatically called, for example because it’s a callback. However, when this is not the case
 call the new rule in the <strong>update</strong> method of the <strong>SafetyType</strong>. This method is executed every cycle of the <strong>SafetyNode</strong>.</li>
 </ul>
 </div>
@@ -534,13 +537,13 @@ call the new rule in the <strong>update</strong> method of the <strong>SafetyTyp
 <li>Pass on a reference to the <em>NodeHandle</em> and <em>SafetyHandle</em>.</li>
 <li>Obtain the threshold parameter form the parameter service.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>n-&gt;getParam(ros::this_node::getName() + &quot;/temperature_threshold_non_fatal&quot;, non_fatal_temperature_threshold);
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">-&gt;</span><span class="n">getParam</span><span class="p">(</span><span class="n">ros</span><span class="p">::</span><span class="n">this_node</span><span class="p">::</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/temperature_threshold_non_fatal&quot;</span><span class="p">,</span> <span class="n">non_fatal_temperature_threshold</span><span class="p">);</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Subscribe to the temperature topic.</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>ros::Subscriber subscriber_temperature = n.subscribe&lt;sensor_msgs::Temperature&gt;(&quot;/march/temperature&quot;, 1000, temperatureCallback);
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">ros</span><span class="p">::</span><span class="n">Subscriber</span> <span class="n">subscriber_temperature</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">subscribe</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">Temperature</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;/march/temperature&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">temperatureCallback</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -550,16 +553,16 @@ call the new rule in the <strong>update</strong> method of the <strong>SafetyTyp
 <div><ul class="simple">
 <li>In this callback you want to compare the received value with the threshold</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>if (msg-&gt;temperature &gt; non_fatal_temperature_threshold)
-{
-  // Temperature exceeds threshold
-}
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">temperature</span> <span class="o">&gt;</span> <span class="n">non_fatal_temperature_threshold</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span> <span class="n">Temperature</span> <span class="n">exceeds</span> <span class="n">threshold</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>When the threshold is exceeded you probably want to call the non-fatal method form the <em>SafetyHandle</em>. This is example code:</li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>safety_handler-&gt;publishNonFatal(error_message);
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">safety_handler</span><span class="o">-&gt;</span><span class="n">publishNonFatal</span><span class="p">(</span><span class="n">error_message</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -567,16 +570,16 @@ call the new rule in the <strong>update</strong> method of the <strong>SafetyTyp
 <li><p class="first">You have to overwrite the <strong>update</strong> method from the <strong>SafetyType</strong>. However, in this example we are not using the update method.
 This method is used when you want to execute some code every <strong>SafetyNode</strong> cycle. For example if you want to check if a certain node
 is still alive this would be de perfect place to call this code. For this example we will overwrite this method, but keep it empty:</p>
-<div class="code highlight-python"><div class="highlight"><pre>void update() override
-{
-}
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">update</span><span class="p">()</span> <span class="n">override</span>
+<span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Finally you need to add the <strong>TemperatureSafety</strong> to the <strong>safety_list</strong> in the <strong>SafetyNode.cpp</strong>:</p>
 </li>
 </ul>
-<div class="code highlight-python"><div class="highlight"><pre>safety_list.push_back(std::unique_ptr&lt;SafetyType&gt;(new TemperatureSafety(&amp;n, &amp;safetyHandler)));
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">safety_list</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SafetyType</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new</span> <span class="n">TemperatureSafety</span><span class="p">(</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">safetyHandler</span><span class="p">)));</span>
 </pre></div>
 </div>
 </div>
@@ -587,7 +590,7 @@ is still alive this would be de perfect place to call this code. For this exampl
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_safety.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_safety.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -627,7 +630,7 @@ is still alive this would be de perfect place to call this code. For this exampl
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -636,8 +639,6 @@ is still alive this would be de perfect place to call this code. For this exampl
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

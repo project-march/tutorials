@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Continuous Integration &mdash; march_tutorials Kinetic documentation</title>
+  <title>Continuous Integration &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="Testing" href="../development/testing.html"/>
         <link rel="prev" title="Documentation" href="../development/documentation.html"/> 
 
@@ -193,7 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/documentation.html#add-a-new-tutorial">Add a new tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Continuous Integration</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Continuous Integration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-notifications">Build Notifications</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/continuous_integration/continuous_integration.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/continuous_integration/continuous_integration.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -462,7 +465,7 @@ provide a tutorial on how to setup a new repository with CI.</p>
 <p>The march repositories all use <a class="reference external" href="https://travis-ci.com/project-march">open source Travis CI</a>
 for builds, which run on commit pushes. There are no extra builds configured
 for pull requests since branches have to be up to date with the target branch
-in order to merge. You can download a template <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/doc/continuous_integration/template.travis.yml">.travis.yml</a>
+in order to merge. You can download a template <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/doc/continuous_integration/template.travis.yml">.travis.yml</a>
 for new repositories.</p>
 <div class="section" id="build-notifications">
 <h3>Build Notifications<a class="headerlink" href="#build-notifications" title="Permalink to this headline">¶</a></h3>
@@ -470,10 +473,9 @@ for new repositories.</p>
 Travis sends emails about builds. The march repositories disable the email
 notifications and enable secure slack integration. This is done by the
 following setting in <code class="docutils literal"><span class="pre">.travis.yml</span></code>.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l l-Scalar l-Scalar-Plain">notifications</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">notifications</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">slack</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">secure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;secure string&gt;</span>
-  <span class="l l-Scalar l-Scalar-Plain">email</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 <p>Where <code class="docutils literal"><span class="pre">&lt;secure</span> <span class="pre">string&gt;</span></code> is replaced by an encrypted connection string from
@@ -486,26 +488,25 @@ slack. See <a class="reference external" href="https://docs.travis-ci.com/user/n
 various tests. Industrial CI makes it easy to set things up and it is a
 structured way of running CI. ROS industrial CI is configured using environment
 variables.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># configure the build environment(s)</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># configure the build environment(s)</span>
 <span class="c1"># https://github.com/ros-industrial/industrial_ci/blob/master/doc/index.rst#variables-you-can-configure</span>
 <span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">global</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_REPO=ros</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">BUILDER=colcon</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CATKIN_LINT=pedantic</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UPSTREAM_WORKSPACE=&#39;dependencies.rosinstall&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">AFTER_SCRIPT=&#39;builder_run_build &quot;$target_ws/install&quot; &quot;$target_ws&quot; --cmake-target-skip-unavailable --cmake-target roslint&#39;</span>
-  <span class="l l-Scalar l-Scalar-Plain">matrix</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=kinetic</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=melodic</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UPSTREAM_WORKSPACE=&#39;.rosinstall&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">jobs</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">include</span><span class="p p-Indicator">:</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">global</span></code> variables are used for every Travis build, whereas the
-<code class="docutils literal"><span class="pre">matrix</span></code> variables are used for different builds. So the template runs two
-builds: one on Kinetic and one on Melodic. <code class="docutils literal"><span class="pre">BUILDER</span></code> configures to use
-<code class="docutils literal"><span class="pre">colcon</span></code> as build tool, since that is not the default for ROS1 packages.
-<code class="docutils literal"><span class="pre">CATKIN_LINT</span></code> configures to run <code class="docutils literal"><span class="pre">catkin_lint</span></code> and fail on warnings and
-give error descriptions.</p>
+<code class="docutils literal"><span class="pre">matrix</span></code> variables are used for different builds. So the template runs one
+build on Melodic. It is possible to add new jobs, for example, flake8 and
+clang-format. <code class="docutils literal"><span class="pre">BUILDER</span></code> configures to use <code class="docutils literal"><span class="pre">colcon</span></code> as build tool,
+since that is not the default for ROS1 packages. <code class="docutils literal"><span class="pre">CATKIN_LINT</span></code> configures
+to run <code class="docutils literal"><span class="pre">catkin_lint</span></code> and fail on warnings and give error descriptions.</p>
 <p>Industrial CI works with <a class="reference external" href="https://github.com/ros-industrial/industrial_ci/blob/master/doc/index.rst#workspace-management">different workspaces</a>.
 The template uses the <code class="docutils literal"><span class="pre">UPSTREAM_WORKSPACE</span></code>. This workspace contains packages
 necessary to build the current package. So it downloads the repositories
@@ -525,11 +526,11 @@ the target packages. The build can fail if the after script fails.</p>
 <p>Industrial CI is run by cloning the <code class="docutils literal"><span class="pre">industrial_ci</span></code> master branch and running
 the <code class="docutils literal"><span class="pre">travis.sh</span></code> script. The master branch currently supports <code class="docutils literal"><span class="pre">colcon</span></code> as a
 build tool.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># clone and run industrial_ci</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span>      <span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=melodic</span>
+
+<span class="c1"># clone and run industrial_ci</span>
 <span class="l l-Scalar l-Scalar-Plain">install</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci.git .industrial_ci -b master</span>
-<span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.industrial_ci/travis.sh</span>
 </pre></div>
 </div>
 </div>
@@ -568,9 +569,12 @@ build tool.</p>
 31
 32
 33
-34</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># This config uses industrial_ci (https://github.com/ros-industrial/industrial_ci.git).</span>
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># This config uses industrial_ci (https://github.com/ros-industrial/industrial_ci.git).</span>
 <span class="c1"># For troubleshooting, see readme (https://github.com/ros-industrial/industrial_ci/blob/master/README.rst)</span>
 
+<span class="l l-Scalar l-Scalar-Plain">os</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">linux</span>
 <span class="l l-Scalar l-Scalar-Plain">language</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">generic</span> <span class="c1"># optional, just removes the language badge</span>
 
 <span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
@@ -591,11 +595,12 @@ build tool.</p>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_REPO=ros</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">BUILDER=colcon</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CATKIN_LINT=pedantic</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UPSTREAM_WORKSPACE=&#39;dependencies.rosinstall&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">AFTER_SCRIPT=&#39;builder_run_build &quot;$target_ws/install&quot; &quot;$target_ws&quot; --cmake-target-skip-unavailable --cmake-target roslint&#39;</span>
-  <span class="l l-Scalar l-Scalar-Plain">matrix</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=kinetic</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=melodic</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UPSTREAM_WORKSPACE=&#39;.rosinstall&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">jobs</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">include</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Melodic&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ROS_DISTRO=melodic</span>
 
 <span class="c1"># clone and run industrial_ci</span>
 <span class="l l-Scalar l-Scalar-Plain">install</span><span class="p p-Indicator">:</span>
@@ -629,7 +634,7 @@ configuration for upstream and/or downstream.</li>
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/continuous_integration/continuous_integration.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/continuous_integration/continuous_integration.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -669,7 +674,7 @@ configuration for upstream and/or downstream.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -678,8 +683,6 @@ configuration for upstream and/or downstream.</li>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

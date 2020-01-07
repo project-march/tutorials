@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connecting to the exoskeleton &mdash; march_tutorials Kinetic documentation</title>
+  <title>Connecting to the exoskeleton &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="How to airgait" href="how_to_airgait.html"/>
         <link rel="prev" title="High level overview" href="high_level_overview.html"/> 
 
@@ -127,7 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#input-device">Input Device</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Connecting to the exoskeleton</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Connecting to the exoskeleton</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#preparation-before-connecting">Preparation before connecting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-commands-on-the-exoskeleton-computer-ssh">Running commands on the exoskeleton computer (SSH)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ros-master-uri">ROS Master URI</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -454,7 +457,7 @@
 <p>This tutorial will help you setting up a connection with the exoskeleton.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Make sure your workspace is sourced and set-up correctly: <a class="reference internal" href="../getting_started/create_your_workspace.html#build-your-workspace-label"><span>Build your Workspace</span></a>.</p>
+<p class="last">Make sure your workspace is sourced and set-up correctly: <a class="reference internal" href="../getting_started/create_your_workspace.html#build-your-workspace-label"><span class="std std-ref">Build your Workspace</span></a>.</p>
 </div>
 <div class="section" id="preparation-before-connecting">
 <span id="preparation-before-connecting-label"></span><h2>Preparation before connecting<a class="headerlink" href="#preparation-before-connecting" title="Permalink to this headline">¶</a></h2>
@@ -470,18 +473,18 @@ Now all commands in this terminal are executed on the March IV exoskeleton compu
 <div class="section" id="ros-master-uri">
 <h3>ROS Master URI<a class="headerlink" href="#ros-master-uri" title="Permalink to this headline">¶</a></h3>
 <p>To use ros commands you need to setup the right <a class="reference external" href="http://wiki.ros.org/ROS/EnvironmentVariables">ROS_MASTER_URI</a> in every terminal you use:</p>
-<div class="highlight-python"><div class="highlight"><pre>export ROS_MASTER_URI=http://&lt;exoskeleton_ip&gt;:11311/
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">ROS_MASTER_URI</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">exoskeleton_ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">11311</span><span class="o">/</span>
 </pre></div>
 </div>
 <p><strong>&lt;exoskeleton ip&gt;</strong> can be obtained by running the command <code class="code docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code> in a terminal on the exoskeleton computer.
-If you&#8217;re running remote/headless it&#8217;s probably easier to <strong>SSH</strong> into the exoskeleton computer.</p>
+If you’re running remote/headless it’s probably easier to <strong>SSH</strong> into the exoskeleton computer.</p>
 <p>Instead of running this command in every terminal you open, you can do this automatically for every terminal on a computer by <a class="reference external" href="https://answers.ros.org/question/206876/how-often-do-i-need-to-source-setupbash/?answer=206976#post-id-206976">adding this command to your</a>
 <code class="code docutils literal"><span class="pre">~/.bashrc</span></code></p>
 </div>
 <div class="section" id="ros-ip">
 <h3>ROS IP<a class="headerlink" href="#ros-ip" title="Permalink to this headline">¶</a></h3>
 <p>To use ros commands you also need to setup the right <a class="reference external" href="http://wiki.ros.org/ROS/EnvironmentVariables">ROS_IP</a> in every terminal you use:</p>
-<div class="highlight-python"><div class="highlight"><pre>export ROS_IP=&lt;your_ip&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">ROS_IP</span><span class="o">=&lt;</span><span class="n">your_ip</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><strong>&lt;your ip&gt;</strong> can be obtained by running the command <code class="code docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code> in a terminal on your computer.</p>
@@ -493,14 +496,14 @@ If you&#8217;re running remote/headless it&#8217;s probably easier to <strong>SS
 <p>You need to add the march network with ip to your hosts file:</p>
 <ul class="simple">
 <li>Type <code class="code docutils literal"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/hosts</span></code> in your terminal.</li>
-<li>add the line <code class="code docutils literal"><span class="pre">&lt;exoskeleton_ip&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">march</span></code> at the top of the file.</li>
+<li>add the line <code class="code docutils literal"><span class="pre">&lt;exoskeleton_ip&gt;</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">march</span></code> at the top of the file.</li>
 <li>Close and save the file with <strong>ctrl + x</strong>.</li>
 </ul>
 </div>
 </div>
 <div class="section" id="test-ros-on-multiple-devices">
 <h2>Test ROS on multiple devices<a class="headerlink" href="#test-ros-on-multiple-devices" title="Permalink to this headline">¶</a></h2>
-<p>This is a very simple test to make sure you followed <a class="reference internal" href="#preparation-before-connecting-label"><span>Preparation before connecting</span></a> correctly.</p>
+<p>This is a very simple test to make sure you followed <a class="reference internal" href="#preparation-before-connecting-label"><span class="std std-ref">Preparation before connecting</span></a> correctly.</p>
 <ul class="simple">
 <li>Run <code class="code docutils literal"><span class="pre">roscore</span></code> in a terminal on the March IV exoskeleton computer (you can always do this via SSH).</li>
 <li>Run <code class="code docutils literal"><span class="pre">rostopic</span> <span class="pre">list</span></code> in a terminal on your computer. This command should give the output <strong>/rosout /rosout_agg</strong></li>
@@ -515,7 +518,7 @@ If you&#8217;re running remote/headless it&#8217;s probably easier to <strong>SS
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -555,7 +558,7 @@ If you&#8217;re running remote/headless it&#8217;s probably easier to <strong>SS
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -564,8 +567,6 @@ If you&#8217;re running remote/headless it&#8217;s probably easier to <strong>SS
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

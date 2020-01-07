@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_simulation &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_simulation &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="prev" title="march_state_machine" href="march_state_machine.html"/> 
 
   
@@ -394,7 +397,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_simulation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_simulation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ros-control">ROS Control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#upload-joint-names">Upload joint names</a></li>
@@ -435,7 +438,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_simulation.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_simulation.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -452,8 +455,8 @@
 <span id="march-simulation-label"></span><h1>march_simulation<a class="headerlink" href="#march-simulation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march simulation package launches <a class="reference external" href="http://gazebosim.org/">Gazebo</a> and spawns the <a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span>URDF</span></a> of the March IV exoskeleton.
-Its goal is to provide an interface for our high-level code to call similar to that of the <a class="reference internal" href="march_hardware_interface.html#march-hardware-interface-label"><span>march_hardware_interface</span></a>.</p>
+<p>The march simulation package launches <a class="reference external" href="http://gazebosim.org/">Gazebo</a> and spawns the <a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span class="std std-ref">URDF</span></a> of the March IV exoskeleton.
+Its goal is to provide an interface for our high-level code to call similar to that of the <a class="reference internal" href="march_hardware_interface.html#march-hardware-interface-label"><span class="std std-ref">march_hardware_interface</span></a>.</p>
 <p>As we only use Gazebo for actuating joints, using it is very simple.
 Please check <a class="reference external" href="https://github.com/project-march/simulation/tree/develop/march_simulation/launch/march_world.launch">march_world.launch</a> to see how its used.</p>
 <div class="section" id="ros-control">
@@ -472,29 +475,29 @@ This is used by the rest of the system to check which joints are active.</p>
 <div class="section" id="sending-commands-through-the-action-topic">
 <h3>Sending commands through the action topic<a class="headerlink" href="#sending-commands-through-the-action-topic" title="Permalink to this headline">¶</a></h3>
 <p>Start the simulation with</p>
-<div class="code highlight-python"><div class="highlight"><pre>roslaunch march_simulation march_world.launch
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_simulation</span> <span class="n">march_world</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
 <p>Then send a command to the controller with</p>
-<div class="code highlight-python"><div class="highlight"><pre>rostopic pub /march/controller/trajectory/command trajectory_msgs/JointTrajectory &quot;
-header:
-  seq: 0
-  stamp:
-    secs: 0
-    nsecs:         0
-  frame_id: &#39;&#39;
-joint_names: [left_hip_aa, left_hip_fe, left_knee, left_ankle, right_hip_aa, right_hip_fe, right_knee,
-right_ankle]
-points:
-  -
-    positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    velocities: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    accelerations: []
-    effort: []
-    time_from_start:
-      secs: 3
-      nsecs: 0
-      &quot;
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rostopic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">march</span><span class="o">/</span><span class="n">controller</span><span class="o">/</span><span class="n">trajectory</span><span class="o">/</span><span class="n">command</span> <span class="n">trajectory_msgs</span><span class="o">/</span><span class="n">JointTrajectory</span> <span class="s2">&quot;</span>
+<span class="n">header</span><span class="p">:</span>
+  <span class="n">seq</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">stamp</span><span class="p">:</span>
+    <span class="n">secs</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">nsecs</span><span class="p">:</span>         <span class="mi">0</span>
+  <span class="n">frame_id</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+<span class="n">joint_names</span><span class="p">:</span> <span class="p">[</span><span class="n">left_hip_aa</span><span class="p">,</span> <span class="n">left_hip_fe</span><span class="p">,</span> <span class="n">left_knee</span><span class="p">,</span> <span class="n">left_ankle</span><span class="p">,</span> <span class="n">right_hip_aa</span><span class="p">,</span> <span class="n">right_hip_fe</span><span class="p">,</span> <span class="n">right_knee</span><span class="p">,</span>
+<span class="n">right_ankle</span><span class="p">]</span>
+<span class="n">points</span><span class="p">:</span>
+  <span class="o">-</span>
+    <span class="n">positions</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+    <span class="n">velocities</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+    <span class="n">accelerations</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="n">effort</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="n">time_from_start</span><span class="p">:</span>
+      <span class="n">secs</span><span class="p">:</span> <span class="mi">3</span>
+      <span class="n">nsecs</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>You should now see the exoskeleton move in Gazebo.</p>
@@ -506,7 +509,7 @@ points:
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_simulation.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_simulation.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -544,7 +547,7 @@ points:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -553,8 +556,6 @@ points:
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

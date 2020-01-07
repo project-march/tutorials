@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_gait_files &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_gait_files &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_hardware" href="march_hardware.html"/>
         <link rel="prev" title="Add a new gait" href="../development/add_a_new_gait.html"/> 
 
@@ -233,7 +236,7 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_gait_files</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_gait_files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a><ul>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_gait_files.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_gait_files.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -458,7 +461,7 @@ Most gaits are created by the gait generator, but as they are simply text files 
 </div>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Version</span></code>: A filled <a class="reference external" href="http://docs.ros.org/kinetic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.</p>
+<p><code class="docutils literal"><span class="pre">Version</span></code>: A filled <a class="reference external" href="http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.</p>
 <p><code class="docutils literal"><span class="pre">Subgait</span></code>: A name for a physical movement, can contain multiple versions.</p>
 <p><code class="docutils literal"><span class="pre">Gait</span></code>: A directed graph of subgaits with defined transitions from subgait to subgait.</p>
 <p>Example:</p>
@@ -494,7 +497,7 @@ Most gaits are created by the gait generator, but as they are simply text files 
 </div>
 <div class="section" id="structure">
 <span id="march-gait-files-structure-label"></span><h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
-<div class="code highlight-python"><div class="highlight"><pre>march_gait_files
+<div class="code highlight-default"><div class="highlight"><pre><span></span>march_gait_files
 ├─── &lt;gait_directory&gt;
 │    ├─── &lt;gait_name&gt;
 │    │    ├─── &lt;subgait_name&gt;
@@ -529,7 +532,7 @@ Most gaits are created by the gait generator, but as they are simply text files 
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_gait_files.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_gait_files.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -569,7 +572,7 @@ Most gaits are created by the gait generator, but as they are simply text files 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -578,8 +581,6 @@ Most gaits are created by the gait generator, but as they are simply text files 
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

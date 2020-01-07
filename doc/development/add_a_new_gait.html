@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add a new gait &mdash; march_tutorials Kinetic documentation</title>
+  <title>Add a new gait &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_gait_files" href="../march_packages/march_gait_files.html"/>
         <link rel="prev" title="Testing" href="testing.html"/> 
 
@@ -222,7 +225,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Add a new gait</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Add a new gait</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-new-gait-files">Create new gait files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extend-the-state-machine">Extend the state machine</a></li>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/add_a_new_gait.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/development/add_a_new_gait.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -458,47 +461,47 @@ When you are done you will be able to perform the gait on the exoskeleton!</p>
 </div>
 <div class="section" id="create-new-gait-files">
 <h2>Create new gait files<a class="headerlink" href="#create-new-gait-files" title="Permalink to this headline">¶</a></h2>
-<p>First create a new gait folder in the <a class="reference internal" href="../march_packages/march_gait_files.html#march-gait-files-label"><span>march_gait_files</span></a> according to the <a class="reference internal" href="../march_packages/march_gait_files.html#march-gait-files-structure-label"><span>Structure</span></a></p>
-<p>Subgait files can be created with the gait generator (<a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#using-the-gait-generator-label"><span>Using the gait generator</span></a>) or manually.
+<p>First create a new gait folder in the <a class="reference internal" href="../march_packages/march_gait_files.html#march-gait-files-label"><span class="std std-ref">march_gait_files</span></a> according to the <a class="reference internal" href="../march_packages/march_gait_files.html#march-gait-files-structure-label"><span class="std std-ref">Structure</span></a></p>
+<p>Subgait files can be created with the gait generator (<a class="reference internal" href="../using_the_march_iv/using_the_gait_generator.html#using-the-gait-generator-label"><span class="std std-ref">Using the gait generator</span></a>) or manually.
 New gaits should be added to <a class="reference external" href="https://github.com/project-march/gait-files">gait-files repository</a> with a pull request.</p>
 </div>
 <div class="section" id="extend-the-state-machine">
 <h2>Extend the state machine<a class="headerlink" href="#extend-the-state-machine" title="Permalink to this headline">¶</a></h2>
 <p>Because a gait exists of multiple subgaits, we implement a gait as a state machine.</p>
-<p>An example of a pull request adding states to the state machine can be found in <a class="reference external" href="https://github.com/project-march/state-machine/pull/64">#64</a>.</p>
+<p>An example of a pull request adding states to the state machine can be found in <a class="reference external" href="https://github.com/project-march/march/pull/430">project-march/march#430</a>.</p>
 <p>Create a new python script called <code class="docutils literal"><span class="pre">&lt;gait_name&gt;_sm.py</span></code> that looks like this:</p>
-<div class="code highlight-python"><div class="highlight"><pre>#!/usr/bin/env python
-import smach
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">smach</span>
 
-from march_state_machine.states.GaitState import GaitState
+<span class="kn">from</span> <span class="nn">march_state_machine.states.GaitState</span> <span class="k">import</span> <span class="n">GaitState</span>
 
 
-def create():
-    sm_&lt;gait_name&gt; = smach.StateMachine(outcomes=[&#39;succeeded&#39;, &#39;preempted&#39;, &#39;failed&#39;])
-    with sm_&lt;gait_name&gt;:
-        smach.StateMachine.add(&#39;&lt;FIRST_SUBSTATE&gt;&#39;, GaitState(&quot;&lt;gait_name&gt;&quot;, &quot;&lt;first_subgait_name&gt;&quot;),
-                               transitions={&#39;succeeded&#39;: &#39;&lt;SECOND_SUBSTATE&gt;&#39;, &#39;preempted&#39;: &#39;failed&#39;, &#39;aborted&#39;: &#39;failed&#39;})
-        smach.StateMachine.add(&#39;&lt;SECOND_SUBSTATE&gt;&#39;, GaitState(&quot;&lt;gait_name&gt;&quot;, &quot;&lt;second_subgait_name&quot;),
-                               transitions={&#39;succeeded&#39;: &#39;succeeded&#39;, &#39;preempted&#39;: &#39;preempted&#39;, &#39;aborted&#39;: &#39;failed&#39;})
-    return sm_&lt;gait_name&gt;
+<span class="k">def</span> <span class="nf">create</span><span class="p">():</span>
+    <span class="n">sm_</span><span class="o">&lt;</span><span class="n">gait_name</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">smach</span><span class="o">.</span><span class="n">StateMachine</span><span class="p">(</span><span class="n">outcomes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;succeeded&#39;</span><span class="p">,</span> <span class="s1">&#39;preempted&#39;</span><span class="p">,</span> <span class="s1">&#39;failed&#39;</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">sm_</span><span class="o">&lt;</span><span class="n">gait_name</span><span class="o">&gt;</span><span class="p">:</span>
+        <span class="n">smach</span><span class="o">.</span><span class="n">StateMachine</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&lt;FIRST_SUBSTATE&gt;&#39;</span><span class="p">,</span> <span class="n">GaitState</span><span class="p">(</span><span class="s2">&quot;&lt;gait_name&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;first_subgait_name&gt;&quot;</span><span class="p">),</span>
+                               <span class="n">transitions</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;succeeded&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;SECOND_SUBSTATE&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;preempted&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;aborted&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">})</span>
+        <span class="n">smach</span><span class="o">.</span><span class="n">StateMachine</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;&lt;SECOND_SUBSTATE&gt;&#39;</span><span class="p">,</span> <span class="n">GaitState</span><span class="p">(</span><span class="s2">&quot;&lt;gait_name&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;second_subgait_name&quot;</span><span class="p">),</span>
+                               <span class="n">transitions</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;succeeded&#39;</span><span class="p">:</span> <span class="s1">&#39;succeeded&#39;</span><span class="p">,</span> <span class="s1">&#39;preempted&#39;</span><span class="p">:</span> <span class="s1">&#39;preempted&#39;</span><span class="p">,</span> <span class="s1">&#39;aborted&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">sm_</span><span class="o">&lt;</span><span class="n">gait_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>In <a class="reference external" href="https://github.com/project-march/state-machine/tree/develop/march_state_machine/src/march_state_machine/healthy_sm.py">healthy_sm.py</a> add your new state machine as a state.</p>
-<div class="code highlight-python"><div class="highlight"><pre>smach.StateMachine.add(&#39;GAIT &lt;GAIT_NAME&gt;&#39;, &lt;gait_name&gt;_sm.create(), transitions={&#39;succeeded&#39;: &#39;STANDING&#39;, &#39;preempted&#39;: &#39;failed&#39;, &#39;failed&#39;: &#39;UNKNOWN&#39;})
+<p>In <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_state_machine/src/march_state_machine/healthy_sm.py">healthy_sm.py</a> add your new state machine as a state.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">smach</span><span class="o">.</span><span class="n">StateMachine</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;GAIT &lt;GAIT_NAME&gt;&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">gait_name</span><span class="o">&gt;</span><span class="n">_sm</span><span class="o">.</span><span class="n">create</span><span class="p">(),</span> <span class="n">transitions</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;succeeded&#39;</span><span class="p">:</span> <span class="s1">&#39;STANDING&#39;</span><span class="p">,</span> <span class="s1">&#39;preempted&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;failed&#39;</span><span class="p">:</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>Make sure to add a transition from the <code class="docutils literal"><span class="pre">STANDING</span></code> state to your recently created state so the state machine can respond to commands from the input device:</p>
-<div class="code highlight-python"><div class="highlight"><pre>&#39;gait_&lt;gait_name&gt;&#39;: &#39;GAIT &lt;GAIT_NAME&gt;&#39;,
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;gait_&lt;gait_name&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;GAIT &lt;GAIT_NAME&gt;&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="add-a-gait-button-to-the-developer-input-device">
 <h2>Add a gait button to the developer input device<a class="headerlink" href="#add-a-gait-button-to-the-developer-input-device" title="Permalink to this headline">¶</a></h2>
-<p>To add a gait to the developer input device, follow <a class="reference internal" href="../march_packages/march_rqt_input_device.html#add-a-new-button-label"><span>Add a new button</span></a></p>
+<p>To add a gait to the developer input device, follow <a class="reference internal" href="../march_packages/march_rqt_input_device.html#add-a-new-button-label"><span class="std std-ref">Add a new button</span></a></p>
 </div>
 <div class="section" id="add-the-gait-to-the-input-device">
 <h2>Add the gait to the input device<a class="headerlink" href="#add-the-gait-to-the-input-device" title="Permalink to this headline">¶</a></h2>
-<p>To add a gait to the input device, follow <a class="reference internal" href="../march_packages/march_input_device.html#how-to-add-a-gait-label"><span>How to add a gait</span></a></p>
+<p>To add a gait to the input device, follow <a class="reference internal" href="../march_packages/march_input_device.html#how-to-add-a-gait-label"><span class="std std-ref">How to add a gait</span></a></p>
 </div>
 </div>
 
@@ -506,7 +509,7 @@ def create():
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/development/add_a_new_gait.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/development/add_a_new_gait.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -546,7 +549,7 @@ def create():
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -555,8 +558,6 @@ def create():
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

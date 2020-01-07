@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create your workspace &mdash; march_tutorials Kinetic documentation</title>
+  <title>Create your workspace &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="Robot model" href="../useful_ros_tools/robot_model.html"/>
         <link rel="prev" title="March Tutorials" href="../../index.html"/> 
 
@@ -85,7 +88,7 @@
           
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Create your workspace</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create your workspace</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-ros-and-colcon">Install ROS and Colcon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-workspace">Create A Workspace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-the-march-source-code">Download the march source code</a><ul>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/getting_started/create_your_workspace.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/getting_started/create_your_workspace.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -451,51 +454,38 @@
             
   <div class="section" id="create-your-workspace">
 <span id="create-your-workspace-label"></span><h1>Create your workspace<a class="headerlink" href="#create-your-workspace" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial will help you set up a ROS workspace with all packages needed to run the March IV exoskeleton.</p>
+<p>This tutorial will help you set up a ROS workspace with all packages needed to run the March exoskeleton.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you already have ros installed and are familiar with ros installations, you can skip to the <a class="reference internal" href="#automated-script-label"><span>Automated script</span></a> below.
+<p class="last">If you already have ros installed and are familiar with ros installations, you can skip to the <a class="reference internal" href="#automated-script-label"><span class="std std-ref">Automated script</span></a> below.
 We strongly recommend to follow the manual guide at least once to familiarize yourself with the commands.</p>
 </div>
 <div class="section" id="install-ros-and-colcon">
 <h2>Install ROS and Colcon<a class="headerlink" href="#install-ros-and-colcon" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://wiki.ros.org/kinetic/Installation/Ubuntu">Install ROS Kinetic</a>.
+<p><a class="reference external" href="https://wiki.ros.org/melodic/Installation/Ubuntu">Install ROS Melodic</a>.
 It is easy to miss steps when going through the ROS installation tutorial. If you run into errors in the next few steps, a good place to start is to go back and make sure you have installed ROS correctly.</p>
 <p>Once you have ROS installed, make sure you have the most up to date packages:</p>
-<div class="code highlight-python"><div class="highlight"><pre>rosdep update  # No sudo
-sudo apt-get update
-sudo apt-get dist-upgrade
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rosdep</span> <span class="n">update</span>  <span class="c1"># No sudo</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
 </pre></div>
 </div>
 <p>For building our packages we use colcon. Install <a class="reference external" href="https://github.com/colcon">colcon</a>:</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo apt-get install python3-colcon-common-extensions
-# The following two steps are only necessary on ROS Kinetic
-sudo apt-get install python3-pip
-pip3 install -U setuptools
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">colcon</span><span class="o">-</span><span class="n">common</span><span class="o">-</span><span class="n">extensions</span>
 </pre></div>
 </div>
-<p>Install catkin lint and documentation:</p>
-<div class="code highlight-python"><div class="highlight"><pre>pip install --user catkin_lint
-pip install --user catkin_tools_document
+<p>To install some optional tools that are run by Travis Continuous Integration run:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">catkin_lint</span>
+<span class="n">python2</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">flake8</span> <span class="n">pep8</span><span class="o">-</span><span class="n">naming</span> <span class="n">flake8</span><span class="o">-</span><span class="n">blind</span><span class="o">-</span><span class="k">except</span> <span class="n">flake8</span><span class="o">-</span><span class="n">string</span><span class="o">-</span><span class="nb">format</span> <span class="n">flake8</span><span class="o">-</span><span class="n">builtins</span> <span class="n">flake8</span><span class="o">-</span><span class="n">commas</span> <span class="n">flake8</span><span class="o">-</span><span class="n">quotes</span> <span class="n">flake8</span><span class="o">-</span><span class="nb">print</span> <span class="n">flake8</span><span class="o">-</span><span class="n">docstrings</span> <span class="n">flake8</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">order</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">clang</span><span class="o">-</span><span class="nb">format</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>If you get the error that Sphinx requires python 3.5, download python 3.5 using:</p>
-<div class="code highlight-python"><div class="highlight"><pre>sudo apt-get install python3-pip
-</pre></div>
-</div>
-<p>Then replace the second of the previous lines with:</p>
-<div class="code last highlight-python"><div class="highlight"><pre>pip3 install --user catkin_tools_document
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="create-a-workspace">
 <h2>Create A Workspace<a class="headerlink" href="#create-a-workspace" title="Permalink to this headline">¶</a></h2>
 <p>You will need to have a ROS workspace setup:</p>
-<div class="code highlight-python"><div class="highlight"><pre>mkdir -p ~/march_ws/src
-cd march_ws
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span>
+<span class="n">cd</span> <span class="n">march_ws</span>
 </pre></div>
 </div>
 </div>
@@ -506,43 +496,43 @@ The process differs a bit, depending on if you have write access to our reposito
 <div class="section" id="with-write-access">
 <h3>With write access<a class="headerlink" href="#with-write-access" title="Permalink to this headline">¶</a></h3>
 <p>If you have write access, you can use our provided <code class="docutils literal"><span class="pre">.rosinstall</span></code> file to pull all repositories in our workspace</p>
-<div class="code highlight-python"><div class="highlight"><pre>wstool init src https://raw.githubusercontent.com/project-march/tutorials/develop/doc/getting_started/.rosinstall
-wstool update -t src
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">wstool</span> <span class="n">init</span> <span class="n">src</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">getting_started</span><span class="o">/.</span><span class="n">rosinstall</span>
+<span class="n">wstool</span> <span class="n">update</span> <span class="o">-</span><span class="n">t</span> <span class="n">src</span>
 </pre></div>
 </div>
 <p>The above rosinstall file uses https URLs to the git repositories. If you prefer ssh URLs use the following commands:</p>
-<div class="code highlight-python"><div class="highlight"><pre>wstool init src https://raw.githubusercontent.com/project-march/tutorials/develop/doc/getting_started/ssh.rosinstall
-wstool update -t src
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">wstool</span> <span class="n">init</span> <span class="n">src</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">getting_started</span><span class="o">/</span><span class="n">ssh</span><span class="o">.</span><span class="n">rosinstall</span>
+<span class="n">wstool</span> <span class="n">update</span> <span class="o">-</span><span class="n">t</span> <span class="n">src</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="without-write-access">
 <h3>Without write access<a class="headerlink" href="#without-write-access" title="Permalink to this headline">¶</a></h3>
 <p>If you do not have write access, you will need to create your own forks of our repositories.
-Please check <a class="reference external" href="https://guides.github.com/activities/forking/">this guide</a> on how to work with forks if you haven&#8217;t used them before.</p>
-<p>Save the <a class="reference external" href="https://raw.githubusercontent.com/project-march/tutorials/develop/doc/getting_started/.rosinstall">.rosinstall file</a>
+Please check <a class="reference external" href="https://guides.github.com/activities/forking/">this guide</a> on how to work with forks if you haven’t used them before.</p>
+<p>Save the <a class="reference external" href="https://raw.githubusercontent.com/project-march/tutorials/master/doc/getting_started/.rosinstall">.rosinstall file</a>
 locally and change the uri of the repositories you want to develop to the location of your forks. For example:</p>
-<div class="code highlight-python"><div class="highlight"><pre>- git:
-    local-name: simulation
-    uri: https://github.com/&lt;your-username&gt;/march-simulation
-    version: develop
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">git</span><span class="p">:</span>
+    <span class="n">local</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">simulation</span>
+    <span class="n">uri</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">march</span><span class="o">-</span><span class="n">simulation</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">develop</span>
 </pre></div>
 </div>
 <p>Then call wstool with your edited <code class="docutils literal"><span class="pre">.rosinstall</span></code> file:</p>
-<div class="code highlight-python"><div class="highlight"><pre>wstool init src ~/local/path/to/the/edited/.rosinstall
-wstool update -t src
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">wstool</span> <span class="n">init</span> <span class="n">src</span> <span class="o">~/</span><span class="n">local</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">the</span><span class="o">/</span><span class="n">edited</span><span class="o">/.</span><span class="n">rosinstall</span>
+<span class="n">wstool</span> <span class="n">update</span> <span class="o">-</span><span class="n">t</span> <span class="n">src</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="build-your-workspace">
 <span id="build-your-workspace-label"></span><h2>Build your Workspace<a class="headerlink" href="#build-your-workspace" title="Permalink to this headline">¶</a></h2>
-<p>The following will install from Debian any package dependencies not already in your workspace:</p>
-<div class="code highlight-python"><div class="highlight"><pre>rosdep install -y --from-paths src --ignore-src --rosdistro kinetic
+<p>The following will install from the Ubuntu repositories any package dependencies not already in your workspace:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rosdep</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span>
 </pre></div>
 </div>
 <p>The next command will build and install your workspace:</p>
-<div class="code highlight-python"><div class="highlight"><pre>colcon build
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">colcon</span> <span class="n">build</span>
 </pre></div>
 </div>
 <p>In order for ROS to know where your files are installed, you have to provide a source. You do this with:
@@ -559,21 +549,20 @@ catkin workspace at a time, but we recommend it for simplicity.</p>
 </div>
 <div class="section" id="automated-script">
 <span id="automated-script-label"></span><h2>Automated script<a class="headerlink" href="#automated-script" title="Permalink to this headline">¶</a></h2>
-<p>You can run the following script or download it from <a class="reference external" href="https://github.com/project-march/tutorials/tree/develop/doc/getting_started/create_march_ws.sh">here</a>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/usr/bin/env bash</span>
+<p>You can run the following script or download it from <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/doc/getting_started/create_march_ws.sh">here</a>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 sudo apt-get update
 
 sudo apt-get install -y python3-colcon-common-extensions python3-pip
-pip3 install -U setuptools catkin_lint catkin_tools_document
 
 mkdir -p ~/march_ws/src
-<span class="nb">cd</span> ~/march_ws
+<span class="nb">cd</span> ~/march_ws <span class="o">||</span> <span class="nb">exit</span>
 
 wstool init src https://raw.githubusercontent.com/project-march/tutorials/develop/doc/getting_started/.rosinstall
 wstool update -t src
 
 <span class="c1"># Install dependencies</span>
-rosdep install --from-paths src --ignore-src --rosdistro kinetic -y
+rosdep install -y --from-paths src --ignore-src
 
 colcon build
 <span class="nb">source</span> install/setup.bash
@@ -586,7 +575,7 @@ colcon build
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/getting_started/create_your_workspace.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/getting_started/create_your_workspace.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -626,7 +615,7 @@ colcon build
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -635,8 +624,6 @@ colcon build
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 

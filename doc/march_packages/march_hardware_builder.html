@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_hardware_builder &mdash; march_tutorials Kinetic documentation</title>
+  <title>march_hardware_builder &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -34,7 +34,10 @@
   
 
   
-    <link rel="top" title="march_tutorials Kinetic documentation" href="../../index.html"/>
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
         <link rel="next" title="march_hardware_interface" href="march_hardware_interface.html"/>
         <link rel="prev" title="march_hardware" href="march_hardware.html"/> 
 
@@ -257,7 +260,7 @@
 <li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ros-api">ROS API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">march_hardware_builder</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_hardware_builder</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
@@ -436,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -454,7 +457,7 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This package contains a library which can be included to to create a MarchRobot from .yaml config files.
-The implementation is rather straightforward and nearly all of the logic can be found in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/src/HardwareBuilder.cpp">HardwareBuilder class</a>.</p>
+The implementation is rather straightforward and nearly all of the logic can be found in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/src/hardware_builder.cpp">HardwareBuilder class</a>.</p>
 </div>
 <div class="section" id="ros-api">
 <h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
@@ -465,19 +468,19 @@ The package does depend on ROS for logging, but that can be easily changed if ne
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="using-the-package">
 <h3>Using the package<a class="headerlink" href="#using-the-package" title="Permalink to this headline">¶</a></h3>
-<p>Add a dependency on this package to your project and <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;march_hardware_builder/HardwareBuilder.h&gt;</span></code> to start using the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/HardwareBuilder.h">HardwareBuilder class</a>.</p>
+<p>Add a dependency on this package to your project and <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;march_hardware_builder/hardware_builder.h&gt;</span></code> to start using the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/hardware_builder.h">HardwareBuilder class</a>.</p>
 <p>There are four main ways to interact with the hardware builder:</p>
 <ul>
 <li><p class="first">Instantiate with an AllowedRobot:</p>
-<div class="code highlight-python"><div class="highlight"><pre>HardwareBuilder hardwareBuilder = HardwareBuilder(AllowedRobot::march4);
-marchRobot = hardwareBuilder.createMarchRobot();
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">(</span><span class="n">AllowedRobot</span><span class="p">::</span><span class="n">march4</span><span class="p">);</span>
+<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>A list of currently allowed robots can be seen in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/AllowedRobot.h">include/AllowedRobot.h</a></p>
+<p>A list of currently allowed robots can be seen in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/allowed_robot.h">include/AllowedRobot.h</a></p>
 </li>
 <li><p class="first">Instantiate with a path to a yaml file:</p>
-<div class="code highlight-python"><div class="highlight"><pre>HardwareBuilder hardwareBuilder = HardwareBuilder(&quot;path/to/robot/march4.yaml&quot;);
-marchRobot = hardwareBuilder.createMarchRobot();
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">(</span><span class="s2">&quot;path/to/robot/march4.yaml&quot;</span><span class="p">);</span>
+<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>An example yaml file can be seen in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots/march4.yaml">robots/march4.yaml</a></p>
@@ -487,16 +490,16 @@ marchRobot = hardwareBuilder.createMarchRobot();
 <p class="first admonition-title">Note</p>
 <p class="last">This means you are responsible for passing a YAML::Node to the .createMarchRobot() function!</p>
 </div>
-<div class="code highlight-python"><div class="highlight"><pre>YAML::Node robotConfig = YAML::LoadFile(&quot;path/to/robot.yaml&quot;);
-HardwareBuilder hardwareBuilder = HardwareBuilder();
-marchRobot = hardwareBuilder.createMarchRobot(robotConfig);
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">YAML</span><span class="p">::</span><span class="n">Node</span> <span class="n">robotConfig</span> <span class="o">=</span> <span class="n">YAML</span><span class="p">::</span><span class="n">LoadFile</span><span class="p">(</span><span class="s2">&quot;path/to/robot.yaml&quot;</span><span class="p">);</span>
+<span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">();</span>
+<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">(</span><span class="n">robotConfig</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">It is also possible to create parts of a MarchRobot (IMotionCubes, Encoders, etc...) in a similar way.</p>
-<div class="code highlight-python"><div class="highlight"><pre>YAML::Node encoderConfig = YAML::LoadFile(&quot;path/to/encoder.yaml&quot;);
-HardwareBuilder hardwareBuilder = HardwareBuilder();
-marchRobot = hardwareBuilder.createEncoder(encoderConfig);
+<li><p class="first">It is also possible to create parts of a MarchRobot (IMotionCubes, Encoders, etc…) in a similar way.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">YAML</span><span class="p">::</span><span class="n">Node</span> <span class="n">encoderConfig</span> <span class="o">=</span> <span class="n">YAML</span><span class="p">::</span><span class="n">LoadFile</span><span class="p">(</span><span class="s2">&quot;path/to/encoder.yaml&quot;</span><span class="p">);</span>
+<span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">();</span>
+<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createEncoder</span><span class="p">(</span><span class="n">encoderConfig</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
@@ -509,7 +512,7 @@ marchRobot = hardwareBuilder.createEncoder(encoderConfig);
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/develop/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -549,7 +552,7 @@ marchRobot = hardwareBuilder.createEncoder(encoderConfig);
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'Kinetic',
+            VERSION:'Melodic',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -558,8 +561,6 @@ marchRobot = hardwareBuilder.createEncoder(encoderConfig);
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
 
   
 
