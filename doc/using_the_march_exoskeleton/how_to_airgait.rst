@@ -26,7 +26,7 @@ Start up
 - **Start the exoskeleton pc:** Keep the start button pressed until the blue light is continuously on.
 - The computer is now booting. The display, mouse and keyboard should automatically connect.
 - **High voltage:** Turn the high voltage on, but releasing the emergency button.
-- **Start the software:** Type in a sourced terminal :code:`roslaunch march_launch march_iv.launch`.
+- **Start the software:** Type in a sourced terminal :code:`roslaunch march_launch march.launch`.
 - **Select launch settings:** Select in the launch menu the settings you need.
 
 
