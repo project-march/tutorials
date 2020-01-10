@@ -2,7 +2,7 @@ High level overview
 ===================
 .. inclusion-introduction-start
 
-A high level overview of the components that make up the March exoskeleton.
+A high level overview of the components that make up the |march|.
 
 .. inclusion-introduction-end
 

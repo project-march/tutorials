@@ -56,6 +56,11 @@ html_context = {
     "logo": "logo.png"
 }
 
+# Global substitutions
+rst_prolog = """
+.. |march| replace:: March exoskeleton
+"""
+
 # Links
 ros_distro = 'melodic'
 extlinks = {'codedir': ('https://github.com/' + html_context["github_user"] + '/tutorials/tree/' + html_context["github_version"] + '/doc/%s', ''),

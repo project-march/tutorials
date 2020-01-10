@@ -1,9 +1,9 @@
 March Tutorials
 ===============
 
-Welcome to the main documentation on the March exoskeleton.
+Welcome to the main documentation on the |march|.
 Whether you are an experienced ROS developer or have recently started learning, these tutorials contain all knowledge required to work
-with and develop the March exoskeleton.
+with and develop the |march|.
 
 Requirements
 ------------
@@ -21,7 +21,7 @@ In case you are not comfortable with the above tools, please take some time to c
 
 How to use the tutorials
 ------------------------
-The tutorials are designed to provide hands-on experience with ROS and the March exoskeleton.
+The tutorials are designed to provide hands-on experience with ROS and the |march|.
 Here is an overview of the different types of tutorials.
 
 Create your workspace
