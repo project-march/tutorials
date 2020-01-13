@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>High level overview &mdash; march_tutorials Melodic documentation</title>
+  <title>Using the gait generator &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="Connecting to the exoskeleton" href="connecting_to_the_exoskeleton.html"/>
-        <link rel="prev" title="SMACH" href="../useful_ros_tools/smach.html"/> 
+        <link rel="next" title="Documentation" href="../development/documentation.html"/>
+        <link rel="prev" title="Log files" href="log_files.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -123,11 +123,11 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">High level overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#input-device">Input Device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="high_level_overview.html">High level overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#input-device">Input Device</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="connecting_to_the_exoskeleton.html">Connecting to the exoskeleton</a><ul>
@@ -168,14 +168,14 @@
 <li class="toctree-l2"><a class="reference internal" href="log_files.html#uploading-the-logs">Uploading the logs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="using_the_gait_generator.html">Using the gait generator</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#the-basics">The Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#preview">Preview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#duration">Duration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#velocity-markers">Velocity Markers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#mirroring">Mirroring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#import-export">Import/Export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_the_gait_generator.html#publish">Publish</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the gait generator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preview">Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#duration">Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#velocity-markers">Velocity Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mirroring">Mirroring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-export">Import/Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publish">Publish</a></li>
 </ul>
 </li>
 </ul>
@@ -439,35 +439,96 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/high_level_overview.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/using_the_gait_generator.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>High level overview</li>
+    <li>Using the gait generator</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="high-level-overview">
-<h1>High level overview<a class="headerlink" href="#high-level-overview" title="Permalink to this headline">¶</a></h1>
-<p>A high level overview of the components that make up the March IV exoskeleton.</p>
-<div class="figure align-center" id="id1">
-<img alt="../../_images/software_stack.png" src="../../_images/software_stack.png" />
-<p class="caption"><span class="caption-text">The March IV software stack</span></p>
+  <div class="section" id="using-the-gait-generator">
+<span id="using-the-gait-generator-label"></span><h1>Using the gait generator<a class="headerlink" href="#using-the-gait-generator" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is highly recommended to follow the <a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a> to better understand how ros works with robots.</p>
 </div>
-<div class="section" id="simulation-versus-exoskeleton">
-<h2>Simulation versus Exoskeleton<a class="headerlink" href="#simulation-versus-exoskeleton" title="Permalink to this headline">¶</a></h2>
-<p>As our exoskeleton is under construction most of the time, we have made use of a simulation to ensure we can verify our higher level nodes work.
-As seen in the above image, most of the hardware components have a simulated counterpart.</p>
-<p>At launch time, the user is asked if they are trying to run on the exoskeleton or on the simulation.
-Based on this selection, the required components are started.</p>
+<p>This tutorial will teach how to use the March gait generator to create your own gaits and subgaits.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">(Isha) add link to march_gait_generator when it’s done.</p>
 </div>
-<div class="section" id="input-device">
-<h2>Input Device<a class="headerlink" href="#input-device" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tutorial covers how to use the gait generator, if you want to develop the gait generator, please check the package description.</p>
+</div>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<p>When starting up the gait generator, a number of graphs are opened.
+Each graph represents a single joint of the exoskeleton and displays the trajectory for that joint.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you want to change the amount of joints you are working with,
+edit the <code class="docutils literal"><span class="pre">&lt;robot&gt;.xacro</span></code> specified in the <a class="reference external" href="https://github.com/project-march/gait-generation/tree/develop/march_rqt_gait_generator/launch/march_rqt_gait_generator.launch">launch file</a></p>
+</div>
+<p>On the y-axes of the graphs the joint angles in degrees are shown. On the x-axes the time in seconds is shown.
+The trajectory is defined by several setpoints which are shown as small red circles.
+By changing the values of the setpoints, the trajectory can be adjusted.</p>
+<p>You can change the values in the table by just clicking on the specific box in the table and adjust the value.
+Furthermore, the time and position of a setpoint can be changed by dragging the setpoint within the graph with your mouse.</p>
+<p>To add a new setpoint, simply click on the graph.
+If you hold <code class="docutils literal"><span class="pre">Ctrl</span></code> while clicking, the new setpoint gets interpolated on the existing trajectory.
+To delete a setpoint you have to click on the setpoint that you want to delete while pressing <code class="docutils literal"><span class="pre">Shift</span></code>.</p>
+</div>
+<div class="section" id="preview">
+<h2>Preview<a class="headerlink" href="#preview" title="Permalink to this headline">¶</a></h2>
+<p>On the right side of the screen, a visualization of the exoskeleton is shown.
+A preview of the gait that you are generating in the gait generator is shown here.
+You can play the preview by clicking on the <code class="docutils literal"><span class="pre">start</span></code> button and stop the preview by clicking on the <code class="docutils literal"><span class="pre">stop</span></code> button.
+By adjusting the value of 100, you can change the speed at which the preview is shown.
+The speed is defined as a percentage of the actual speed.</p>
+</div>
+<div class="section" id="duration">
+<h2>Duration<a class="headerlink" href="#duration" title="Permalink to this headline">¶</a></h2>
+<p>In the bottom right of the gait generator it is possible to change the duration of the gait file.
+By ticking the box <code class="docutils literal"><span class="pre">Scale</span> <span class="pre">Setpoints</span></code>, you can scale all the setpoints to the new duration of the gait, so that the relative amount of time between the setpoints will stay the same.
+Without ticking this box the total amount of time of the gait will change without changing the absolute amount of time between setpoints.
+This means, when decreasing the total amount of time it is possible that some of the last setpoints will be deleted as they exceed the new duration.
+When this happens, a warning will be given by the gait generator.</p>
+</div>
+<div class="section" id="velocity-markers">
+<h2>Velocity Markers<a class="headerlink" href="#velocity-markers" title="Permalink to this headline">¶</a></h2>
+<p>When ticking on the box with <code class="docutils literal"><span class="pre">Velocity</span> <span class="pre">Markers</span></code>, the velocity markers are shown as green lines for each setpoint.
+The lines represent the velocity for each setpoint in degrees per second.</p>
+</div>
+<div class="section" id="mirroring">
+<h2>Mirroring<a class="headerlink" href="#mirroring" title="Permalink to this headline">¶</a></h2>
+<p>The feature called mirroring allows you to mirror a gait. This means, for the mirrored gait the trajectories of the left and right joints are switched.
+One requirement to do this is that the last setpoint of the left leg has to have the same values as the first setpoint of the right leg and the other way around.
+Otherwise the gait generator will give you a warning that gait mirroring is not possible. Furthermore, either the word ‘left’ or ‘right’ should be in the name of the subgait.
+The mirrored version will be saved with the same version name as the original file, but the word ‘left’ or ‘right’ in the subgait folder is changed to the opposite one.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Mirroring is not exclusive to gaits and joints with <code class="docutils literal"><span class="pre">left</span></code> or <code class="docutils literal"><span class="pre">right</span></code>, you can set custom keys in the settings menu bottom right.</p>
+</div>
+</div>
+<div class="section" id="import-export">
+<h2>Import/Export<a class="headerlink" href="#import-export" title="Permalink to this headline">¶</a></h2>
+<p>The structure for storing gait files is explained in <a class="reference internal" href="../march_packages/march_gait_files.html#march-gait-files-label"><span class="std std-ref">march_gait_files</span></a>.</p>
+<p>To export a subgait file, choose a directory where you want to store your subgait.
+The directory you choose has to be a level higher than the gait folder.
+So choose for example ‘airgait’ as a directory.
+You can save the gait files by clicking on the button <code class="docutils literal"><span class="pre">export</span></code> in the gait generator.
+A file can be imported by pressing the <code class="docutils literal"><span class="pre">import</span></code> button and selecting the file.</p>
+</div>
+<div class="section" id="publish">
+<h2>Publish<a class="headerlink" href="#publish" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">publish</span></code> button allows you to directly publish the subgait you made on a custom topic.</p>
 </div>
 </div>
 
@@ -475,7 +536,7 @@ Based on this selection, the required components are started.</p>
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/high_level_overview.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/using_the_gait_generator.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -484,10 +545,10 @@ Based on this selection, the required components are started.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="connecting_to_the_exoskeleton.html" class="btn btn-neutral float-right" title="Connecting to the exoskeleton" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../development/documentation.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../useful_ros_tools/smach.html" class="btn btn-neutral" title="SMACH" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="log_files.html" class="btn btn-neutral" title="Log files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

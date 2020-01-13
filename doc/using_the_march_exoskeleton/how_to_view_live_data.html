@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to airgait &mdash; march_tutorials Melodic documentation</title>
+  <title>How to view live data &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="How to view live data" href="how_to_view_live_data.html"/>
-        <link rel="prev" title="Connecting to the exoskeleton" href="connecting_to_the_exoskeleton.html"/> 
+        <link rel="next" title="Log files" href="log_files.html"/>
+        <link rel="prev" title="How to airgait" href="how_to_airgait.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -123,7 +123,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="high_level_overview.html">High level overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
@@ -141,24 +141,24 @@
 <li class="toctree-l2"><a class="reference internal" href="connecting_to_the_exoskeleton.html#test-ros-on-multiple-devices">Test ROS on multiple devices</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to airgait</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#airgait-on-the-exoskeleton-directly">Airgait on the exoskeleton directly</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-setup">The Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#start-up">Start up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_airgait.html">How to airgait</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_to_airgait.html#airgait-on-the-exoskeleton-directly">Airgait on the exoskeleton directly</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_airgait.html#the-setup">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_airgait.html#start-up">Start up</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-airgait">Remote Airgait</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">The Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Start up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_airgait.html#remote-airgait">Remote Airgait</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how_to_airgait.html#id1">The Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how_to_airgait.html#id2">Start up</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_view_live_data.html">How to view live data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="how_to_view_live_data.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_view_live_data.html#id1">rqt_multiplot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_view_live_data.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_view_live_data.html#configuration">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to view live data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">rqt_multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="log_files.html">Log files</a><ul>
@@ -439,79 +439,50 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/how_to_airgait.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/how_to_view_live_data.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>How to airgait</li>
+    <li>How to view live data</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-airgait">
-<span id="how-to-airgait-label"></span><h1>How to airgait<a class="headerlink" href="#how-to-airgait" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial will help you to airgait with the March IV exoskeleton.</p>
-<div class="section" id="airgait-on-the-exoskeleton-directly">
-<h2>Airgait on the exoskeleton directly<a class="headerlink" href="#airgait-on-the-exoskeleton-directly" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-setup">
-<h3>The Setup<a class="headerlink" href="#the-setup" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Screen connected with a HDMI cable to the March IV exoskeleton.</li>
-<li>The March IV exoskeleton wireless keyboard and mouse.</li>
-<li>Exoskeleton hanging in the cage.</li>
-<li>Tools needed to power the March IV exoskeleton.</li>
-</ul>
-</div>
-<div class="section" id="start-up">
-<h3>Start up<a class="headerlink" href="#start-up" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><strong>Low voltage:</strong> Make sure the high voltage if off, by pressing the emergency button.
-Give the March IV exoskeleton low voltage, by enabling power.</li>
-<li><strong>Start the exoskeleton pc:</strong> Keep the start button pressed until the blue light is continuously on.</li>
-<li>The computer is now booting. The display, mouse and keyboard should automatically connect.</li>
-<li><strong>High voltage:</strong> Turn the high voltage on, but releasing the emergency button.</li>
-<li><strong>Start the software:</strong> Type in a sourced terminal <code class="code docutils literal"><span class="pre">roslaunch</span> <span class="pre">march_launch</span> <span class="pre">march_iv.launch</span></code>.</li>
-<li><strong>Select launch settings:</strong> Select in the launch menu the settings you need.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="remote-airgait">
-<h2>Remote Airgait<a class="headerlink" href="#remote-airgait" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For this part you have to complete the <a class="reference internal" href="connecting_to_the_exoskeleton.html#preparation-before-connecting-label"><span class="std std-ref">Preparation before connecting</span></a>.</p>
+  <div class="section" id="how-to-view-live-data">
+<h1>How to view live data<a class="headerlink" href="#how-to-view-live-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will teach you how to use the <a class="reference external" href="http://wiki.ros.org/rqt_multiplot">rqt_multiplot</a> tool to visualize ros data during run-time</p>
 </div>
 <div class="section" id="id1">
-<h3>The Setup<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Your pc.</li>
-<li>Exoskeleton hanging in the cage.</li>
-<li>Tools needed to power the March IV exoskeleton.</li>
-<li>Router (for now the switch laptop).</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h3>Start up<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><strong>Low voltage:</strong> Make sure the high voltage if off, by pressing the emergency button.
-Give the March IV exoskeleton low voltage, by enabling power.</li>
-<li><strong>Start the exoskeleton pc:</strong> Keep the start button pressed until the blue light is continuously on.</li>
-<li>The computer is now booting. The computer will automatically connect with the <strong>MARCH</strong> hotspot.</li>
-<li><strong>Start your computer</strong> Start your computer and connect with the <strong>MARCH</strong> hotspot from the router.</li>
-<li><strong>SSH:</strong> Start a terminal to connect with the exoskeleton pc. Connect with <code class="code docutils literal"><span class="pre">ssh</span> <span class="pre">march&#64;march</span></code>.</li>
-<li><strong>High voltage:</strong> Turn the high voltage on by releasing the emergency button.</li>
-<li><strong>Start the software:</strong> Type <code class="code docutils literal"><span class="pre">roslaunch</span> <span class="pre">march_launch</span> <span class="pre">march_headless.launch</span></code>.</li>
-<li><strong>Input Device:</strong> Type in a sourced terminal on your computer <code class="code docutils literal"><span class="pre">roslaunch</span> <span class="pre">march_rqt_input_device</span> <span class="pre">march_rqt_input_device.launch</span></code>.</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For this part we assume that on the pc you are running everything is installed described in  <a class="reference internal" href="../getting_started/create_your_workspace.html#create-your-workspace-label"><span class="std std-ref">Create your workspace</span></a></p>
+<h2>rqt_multiplot<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://wiki.ros.org/rqt_multiplot">rqt_multiplot</a> is an advanced version of <a class="reference external" href="http://wiki.ros.org/rqt_plot">rqt_plot</a>
+which allows the user to easily create many plots with different topics.</p>
+<p>Please see the documentation linked above as it covers everything you need to know to use it.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/rqt_multiplot.png" src="../../_images/rqt_multiplot.png" />
+<p class="caption"><span class="caption-text">Example rqt_multiplot configuration</span></p>
 </div>
 </div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Install with</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ros</span><span class="o">-</span><span class="n">melodic</span><span class="o">-</span><span class="n">rqt</span><span class="o">-</span><span class="n">multiplot</span>
+</pre></div>
+</div>
+<p>Launch with</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rqt_multiplot</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>rqt_multiplot allows you to save a configuration that determines which plots are displayed in the ui.
+You can save and load configurations in the top right of the application.</p>
 </div>
 </div>
 
@@ -519,7 +490,7 @@ Give the March IV exoskeleton low voltage, by enabling power.</li>
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/how_to_airgait.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/how_to_view_live_data.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -528,10 +499,10 @@ Give the March IV exoskeleton low voltage, by enabling power.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="how_to_view_live_data.html" class="btn btn-neutral float-right" title="How to view live data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="log_files.html" class="btn btn-neutral float-right" title="Log files" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="connecting_to_the_exoskeleton.html" class="btn btn-neutral" title="Connecting to the exoskeleton" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="how_to_airgait.html" class="btn btn-neutral" title="How to airgait" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

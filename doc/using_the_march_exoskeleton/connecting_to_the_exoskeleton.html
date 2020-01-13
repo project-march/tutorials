@@ -123,7 +123,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="high_level_overview.html">High level overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
@@ -439,7 +439,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/connecting_to_the_exoskeleton.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
@@ -462,13 +462,13 @@
 <div class="section" id="preparation-before-connecting">
 <span id="preparation-before-connecting-label"></span><h2>Preparation before connecting<a class="headerlink" href="#preparation-before-connecting" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial is written to establish a connection between your computer and the exoskeleton on the <strong>same wifi</strong>.
-So, make sure you are on the same wifi. A public network such as eduroam will probably not work. Normally the March IV exoskeleton
+So, make sure you are on the same wifi. A public network such as eduroam will probably not work. Normally the March exoskeleton
 automatically connects with the hotspot: <strong>MARCH</strong>.</p>
 <div class="section" id="running-commands-on-the-exoskeleton-computer-ssh">
 <h3>Running commands on the exoskeleton computer (SSH)<a class="headerlink" href="#running-commands-on-the-exoskeleton-computer-ssh" title="Permalink to this headline">¶</a></h3>
 <p><strong>Secure Shell (SSH)</strong> is a network protocol which allows to run commands on the exoskeleton.
 Connect with the exoskeleton by typing <code class="code docutils literal"><span class="pre">ssh</span> <span class="pre">march&#64;march</span></code> in a terminal.
-Now all commands in this terminal are executed on the March IV exoskeleton computer.</p>
+Now all commands in this terminal are executed on the March exoskeleton computer.</p>
 </div>
 <div class="section" id="ros-master-uri">
 <h3>ROS Master URI<a class="headerlink" href="#ros-master-uri" title="Permalink to this headline">¶</a></h3>
@@ -505,11 +505,11 @@ If you’re running remote/headless it’s probably easier to <strong>SSH</stron
 <h2>Test ROS on multiple devices<a class="headerlink" href="#test-ros-on-multiple-devices" title="Permalink to this headline">¶</a></h2>
 <p>This is a very simple test to make sure you followed <a class="reference internal" href="#preparation-before-connecting-label"><span class="std std-ref">Preparation before connecting</span></a> correctly.</p>
 <ul class="simple">
-<li>Run <code class="code docutils literal"><span class="pre">roscore</span></code> in a terminal on the March IV exoskeleton computer (you can always do this via SSH).</li>
+<li>Run <code class="code docutils literal"><span class="pre">roscore</span></code> in a terminal on the March exoskeleton computer (you can always do this via SSH).</li>
 <li>Run <code class="code docutils literal"><span class="pre">rostopic</span> <span class="pre">list</span></code> in a terminal on your computer. This command should give the output <strong>/rosout /rosout_agg</strong></li>
-<li>Run <code class="code docutils literal"><span class="pre">rostopic</span> <span class="pre">echo</span> <span class="pre">/march/test</span></code> in a new terminal on the March IV exoskeleton computer. This command gives a warning.</li>
+<li>Run <code class="code docutils literal"><span class="pre">rostopic</span> <span class="pre">echo</span> <span class="pre">/march/test</span></code> in a new terminal on the March exoskeleton computer. This command gives a warning.</li>
 <li>Now publish a message with the command <code class="code docutils literal"><span class="pre">rostopic</span> <span class="pre">pub</span> <span class="pre">/march/test</span> <span class="pre">std_msgs/String</span> <span class="pre">&quot;data:</span> <span class="pre">'Hello</span> <span class="pre">World'&quot;</span></code></li>
-<li>The message is send and received successful if you received the message in the March IV exoskeleton computer.</li>
+<li>The message is send and received successful if you received the message in the March exoskeleton computer.</li>
 </ul>
 </div>
 </div>
@@ -518,7 +518,7 @@ If you’re running remote/headless it’s probably easier to <strong>SSH</stron
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/connecting_to_the_exoskeleton.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/connecting_to_the_exoskeleton.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>

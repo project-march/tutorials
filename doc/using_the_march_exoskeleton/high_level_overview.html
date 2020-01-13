@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Log files &mdash; march_tutorials Melodic documentation</title>
+  <title>High level overview &mdash; march_tutorials Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="march_tutorials Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="Using the gait generator" href="using_the_gait_generator.html"/>
-        <link rel="prev" title="How to view live data" href="how_to_view_live_data.html"/> 
+        <link rel="next" title="Connecting to the exoskeleton" href="connecting_to_the_exoskeleton.html"/>
+        <link rel="prev" title="SMACH" href="../useful_ros_tools/smach.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -123,11 +123,11 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Using the March IV</span></p>
+<p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="high_level_overview.html">High level overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="high_level_overview.html#input-device">Input Device</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">High level overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-versus-exoskeleton">Simulation versus Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-device">Input Device</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="connecting_to_the_exoskeleton.html">Connecting to the exoskeleton</a><ul>
@@ -161,11 +161,11 @@
 <li class="toctree-l2"><a class="reference internal" href="how_to_view_live_data.html#configuration">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Log files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rosbag">Rosbag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exoskeleton">Exoskeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cloudstation">Cloudstation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uploading-the-logs">Uploading the logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log_files.html">Log files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log_files.html#rosbag">Rosbag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log_files.html#exoskeleton">Exoskeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log_files.html#cloudstation">Cloudstation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log_files.html#uploading-the-logs">Uploading the logs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="using_the_gait_generator.html">Using the gait generator</a><ul>
@@ -439,52 +439,35 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/log_files.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/high_level_overview.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Log files</li>
+    <li>High level overview</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="log-files">
-<h1>Log files<a class="headerlink" href="#log-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="rosbag">
-<h2>Rosbag<a class="headerlink" href="#rosbag" title="Permalink to this headline">¶</a></h2>
-<p>The log files are recorded with a tool called rosbag.
-Please check the <a class="reference external" href="http://wiki.ros.org/rosbag">official documentation</a> or <a class="reference internal" href="../useful_ros_tools/ros_bag.html#ros-bag-label"><span class="std std-ref">ROS bag</span></a>.</p>
+  <div class="section" id="high-level-overview">
+<h1>High level overview<a class="headerlink" href="#high-level-overview" title="Permalink to this headline">¶</a></h1>
+<p>A high level overview of the components that make up the March exoskeleton.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/software_stack.png" src="../../_images/software_stack.png" />
+<p class="caption"><span class="caption-text">The March software stack</span></p>
 </div>
-<div class="section" id="exoskeleton">
-<h2>Exoskeleton<a class="headerlink" href="#exoskeleton" title="Permalink to this headline">¶</a></h2>
-<p>For each session, a new directory should be made with the following structure: <strong>yyyy_mm_dd-activity_name</strong></p>
-<dl class="docutils">
-<dt>Examples:</dt>
-<dd><ul class="first last simple">
-<li>2019_07_03-first_training</li>
-<li>2019_06_01-airgait_with_torque_mode</li>
-</ul>
-</dd>
-</dl>
-<p>The files are located at: <code class="docutils literal"><span class="pre">/home/march/Documents/log_files/&lt;yyyy_mm_dd-activity_name&gt;</span></code></p>
+<div class="section" id="simulation-versus-exoskeleton">
+<h2>Simulation versus Exoskeleton<a class="headerlink" href="#simulation-versus-exoskeleton" title="Permalink to this headline">¶</a></h2>
+<p>As our exoskeleton is under construction most of the time, we have made use of a simulation to ensure we can verify our higher level nodes work.
+As seen in the above image, most of the hardware components have a simulated counterpart.</p>
+<p>At launch time, the user is asked if they are trying to run on the exoskeleton or on the simulation.
+Based on this selection, the required components are started.</p>
 </div>
-<div class="section" id="cloudstation">
-<h2>Cloudstation<a class="headerlink" href="#cloudstation" title="Permalink to this headline">¶</a></h2>
-<p>The log files are stored on the Cloudstation in a shared folder called <strong>March IV log files</strong>.
-A special user <strong>log</strong> has been created to read/write these logs.</p>
-</div>
-<div class="section" id="uploading-the-logs">
-<h2>Uploading the logs<a class="headerlink" href="#uploading-the-logs" title="Permalink to this headline">¶</a></h2>
-<p>First ssh into the computer of the exoskeleton.
-A tutorial on how to connect with the exoskeleton and ssh into it can be found at <a class="reference internal" href="connecting_to_the_exoskeleton.html#connecting-to-the-exoskeleton-label"><span class="std std-ref">Connecting to the exoskeleton</span></a>.
-The following command will upload all the logs to the cloudstation and create a folder with the correct &lt;activity_name&gt;.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">-</span><span class="n">r</span> <span class="o">&lt;/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">yyyy_mm_dd</span><span class="o">-</span><span class="n">activity_name</span><span class="o">&gt;</span> <span class="n">log</span><span class="nd">@cloudstation</span><span class="o">.</span><span class="n">projectmarch</span><span class="o">.</span><span class="n">nl</span><span class="p">:</span><span class="s2">&quot;/volume1/Log\ Files/March\ IV\ Log\ Files/&quot;</span>
-</pre></div>
-</div>
+<div class="section" id="input-device">
+<h2>Input Device<a class="headerlink" href="#input-device" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -492,7 +475,7 @@ The following command will upload all the logs to the cloudstation and create a 
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_iv/log_files.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/using_the_march_exoskeleton/high_level_overview.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -501,10 +484,10 @@ The following command will upload all the logs to the cloudstation and create a 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="using_the_gait_generator.html" class="btn btn-neutral float-right" title="Using the gait generator" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="connecting_to_the_exoskeleton.html" class="btn btn-neutral float-right" title="Connecting to the exoskeleton" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="how_to_view_live_data.html" class="btn btn-neutral" title="How to view live data" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../useful_ros_tools/smach.html" class="btn btn-neutral" title="SMACH" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
