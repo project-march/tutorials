@@ -508,15 +508,15 @@ normal input device should cause the <em>safety node</em> to throw an error.</p>
 <span id="add-a-new-button-label"></span><h3>Add a new button<a class="headerlink" href="#add-a-new-button" title="Permalink to this headline">¶</a></h3>
 <p>In this tutorial we will add a new button which will have a custom callback that publishes on a new topic
 Our button will publish a boolean message if this tutorial works on the topic <code class="docutils literal"><span class="pre">/march/this/tutorial/works</span></code></p>
-<p>We only need to add code to <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device.py">input_device.py</a>.
-Make sure to check this file before you start as it contains many examples of existing buttons.</p>
+<p>We will need to add code to <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_view.py">input_device.py</a> and <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_controller.py">input_device.py</a>. The <code class="docutils literal"><span class="pre">InputDeviceView</span></code> class contains code for layout, colour and buttons, where the <code class="docutils literal"><span class="pre">InputDeviceController</span></code> class contains code for publishing on topics.
+Make sure to check these files before you start as it contains many examples of existing buttons.</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">If the publisher your button needs already exists, you can skip some of the following steps.</p>
 </div>
 <div class="section" id="create-a-new-publisher">
 <h4>Create a new publisher<a class="headerlink" href="#create-a-new-publisher" title="Permalink to this headline">¶</a></h4>
-<p>Create a new publisher in the <code class="docutils literal"><span class="pre">__init__</span></code>:</p>
+<p>Create a new publisher in the <code class="docutils literal"><span class="pre">__init__</span></code> of <code class="docutils literal"><span class="pre">InputDeviceController</span></code>:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="k">import</span> <span class="n">Bool</span> <span class="c1"># Import the Bool msg if needed.</span>
 
 <span class="bp">self</span><span class="o">.</span><span class="n">this_tutorial_works_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/march/this/tutorial/works&#39;</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -525,14 +525,17 @@ Make sure to check this file before you start as it contains many examples of ex
 </div>
 <div class="section" id="create-a-publish-function">
 <h4>Create a publish function<a class="headerlink" href="#create-a-publish-function" title="Permalink to this headline">¶</a></h4>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">publish_this_tutorial_works</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>Add a publish function to the <code class="docutils literal"><span class="pre">InputDeviceController</span></code> class, which will be called by our button:
+.. code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">publish_true</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">this_tutorial_works_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Bool</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="create-a-button-object">
 <h4>Create a button object<a class="headerlink" href="#create-a-button-object" title="Permalink to this headline">¶</a></h4>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">this_tutorial_works_button</span> <span class="o">=</span> <span class="n">MarchButton</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Publish True&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish_this_tutorial_works</span><span class="p">())</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">this_tutorial_works_button</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_button</span><span class="p">(</span><span class="s1">&#39;Pulbish True&#39;</span><span class="p">,</span>
+                                                <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">publish_true</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
