@@ -179,7 +179,16 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Error Codes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#e100-placeholder-error"><code class="docutils literal"><span class="pre">E100</span></code>: Placeholder error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e100-invalid-actuation-mode"><code class="docutils literal"><span class="pre">E100</span></code>: Invalid actuation mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e101-invalid-actuate-position"><code class="docutils literal"><span class="pre">E101</span></code>: Invalid actuate position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e102-encoder-reset"><code class="docutils literal"><span class="pre">E102</span></code>: Encoder reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e103-outside-hard-limits"><code class="docutils literal"><span class="pre">E103</span></code>: Outside hard limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e104-target-exceeds-max-difference"><code class="docutils literal"><span class="pre">E104</span></code>: Target exceeds max difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e105-target-torque-exceeds-max-torque"><code class="docutils literal"><span class="pre">E105</span></code>: Target torque exceeds max torque</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e106-pdo-object-not-defined"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e107-pdo-register-overflow"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e108-writing-initial-settings-failed"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
 </ul>
@@ -474,14 +483,101 @@ If you encounter an error that is not documented, consider creating
 <p><strong>Error list</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#e100-placeholder-error" id="id1"><code class="docutils literal"><span class="pre">E100</span></code>: Placeholder error</a></li>
+<li><a class="reference internal" href="#e100-invalid-actuation-mode" id="id1"><code class="docutils literal"><span class="pre">E100</span></code>: Invalid actuation mode</a></li>
+<li><a class="reference internal" href="#e101-invalid-actuate-position" id="id2"><code class="docutils literal"><span class="pre">E101</span></code>: Invalid actuate position</a></li>
+<li><a class="reference internal" href="#e102-encoder-reset" id="id3"><code class="docutils literal"><span class="pre">E102</span></code>: Encoder reset</a></li>
+<li><a class="reference internal" href="#e103-outside-hard-limits" id="id4"><code class="docutils literal"><span class="pre">E103</span></code>: Outside hard limits</a></li>
+<li><a class="reference internal" href="#e104-target-exceeds-max-difference" id="id5"><code class="docutils literal"><span class="pre">E104</span></code>: Target exceeds max difference</a></li>
+<li><a class="reference internal" href="#e105-target-torque-exceeds-max-torque" id="id6"><code class="docutils literal"><span class="pre">E105</span></code>: Target torque exceeds max torque</a></li>
+<li><a class="reference internal" href="#e106-pdo-object-not-defined" id="id7"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a></li>
+<li><a class="reference internal" href="#e107-pdo-register-overflow" id="id8"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a></li>
+<li><a class="reference internal" href="#e108-writing-initial-settings-failed" id="id9"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a></li>
+<li><a class="reference internal" href="#e999-unknown-error" id="id10"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </div>
-<div class="section" id="e100-placeholder-error">
-<span id="e100"></span><h2><a class="toc-backref" href="#id1"><code class="docutils literal"><span class="pre">E100</span></code>: Placeholder error</a><a class="headerlink" href="#e100-placeholder-error" title="Permalink to this headline">¶</a></h2>
-<p>This should be a short description of the error.</p>
-<p><strong>Cause:</strong> You did this thing wrong</p>
-<p><strong>Fix:</strong> Do this and that and then it may be solved</p>
+<div class="section" id="e100-invalid-actuation-mode">
+<span id="e100"></span><h2><a class="toc-backref" href="#id1"><code class="docutils literal"><span class="pre">E100</span></code>: Invalid actuation mode</a><a class="headerlink" href="#e100-invalid-actuation-mode" title="Permalink to this headline">¶</a></h2>
+<p>An invalid actuation mode was used to perform an action.</p>
+<p><strong>Cause:</strong> The motor controllers have two modes for actuation: position and effort.
+With position you can only actuate to a target position using <code class="docutils literal"><span class="pre">actuateRad()</span></code>.
+In effort mode you can only actuate using a target torque using <code class="docutils literal"><span class="pre">actuateTorque()</span></code>.
+This error was caused by mixing the actuate methods and actuation modes. See
+the detailed description for which mode the controller was actually in.</p>
+<p><strong>Fix:</strong> Check if the actuation mode defined in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+you use is consistent with the methods you are using to actuate the joint.</p>
+</div>
+<div class="section" id="e101-invalid-actuate-position">
+<span id="e101"></span><h2><a class="toc-backref" href="#id2"><code class="docutils literal"><span class="pre">E101</span></code>: Invalid actuate position</a><a class="headerlink" href="#e101-invalid-actuate-position" title="Permalink to this headline">¶</a></h2>
+<p>Invalid IU position command.</p>
+<p><strong>Cause:</strong> The position you are trying to actuate to is not a valid target within the range of the joint.</p>
+<p><strong>Fix:</strong> Check that the IU limits defined in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+under <code class="docutils literal"><span class="pre">joints/&lt;joint_name&gt;/imotioncube/encoder</span></code> match the actual limits of the joint.</p>
+</div>
+<div class="section" id="e102-encoder-reset">
+<span id="e102"></span><h2><a class="toc-backref" href="#id3"><code class="docutils literal"><span class="pre">E102</span></code>: Encoder reset</a><a class="headerlink" href="#e102-encoder-reset" title="Permalink to this headline">¶</a></h2>
+<p>An encoder has reset and reads an incorrect value.</p>
+<p><strong>Cause:</strong> The cause is still unknown.</p>
+<p><strong>Fix:</strong> This error happens sometimes during startup and the only thing you
+can do is try again. This error will probably be removed once this issue has
+been fixed.</p>
+</div>
+<div class="section" id="e103-outside-hard-limits">
+<span id="e103"></span><h2><a class="toc-backref" href="#id4"><code class="docutils literal"><span class="pre">E103</span></code>: Outside hard limits</a><a class="headerlink" href="#e103-outside-hard-limits" title="Permalink to this headline">¶</a></h2>
+<p>A joint is outside its defined hard limits.</p>
+<p><strong>Cause:</strong> A joint was found to be outside its defined hard limits in the
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>.</p>
+<p><strong>Fix:</strong> Check that the IU limits defined in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+under <code class="docutils literal"><span class="pre">joints/&lt;joint_name&gt;/imotioncube/encoder</span></code> match the actual limits of the joint and recalibrate if necessary.</p>
+</div>
+<div class="section" id="e104-target-exceeds-max-difference">
+<span id="e104"></span><h2><a class="toc-backref" href="#id5"><code class="docutils literal"><span class="pre">E104</span></code>: Target exceeds max difference</a><a class="headerlink" href="#e104-target-exceeds-max-difference" title="Permalink to this headline">¶</a></h2>
+<p>The target position exceeds the max allowed difference from the current position.</p>
+<p><strong>Cause:</strong> The given target position is greater than the maximum allowed difference
+between target and actual position. This could cause dangerous situations if
+you were to actuate a long distance in a short amount of time.</p>
+<p><strong>Fix:</strong> This is a safety measure and most of time indicates that the joints
+are behind their trajectory path.</p>
+</div>
+<div class="section" id="e105-target-torque-exceeds-max-torque">
+<span id="e105"></span><h2><a class="toc-backref" href="#id6"><code class="docutils literal"><span class="pre">E105</span></code>: Target torque exceeds max torque</a><a class="headerlink" href="#e105-target-torque-exceeds-max-torque" title="Permalink to this headline">¶</a></h2>
+<p>The target torque exceeds the max allowed torque</p>
+<p><strong>Cause:</strong> The maximum given target torque is greater than the joints
+can actuate. This could cause dangerous situations where the joints could be
+negatively affected.</p>
+<p><strong>Fix:</strong> This is a safety measure and most of time indicates that the joints
+are behind their trajectory path.</p>
+</div>
+<div class="section" id="e106-pdo-object-not-defined">
+<span id="e106"></span><h2><a class="toc-backref" href="#id7"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a><a class="headerlink" href="#e106-pdo-object-not-defined" title="Permalink to this headline">¶</a></h2>
+<p>The to be added PDO object was not defined.</p>
+<p><strong>Cause:</strong> The PDO that is being mapped does not have a defined address and size.</p>
+<p><strong>Fix:</strong> Check that the PDO is defined in the <code class="docutils literal"><span class="pre">all_objects</span></code> map in the
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/PDOmap.cpp">PDOmap</a> class.</p>
+</div>
+<div class="section" id="e107-pdo-register-overflow">
+<span id="e107"></span><h2><a class="toc-backref" href="#id8"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a><a class="headerlink" href="#e107-pdo-register-overflow" title="Permalink to this headline">¶</a></h2>
+<p>The PDO map could not fit within the registers</p>
+<p><strong>Cause:</strong> There exist 4 registers with 64 bits each to be filled with PDO maps.
+This error indicates that the added PDO exceeded 4*64=256 bits.</p>
+<p><strong>Fix:</strong> Check that you actually need all the mapped PDOs and remove some that
+you are not using until you are at or below the 256 bits.</p>
+</div>
+<div class="section" id="e108-writing-initial-settings-failed">
+<span id="e108"></span><h2><a class="toc-backref" href="#id9"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a><a class="headerlink" href="#e108-writing-initial-settings-failed" title="Permalink to this headline">¶</a></h2>
+<p>Failed to write initial settings to slave required for operation.</p>
+<p><strong>Cause:</strong> Before setting all ethercat slaves to operational mode, the master
+writes some settings required during operation. If such a write command fails,
+it means that the master did not get any confirmation that the value was written.
+This could have several causes: A slave was (temporarily) lost during writing
+or the slave does not allow writing the value to that address.</p>
+<p><strong>Fix:</strong> Check the connection between the faulty slave and the master or
+check that you write the correct sized (8, 16, 32 bit) value to the correct address.</p>
+</div>
+<div class="section" id="e999-unknown-error">
+<span id="e999"></span><h2><a class="toc-backref" href="#id10"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
+<p>Unknown error occurred which was not given an error code.</p>
+<p><strong>Cause:</strong> An <code class="docutils literal"><span class="pre">HardwareException</span></code> was thrown without specifying an <code class="docutils literal"><span class="pre">ErrorType</span></code>.</p>
+<p><strong>Fix:</strong> Find where this exception was thrown and create a documented error.</p>
 </div>
 </div>
 

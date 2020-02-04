@@ -179,7 +179,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html">Error Codes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e100-placeholder-error"><code class="docutils literal"><span class="pre">E100</span></code>: Placeholder error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e100-invalid-actuation-mode"><code class="docutils literal"><span class="pre">E100</span></code>: Invalid actuation mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e101-invalid-actuate-position"><code class="docutils literal"><span class="pre">E101</span></code>: Invalid actuate position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e102-encoder-reset"><code class="docutils literal"><span class="pre">E102</span></code>: Encoder reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e103-outside-hard-limits"><code class="docutils literal"><span class="pre">E103</span></code>: Outside hard limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e104-target-exceeds-max-difference"><code class="docutils literal"><span class="pre">E104</span></code>: Target exceeds max difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e105-target-torque-exceeds-max-torque"><code class="docutils literal"><span class="pre">E105</span></code>: Target torque exceeds max torque</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e106-pdo-object-not-defined"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e107-pdo-register-overflow"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e108-writing-initial-settings-failed"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
 </ul>
@@ -531,7 +540,7 @@ it is convention to upload it to <code class="docutils literal"><span class="pre
 <div class="section" id="creating-the-executable-optional">
 <h4>Creating the executable (optional)<a class="headerlink" href="#creating-the-executable-optional" title="Permalink to this headline">¶</a></h4>
 <p>If your check relies on a calculation from another package, you should create an executable in th package where the check is running.
-An example can be seen with the executable <code class="docutils literal"><span class="pre">slave_count_check</span></code> created in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/check/SlaveCount.cpp">SlaveCount.cpp</a>
+An example can be seen with the executable <code class="docutils literal"><span class="pre">slave_count_check</span></code> created in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/check/slave_count.cpp">slave_count.cpp</a>
 and <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/CMakeLists.txt">CMakeLists.txt</a>.</p>
 <p>Notice how the result is uploaded to <code class="docutils literal"><span class="pre">/check/slave_count</span></code>.</p>
 <p>When running an executable from another package, it is often preferable to create a launch file in the march_launch package that starts that executable, possibly even on the exoskeleton instead of locally.
