@@ -188,6 +188,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#e106-pdo-object-not-defined"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e107-pdo-register-overflow"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e108-writing-initial-settings-failed"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e109-no-socket-connection"><code class="docutils literal"><span class="pre">E109</span></code>: No socket connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e110-not-all-slaves-found"><code class="docutils literal"><span class="pre">E110</span></code>: Not all slaves found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e111-failed-to-reach-operational-state"><code class="docutils literal"><span class="pre">E111</span></code>: Failed to reach operational state</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
@@ -492,7 +495,10 @@ If you encounter an error that is not documented, consider creating
 <li><a class="reference internal" href="#e106-pdo-object-not-defined" id="id7"><code class="docutils literal"><span class="pre">E106</span></code>: PDO object not defined</a></li>
 <li><a class="reference internal" href="#e107-pdo-register-overflow" id="id8"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a></li>
 <li><a class="reference internal" href="#e108-writing-initial-settings-failed" id="id9"><code class="docutils literal"><span class="pre">E108</span></code>: Writing initial settings failed</a></li>
-<li><a class="reference internal" href="#e999-unknown-error" id="id10"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
+<li><a class="reference internal" href="#e109-no-socket-connection" id="id10"><code class="docutils literal"><span class="pre">E109</span></code>: No socket connection</a></li>
+<li><a class="reference internal" href="#e110-not-all-slaves-found" id="id11"><code class="docutils literal"><span class="pre">E110</span></code>: Not all slaves found</a></li>
+<li><a class="reference internal" href="#e111-failed-to-reach-operational-state" id="id12"><code class="docutils literal"><span class="pre">E111</span></code>: Failed to reach operational state</a></li>
+<li><a class="reference internal" href="#e999-unknown-error" id="id13"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </div>
 <div class="section" id="e100-invalid-actuation-mode">
@@ -573,8 +579,45 @@ or the slave does not allow writing the value to that address.</p>
 <p><strong>Fix:</strong> Check the connection between the faulty slave and the master or
 check that you write the correct sized (8, 16, 32 bit) value to the correct address.</p>
 </div>
+<div class="section" id="e109-no-socket-connection">
+<span id="e109"></span><h2><a class="toc-backref" href="#id10"><code class="docutils literal"><span class="pre">E109</span></code>: No socket connection</a><a class="headerlink" href="#e109-no-socket-connection" title="Permalink to this headline">¶</a></h2>
+<p>The ethercat master failed to open a raw network socket.</p>
+<p><strong>Cause:</strong> This can have several causes:</p>
+<ol class="arabic simple">
+<li>The master tries to open a socket with an <code class="docutils literal"><span class="pre">ifname</span></code> that does not exist.</li>
+<li>The user executing the program does not have permissions for opening a raw socket. Only root can do this.</li>
+<li>The ethernet port on the machine is not connected.</li>
+</ol>
+<p><strong>Fix:</strong> First, make sure that you connected your machine to a slave.
+Next, check if the <code class="docutils literal"><span class="pre">ifname</span></code> defined in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+has an existing socket name. You can list available sockets with</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">link</span> <span class="n">show</span>
+</pre></div>
+</div>
+<p>The permissions for opening raw sockets while executing the hardware interface
+are added by <a class="reference external" href="https://github.com/shadow-robot/ethercat_grant">ethercat_grant</a>.
+So this should not be an issue unless you changed something very specific.</p>
+</div>
+<div class="section" id="e110-not-all-slaves-found">
+<span id="e110"></span><h2><a class="toc-backref" href="#id11"><code class="docutils literal"><span class="pre">E110</span></code>: Not all slaves found</a><a class="headerlink" href="#e110-not-all-slaves-found" title="Permalink to this headline">¶</a></h2>
+<p>The ethercat master was not able to find all configured slaves during initialization.</p>
+<p><strong>Cause:</strong> The ethercat master was not able to establish a connection with the configured amount of slaves
+in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>, because a cable is not connected or the
+configuration contains more slaves than actually connected.</p>
+<p><strong>Fix:</strong> Check if all ethernet cables are correctly connected to the in- and outputs of the slaves you want to
+connect to. Finally, check if the slaves configured in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+have the correct slave indices.</p>
+</div>
+<div class="section" id="e111-failed-to-reach-operational-state">
+<span id="e111"></span><h2><a class="toc-backref" href="#id12"><code class="docutils literal"><span class="pre">E111</span></code>: Failed to reach operational state</a><a class="headerlink" href="#e111-failed-to-reach-operational-state" title="Permalink to this headline">¶</a></h2>
+<p>At least one slave was not able to reach operational state.</p>
+<p><strong>Cause:</strong> The connection to the slave was lost during initialization or the PDO mapping is incorrect.</p>
+<p><strong>Fix:</strong> The error lists the slaves that were not able to go to operational state,
+so check the connection on those specific slaves. If you made any changes to the PDO mapping
+verify that it is correct.</p>
+</div>
 <div class="section" id="e999-unknown-error">
-<span id="e999"></span><h2><a class="toc-backref" href="#id10"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
+<span id="e999"></span><h2><a class="toc-backref" href="#id13"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
 <p>Unknown error occurred which was not given an error code.</p>
 <p><strong>Cause:</strong> An <code class="docutils literal"><span class="pre">HardwareException</span></code> was thrown without specifying an <code class="docutils literal"><span class="pre">ErrorType</span></code>.</p>
 <p><strong>Fix:</strong> Find where this exception was thrown and create a documented error.</p>
