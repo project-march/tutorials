@@ -530,7 +530,7 @@ When EtherCAT is stopped, this parallel thread stops running.</p>
 <h3>PDO messages<a class="headerlink" href="#pdo-messages" title="Permalink to this headline">¶</a></h3>
 <p>Process Data Objects (PDOs) are the cyclic and continuous type of messages of EtherCAT, and the main form of exchanging data with the slaves.
 Reading and writing EtherCAT PDO messages is possible through the other classes in the march_hardware package (e.g. Joint, IMotionCube, Encoder, PowerDistributionBoard).
-For example, the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/Encoder.cpp">Encoder class</a> <code class="docutils literal"><span class="pre">getAngleIU()</span></code> function reads and returns the latest encoder value that was received by the EthercatMaster.
+For example, the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/encoder/Encoder.cpp">Encoder class</a> <code class="docutils literal"><span class="pre">getAngleIU()</span></code> function reads and returns the latest encoder value that was received by the EthercatMaster.
 Functions such as <code class="docutils literal"><span class="pre">getAngleIU()</span></code> all call the same generic functions for reading from and writing to slaves.
 These generic functions are defined in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/EtherCAT/EthercatIO.cpp">EthercatIO.cpp</a>.</p>
 <div class="admonition note">
