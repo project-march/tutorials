@@ -526,7 +526,7 @@ it is convention to upload it to <code class="docutils literal"><span class="pre
 <h4>Creating your software check<a class="headerlink" href="#creating-your-software-check" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Create a new class that extends from the type of check you want to create.</li>
-<li>Make sure to closely inspect the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/checks/SoftwareCheck.py">SoftwareCheck</a> base class and the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/checks/SoftwareCheck.py">LaunchCheck</a> derived class to see the available methods.</li>
+<li>Make sure to closely inspect the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/checks/software_check.py">SoftwareCheck</a> base class and the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/checks/software_check.py">LaunchCheck</a> derived class to see the available methods.</li>
 <li>Make sure your check calls <code class="docutils literal"><span class="pre">self.launch()</span></code> if it extends the <code class="docutils literal"><span class="pre">LaunchCheck</span></code></li>
 <li>Perform your check.</li>
 <li>Set <code class="docutils literal"><span class="pre">self.done</span></code> and <code class="docutils literal"><span class="pre">self.passed</span></code> accordingly during your check.</li>
@@ -536,7 +536,7 @@ it is convention to upload it to <code class="docutils literal"><span class="pre
 <div class="section" id="add-it-to-the-checkrunner">
 <h4>Add it to the CheckRunner<a class="headerlink" href="#add-it-to-the-checkrunner" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>Add an instance of your check to <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/CheckRunner.py">CheckRunner.checks</a>.</li>
+<li>Add an instance of your check to <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/check_runner.py">CheckRunner.checks</a>.</li>
 <li>Connect your check with the UI button in <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/software_check.py">software_check.__init__()</a>.</li>
 </ul>
 </div>
@@ -559,7 +559,7 @@ An example can be found in <a class="reference external" href="https://github.co
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_rqt_software_check</span>
 </pre></div>
 </div>
-<p>Or take a look at the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/CheckRunner.py">CheckRunner source code</a>.</p>
+<p>Or take a look at the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/src/march_launch/check_runner.py">CheckRunner source code</a>.</p>
 </div>
 </div>
 </div>
