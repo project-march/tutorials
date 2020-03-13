@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_hardware &mdash; Project March Melodic documentation</title>
+  <title>march_fake_sensor_data &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="march_hardware_builder" href="march_hardware_builder.html"/>
-        <link rel="prev" title="march_gait_files" href="march_gait_files.html"/> 
+        <link rel="next" title="march_gait_files" href="march_gait_files.html"/>
+        <link rel="prev" title="Add a new gait" href="../development/add_a_new_gait.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -252,10 +252,10 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="march_fake_sensor_data.html">march_fake_sensor_data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="march_fake_sensor_data.html#implemented-sensors">Implemented sensors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="march_fake_sensor_data.html#temperature-sensors">Temperature sensors</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="march_fake_sensor_data.html#how-to-use">How to use</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_fake_sensor_data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implemented-sensors">Implemented sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-sensors">Temperature sensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-use">How to use</a></li>
 </ul>
 </li>
 </ul>
@@ -271,19 +271,19 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_hardware</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#class-structure">Class Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-usage">Example usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ethercat">EtherCAT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ethercatmaster">EthercatMaster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pdo-messages">PDO messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sdo-messages">SDO messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#class-structure">Class Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#example-usage">Example usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ethercat">EtherCAT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#ethercatmaster">EthercatMaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#pdo-messages">PDO messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware.html#sdo-messages">SDO messages</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#power-distribution-board">Power Distribution Board</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#power-distribution-board">Power Distribution Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ros-api">ROS API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a><ul>
@@ -465,140 +465,47 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_fake_sensor_data.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>march_hardware</li>
+    <li>march_fake_sensor_data</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-hardware">
-<span id="march-hardware-label"></span><h1>march_hardware<a class="headerlink" href="#march-hardware" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march_hardware package is a C++ package to interact with the physical March exoskeleton.
-Its goal is to provide an api for actuating the exoskeleton without knowledge of the underlying hardware.</p>
-</div>
-<div class="section" id="class-structure">
-<h2>Class Structure<a class="headerlink" href="#class-structure" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">The <a class="reference internal" href="march_hardware_builder.html#march-hardware-builder-label"><span class="std std-ref">march_hardware_builder</span></a> can help with the class structure of the hardware package,
-especially when looking at an <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots/march4.yaml">example yaml</a>.</p>
-</div>
-<p>The highest level class is the MarchRobot, it contains a list of Joints which can be accessed.
-Each Joint is identified by a name and optionally has an IMotionCube and TemperatureGES.
-This is enough knowledge to start interacting with a MarchRobot.</p>
-</div>
-<div class="section" id="example-usage">
-<h2>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
-<p>Here is an example of the commands you can use on a MarchRobot object when it is created with the correct joints.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">MarchRobot</span> <span class="n">robot</span><span class="p">;</span>
-<span class="n">robot</span><span class="o">.</span><span class="n">startEthercat</span><span class="p">();</span>
-<span class="n">Joint</span> <span class="n">rightKnee</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">getJoint</span><span class="p">(</span><span class="s2">&quot;right_knee&quot;</span><span class="p">);</span>
-<span class="n">rightKnee</span><span class="o">.</span><span class="n">prepareActuation</span><span class="p">();</span>
-<span class="n">rightKnee</span><span class="o">.</span><span class="n">actuateRad</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
-<span class="nb">float</span> <span class="n">readAngle</span> <span class="o">=</span> <span class="n">rightKnee</span><span class="o">.</span><span class="n">getAngleRad</span><span class="p">();</span>
-<span class="nb">float</span> <span class="n">readTemperature</span> <span class="o">=</span> <span class="n">rightKnee</span><span class="o">.</span><span class="n">getTemperature</span><span class="p">();</span>
-<span class="n">robot</span><span class="o">.</span><span class="n">stopEthercat</span><span class="p">();</span>
+  <div class="section" id="march-fake-sensor-data">
+<span id="id1"></span><h1>march_fake_sensor_data<a class="headerlink" href="#march-fake-sensor-data" title="Permalink to this headline">¶</a></h1>
+<p>The march_fake_sensor_data publishes fake sensor data to simulate real sensors when running a simulation of the exoskeleton.</p>
+<p>See <a class="reference external" href="http://wiki.ros.org/dynamic_reconfigure/Tutorials/HowToWriteYourFirstCfgFile">this tutorial</a>
+to implement dynamically reconfigurable parameters.</p>
+<div class="section" id="implemented-sensors">
+<h2>Implemented sensors<a class="headerlink" href="#implemented-sensors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="temperature-sensors">
+<h3>Temperature sensors<a class="headerlink" href="#temperature-sensors" title="Permalink to this headline">¶</a></h3>
+<p>A dynamically reconfigurable temperature publisher is implemented in fake_temperature_data.cpp.
+The fake temperature sensors are generated automatically from the joint names from the <code class="docutils literal"><span class="pre">/march/joint_names</span></code> parameter
+on the parameter server. The min and max for random temperatures can be configured in
+<a class="reference external" href="https://github.com/project-march/simulation/tree/develop/march_fake_sensor_data/launch/march_fake_sensor_data.launch">march_fake_sensor_data.launch</a>.
+These min and max will apply to all fake temperature sensors.</p>
+<div class="section" id="how-to-use">
+<h4>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h4>
+<p>Run the fake temperature publishers</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_fake_sensor_data</span> <span class="n">march_fake_sensor_data</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="ethercat">
-<h2>EtherCAT<a class="headerlink" href="#ethercat" title="Permalink to this headline">¶</a></h2>
-<p>EtherCAT is the fieldbus protocol used to communicate with the local hardware (‘slaves’) in the exoskeleton.
-<a class="reference external" href="https://github.com/OpenEtherCATsociety/SOEM">SOEM</a> (short for Simple Open EtherCAT Master) is a C library used which provides most EtherCAT functionalities.
-As said, the hardware package is mainly a class structure on top of SOEM functioning as an api for controlling the exoskeleton.
-The interfaces can be roughly divided into three parts:</p>
-<ul class="simple">
-<li>EthercatMaster</li>
-<li>PDO messages</li>
-<li>SDO messages</li>
-</ul>
-<div class="section" id="ethercatmaster">
-<h3>EthercatMaster<a class="headerlink" href="#ethercatmaster" title="Permalink to this headline">¶</a></h3>
-<p>The EthercatMaster class contains the main EtherCAT functionality and the main interface with SOEM.
-EtherCAT can be started and stopped via the EthercatMaster.
-When EtherCAT is started, a parallel thread is started that continuously sends and receives the latest EtherCAT PDO data and monitors if all slaves are still present and operational.
-When EtherCAT is stopped, this parallel thread stops running.</p>
-<p>The EthercatMaster class expects several arguments in its constructor: a pointer to a vector of Joints of the robot, the network interface name (ifname) of your device, the number of EtherCAT slaves in  your robot, and the cycle time of the EtherCAT thread in milliseconds. An example is provided below.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">EthercatMaster</span> <span class="n">ethercat</span><span class="p">(</span><span class="o">&amp;</span><span class="n">jointList</span><span class="p">,</span> <span class="s2">&quot;enp2s0&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="o">//</span> <span class="mi">14</span> <span class="n">slaves</span><span class="p">,</span> <span class="mi">2</span> <span class="n">ms</span> <span class="n">cycle</span> <span class="n">time</span>
+<p>You can change the parameters live using:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rosrun</span> <span class="n">rqt_reconfigure</span> <span class="n">rqt_reconfigure</span>
 </pre></div>
 </div>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Find out the ifname of your device by running <code class="code docutils literal"><span class="pre">ifconfig</span></code> in a terminal.</p>
+<p>Furthermore, the temperature data can be visualized using <code class="docutils literal"><span class="pre">rqt_plot</span></code> and
+listening to the <code class="docutils literal"><span class="pre">temperature</span></code> or <code class="docutils literal"><span class="pre">variance</span></code> value on the <code class="docutils literal"><span class="pre">/march/temperature/&lt;joint_name&gt;</span></code> topics.</p>
 </div>
 </div>
-<div class="section" id="pdo-messages">
-<h3>PDO messages<a class="headerlink" href="#pdo-messages" title="Permalink to this headline">¶</a></h3>
-<p>Process Data Objects (PDOs) are the cyclic and continuous type of messages of EtherCAT, and the main form of exchanging data with the slaves.
-Reading and writing EtherCAT PDO messages is possible through the other classes in the march_hardware package (e.g. Joint, IMotionCube, Encoder, PowerDistributionBoard).
-For example, the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/encoder/Encoder.cpp">Encoder class</a> <code class="docutils literal"><span class="pre">getAngleIU()</span></code> function reads and returns the latest encoder value that was received by the EthercatMaster.
-Functions such as <code class="docutils literal"><span class="pre">getAngleIU()</span></code> all call the same generic functions for reading from and writing to slaves.
-These generic functions are defined in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/EtherCAT/EthercatIO.cpp">EthercatIO.cpp</a>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>When reading or writing PDO messages over EtherCAT via SOEM, you need three things:</p>
-<ul class="simple">
-<li>The index of the slave you want to read from or write to.</li>
-<li>The amount of bytes you want to read or write.</li>
-<li>The byte offset of the data you want to read or write for a particular slave.</li>
-</ul>
-<p class="last">The byte offsets need to correspond with how the slave is configured. For GES and PDB slaves, this is stored in the EEPROM of the slave.
-For the IMotionCube, this is configurable during startup through a process called PDO mapping.</p>
-</div>
-</div>
-<div class="section" id="sdo-messages">
-<h3>SDO messages<a class="headerlink" href="#sdo-messages" title="Permalink to this headline">¶</a></h3>
-<p>Service Data Objects (SDOs) are non-cyclic EtherCAT messages. They are used for sending one-time messages, for example when initializing an IMotionCube.
-The generic SDO messaging functions can be found in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/EtherCAT/EthercatSDO.cpp">EthercatSDO.cpp</a>.</p>
-</div>
-</div>
-<div class="section" id="power-distribution-board">
-<h2>Power Distribution Board<a class="headerlink" href="#power-distribution-board" title="Permalink to this headline">¶</a></h2>
-<p>The PowerDistributionBoard class contains all functionality for communicating with the Power Distribution Board over EtherCAT.
-For example, high voltage nets can be turned on and off via this class, and the currents that the Power Distribution Board measures can be read.
-The PowerDistributionBoard class contains a HighVoltage and a LowVoltage class which contain methods for controlling the high voltage and low voltage nets.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">PowerDistributionBoard</span> <span class="n">pdb</span><span class="p">;</span>
-<span class="nb">float</span> <span class="n">readCurrent</span> <span class="o">=</span> <span class="n">pdb</span><span class="o">.</span><span class="n">getPowerDistributionBoardCurrent</span><span class="p">();</span>
-<span class="n">pdb</span><span class="o">.</span><span class="n">getHighVoltage</span><span class="p">()</span><span class="o">.</span><span class="n">setNetOnOff</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="o">//</span> <span class="n">Turn</span> <span class="n">on</span> <span class="n">net</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The PowerDistributionBoard constructor requires EtherCAT byte offsets as arguments.
-These need to be specified in the robot description yaml files of the hardware_builder package.</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The functionality of the PowerDistributionBoard is highly dependent on the software running on the LPC1768 of the Power Distribution Board.
-See the <a class="reference external" href="https://github.com/project-march/ethercat-slaves/tree/develop/src/pdb">ethercat-slaves repository</a> for the LPC1768 code.</p>
-</div>
-</div>
-<div class="section" id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>Because safety is very important, the march_hardware package will throw an exception whenever it encounters something that shouldn’t happen.</p>
-<p>The main exceptions are</p>
-<blockquote>
-<div><ul class="simple">
-<li>Incorrect configuration of joints (e.g. higher min position than max position)</li>
-<li>Hardware failures</li>
-<li>Incorrect actuate command is send (outside of limits or too far from current position)</li>
-</ul>
-</div></blockquote>
-<p>When such an exception occurs, the high voltage is turned off and the exoskeleton will stop moving.</p>
-</div>
-<div class="section" id="ros-api">
-<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
-<p>The hardware package is written without depending on ROS to ensure that it can remain functional even when ROS will no longer be used.
-The package does depend on ROS for logging, but that can be easily changed if needed.</p>
 </div>
 </div>
 
@@ -606,7 +513,7 @@ The package does depend on ROS for logging, but that can be easily changed if ne
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_fake_sensor_data.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -615,10 +522,10 @@ The package does depend on ROS for logging, but that can be easily changed if ne
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_hardware_builder.html" class="btn btn-neutral float-right" title="march_hardware_builder" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_gait_files.html" class="btn btn-neutral float-right" title="march_gait_files" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_gait_files.html" class="btn btn-neutral" title="march_gait_files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../development/add_a_new_gait.html" class="btn btn-neutral" title="Add a new gait" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
