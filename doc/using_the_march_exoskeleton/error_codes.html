@@ -191,6 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#e109-no-socket-connection"><code class="docutils literal"><span class="pre">E109</span></code>: No socket connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e110-not-all-slaves-found"><code class="docutils literal"><span class="pre">E110</span></code>: Not all slaves found</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e111-failed-to-reach-operational-state"><code class="docutils literal"><span class="pre">E111</span></code>: Failed to reach operational state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e112-invalid-encoder-resolution"><code class="docutils literal"><span class="pre">E112</span></code>: Invalid encoder resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e114-invalid-range-of-motion"><code class="docutils literal"><span class="pre">E114</span></code>: Invalid range of motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e115-invalid-slave-configuration"><code class="docutils literal"><span class="pre">E115</span></code>: Invalid slave configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e116-not-allowed-to-actuate"><code class="docutils literal"><span class="pre">E116</span></code>: Not allowed to actuate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e117-invalid-slave-index"><code class="docutils literal"><span class="pre">E117</span></code>: Invalid slave index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
@@ -508,7 +513,12 @@ If you encounter an error that is not documented, consider creating
 <li><a class="reference internal" href="#e109-no-socket-connection" id="id10"><code class="docutils literal"><span class="pre">E109</span></code>: No socket connection</a></li>
 <li><a class="reference internal" href="#e110-not-all-slaves-found" id="id11"><code class="docutils literal"><span class="pre">E110</span></code>: Not all slaves found</a></li>
 <li><a class="reference internal" href="#e111-failed-to-reach-operational-state" id="id12"><code class="docutils literal"><span class="pre">E111</span></code>: Failed to reach operational state</a></li>
-<li><a class="reference internal" href="#e999-unknown-error" id="id13"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
+<li><a class="reference internal" href="#e112-invalid-encoder-resolution" id="id13"><code class="docutils literal"><span class="pre">E112</span></code>: Invalid encoder resolution</a></li>
+<li><a class="reference internal" href="#e114-invalid-range-of-motion" id="id14"><code class="docutils literal"><span class="pre">E114</span></code>: Invalid range of motion</a></li>
+<li><a class="reference internal" href="#e115-invalid-slave-configuration" id="id15"><code class="docutils literal"><span class="pre">E115</span></code>: Invalid slave configuration</a></li>
+<li><a class="reference internal" href="#e116-not-allowed-to-actuate" id="id16"><code class="docutils literal"><span class="pre">E116</span></code>: Not allowed to actuate</a></li>
+<li><a class="reference internal" href="#e117-invalid-slave-index" id="id17"><code class="docutils literal"><span class="pre">E117</span></code>: Invalid slave index</a></li>
+<li><a class="reference internal" href="#e999-unknown-error" id="id18"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </div>
 <div class="section" id="e100-invalid-actuation-mode">
@@ -626,8 +636,51 @@ have the correct slave indices.</p>
 so check the connection on those specific slaves. If you made any changes to the PDO mapping
 verify that it is correct.</p>
 </div>
+<div class="section" id="e112-invalid-encoder-resolution">
+<span id="e112"></span><h2><a class="toc-backref" href="#id13"><code class="docutils literal"><span class="pre">E112</span></code>: Invalid encoder resolution</a><a class="headerlink" href="#e112-invalid-encoder-resolution" title="Permalink to this headline">¶</a></h2>
+<p>The encoder resolution is outside the allowed range.</p>
+<p><strong>Cause:</strong> The given encoder resolution to construct an encoder are outside of its allowed limits defined in
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/encoder/Encoder.h">Encoder.h</a>.</p>
+<p><strong>Fix:</strong> Check if the resolutions given in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a> are
+within this range.</p>
+</div>
+<div class="section" id="e114-invalid-range-of-motion">
+<span id="e114"></span><h2><a class="toc-backref" href="#id14"><code class="docutils literal"><span class="pre">E114</span></code>: Invalid range of motion</a><a class="headerlink" href="#e114-invalid-range-of-motion" title="Permalink to this headline">¶</a></h2>
+<p>The lower and upper limits of an encoder are conflicting.</p>
+<p><strong>Cause:</strong> When an encoder is constructed it checks that its lower limits are below its upper limits, for hard and soft
+limits. Furthermore, it checks if the soft limits are within the defined hard limits. This is to make sure that the
+joints can safely actuate.</p>
+<p><strong>Fix:</strong> The encoder limits are defined in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>, so
+make sure that the lower limit is lower than the upper limit in incremental units. If the encoder is built from the
+<code class="docutils literal"><span class="pre">march_hardware_builder</span></code> then the soft limits are extracted from the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_description/urdf">URDF</a> of the used robot.
+Make sure that the limits in the URDF are also non-conflicting.</p>
+</div>
+<div class="section" id="e115-invalid-slave-configuration">
+<span id="e115"></span><h2><a class="toc-backref" href="#id15"><code class="docutils literal"><span class="pre">E115</span></code>: Invalid slave configuration</a><a class="headerlink" href="#e115-invalid-slave-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The slave configuration contains duplicate slave indices</p>
+<p><strong>Cause:</strong> Before the ethercat train is started, the configured slaves indices are checked for duplicate indices.
+This makes sure that no two controllers will write to the same slave.</p>
+<p><strong>Fix:</strong> Check the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>, so that it does not contain
+duplicate indices on iMOTIONCUBES. Temperature sensors can have duplicate slave indices, since multiple temperature
+sensors can be connected to a slave.</p>
+</div>
+<div class="section" id="e116-not-allowed-to-actuate">
+<span id="e116"></span><h2><a class="toc-backref" href="#id16"><code class="docutils literal"><span class="pre">E116</span></code>: Not allowed to actuate</a><a class="headerlink" href="#e116-not-allowed-to-actuate" title="Permalink to this headline">¶</a></h2>
+<p>A joint is not allowed to actuate, yet it’s trying to actuate.</p>
+<p><strong>Cause:</strong> A joint must have enabled actuation in order to actuate. This value can be set in the
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>.</p>
+<p><strong>Fix:</strong> Check that the joints that you are trying to actuate are actually allowed to actuate.</p>
+</div>
+<div class="section" id="e117-invalid-slave-index">
+<span id="e117"></span><h2><a class="toc-backref" href="#id17"><code class="docutils literal"><span class="pre">E117</span></code>: Invalid slave index</a><a class="headerlink" href="#e117-invalid-slave-index" title="Permalink to this headline">¶</a></h2>
+<p>Slave index has an invalid value.</p>
+<p><strong>Cause:</strong> When slaves are created with a slave index, it is made sure that the indices are not lower than 1.
+Since index 0 is the master itself and values lower than 0 are not valid indices.</p>
+<p><strong>Fix:</strong> If you are using a <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>, make sure that all
+slave indices are defined as integers higher than 0.</p>
+</div>
 <div class="section" id="e999-unknown-error">
-<span id="e999"></span><h2><a class="toc-backref" href="#id13"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
+<span id="e999"></span><h2><a class="toc-backref" href="#id18"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
 <p>Unknown error occurred which was not given an error code.</p>
 <p><strong>Cause:</strong> An <code class="docutils literal"><span class="pre">HardwareException</span></code> was thrown without specifying an <code class="docutils literal"><span class="pre">ErrorType</span></code>.</p>
 <p><strong>Fix:</strong> Find where this exception was thrown and create a documented error.</p>
