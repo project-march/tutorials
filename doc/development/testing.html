@@ -38,7 +38,7 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="Add a new gait" href="add_a_new_gait.html"/>
+        <link rel="next" title="Style Guide" href="style_guide.html"/>
         <link rel="prev" title="Continuous Integration" href="../continuous_integration/continuous_integration.html"/> 
 
   
@@ -232,7 +232,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-tests-locally">Running the tests locally</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#running-roslint">Running roslint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-catkin-lint">Running catkin_lint</a></li>
 </ul>
 </li>
@@ -242,6 +241,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#writing-c-node-tests">Writing C++ node tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#writing-python-unit-tests">Writing python unit tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#writing-python-node-tests">Writing python node tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html#running-style-checkers">Running style checkers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#id2">clang-format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#id3">flake8</a></li>
 </ul>
 </li>
 </ul>
@@ -498,25 +505,13 @@ specified packages.</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">colcon</span> <span class="n">test</span> <span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span> <span class="n">march_some_package</span> <span class="n">march_some_other_package</span>
 </pre></div>
 </div>
-<div class="section" id="running-roslint">
-<h3>Running roslint<a class="headerlink" href="#running-roslint" title="Permalink to this headline">¶</a></h3>
-<p>All march packages are also checked for code style with
-<a class="reference external" href="https://wiki.ros.org/roslint">roslint</a>. The <code class="docutils literal"><span class="pre">roslint</span></code> target should also
-be run from the workspace root like so.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">event</span><span class="o">-</span><span class="n">handlers</span> <span class="n">console_direct</span><span class="o">+</span> <span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">target</span><span class="o">-</span><span class="n">skip</span><span class="o">-</span><span class="n">unavailable</span> <span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">target</span> <span class="n">roslint</span>
-</pre></div>
-</div>
-<p>This command will run the <code class="docutils literal"><span class="pre">roslint</span></code> target on any packages that use
-<code class="docutils literal"><span class="pre">roslint</span></code>. It will also output any linter warnings that you should fix,
-otherwise the build will fail.</p>
-</div>
 <div class="section" id="running-catkin-lint">
 <h3>Running catkin_lint<a class="headerlink" href="#running-catkin-lint" title="Permalink to this headline">¶</a></h3>
 <p>Another tool that is used to lint packages is <a class="reference external" href="https://github.com/fkie/catkin_lint">catkin_lint</a>.
-<code class="docutils literal"><span class="pre">catkin_lint</span></code> checks the package manifest and cmake configuration files for
+<code class="docutils literal"><span class="pre">catkin_lint</span></code> checks the package manifest and CMake configuration files for
 any common errors. This command can be run anywhere in the workspace and will recurse into directories.
 So in order to check all packages you should run this command in the root of the workspace.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">catkin_lint</span> <span class="o">-</span><span class="n">W2</span> <span class="o">--</span><span class="n">explain</span> <span class="o">.</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">catkin_lint</span> <span class="o">-</span><span class="n">W2</span> <span class="o">--</span><span class="n">explain</span> <span class="o">--</span><span class="n">strict</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>This will output any notes, warnings or errors with an explanation. This
@@ -670,7 +665,7 @@ Also see the <a class="reference external" href="https://wiki.ros.org/unittest#C
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="add_a_new_gait.html" class="btn btn-neutral float-right" title="Add a new gait" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="style_guide.html" class="btn btn-neutral float-right" title="Style Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../continuous_integration/continuous_integration.html" class="btn btn-neutral" title="Continuous Integration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
