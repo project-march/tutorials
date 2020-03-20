@@ -36,6 +36,7 @@ of the robot in simulation.
 
 Aside from the robot descriptions, the ``march_description`` package also contains ``*.stl`` files,
 which contain visualization for the robots, since URDF only describes the properties of a robot.
+These ``*.stl`` files have been exported from the robot assembly in Catia.
 These visualization files are included in the xacro, which can be used by tools like RViz and Gazebo
 to visualize the robot.
 
