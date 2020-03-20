@@ -396,6 +396,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="march_safety.html#ros-api">ROS API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="march_safety.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#subscribed-topics">Subscribed Topics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="march_safety.html#published-topics">Published Topics</a></li>
 </ul>
 </li>
@@ -511,13 +512,9 @@ normal input device should cause the <em>safety node</em> to throw an error.</p>
 </div>
 <div class="section" id="published-topics">
 <h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">(Tim) Add link to march_safety when it’s done.</p>
-</div>
 <dl class="docutils">
-<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Empty.html">std_msgs/Empty</a>)</dt>
-<dd>Publish empty alive messages so the Safety node doesn’t throw a warning.</dd>
+<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">std_msgs/Time</a>)</dt>
+<dd>Publish empty alive messages so <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> does not throw an error.</dd>
 <dt><em>/march/input_device/instruction</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">march_shared_resources/GaitInstruction</a>)</dt>
 <dd>Send instructions to the state machine.</dd>
 <dt><em>/march/error</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/Error.msg">march_shared_resources/Error</a>)</dt>

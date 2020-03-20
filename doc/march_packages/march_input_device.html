@@ -396,6 +396,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="march_safety.html#ros-api">ROS API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="march_safety.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="march_safety.html#subscribed-topics">Subscribed Topics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="march_safety.html#published-topics">Published Topics</a></li>
 </ul>
 </li>
@@ -494,11 +495,7 @@ This can be run wired via usb cable or wireless via wifi connection.</p>
 <h3>Sending messages<a class="headerlink" href="#sending-messages" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Gait Instruction Message</a> This is a instruction to start the sent gait right now, if this is possible.</p>
 <p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Stop Message</a> This message can stop a repeating gait (such as walk). After receiving the stop message the exoskeleton will go to the standing pose.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">(Tim) link this to the march_safety documentation.</p>
-</div>
-<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is send. This way <em>march_safety</em> can detect when the input device loses connection.</p>
+<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is send. This way <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> can detect when the input device loses connection.</p>
 </div>
 <div class="section" id="receiving-messages">
 <h3>Receiving messages<a class="headerlink" href="#receiving-messages" title="Permalink to this headline">¶</a></h3>

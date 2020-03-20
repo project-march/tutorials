@@ -396,6 +396,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics">Subscribed Topics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#published-topics">Published Topics</a></li>
 </ul>
 </li>
@@ -487,14 +488,12 @@
 will be logged. Depending on the severity the system can also be stopped or terminated.</p>
 <div class="section" id="implementation">
 <h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
-<p>March safety consists of a list of <strong>SafetyType</strong>-objects. Such an object monitors a part of the system. If a certain condition is
-violated, the object will call the <strong>SafetyHandler</strong> to invoke an error. The <strong>SafetyHandler</strong> is responsible for sending error messages and sounds.
-All <strong>SafetyType</strong>-objects:</p>
+<p>March safety consists of a list of <code class="docutils literal"><span class="pre">SafetyType</span></code>-objects. Such an object monitors a part of the system. If a certain condition is
+violated, the object will call the <code class="docutils literal"><span class="pre">SafetyHandler</span></code> to invoke an error. The <code class="docutils literal"><span class="pre">SafetyHandler</span></code> is responsible for sending error messages and sounds.
+All <code class="docutils literal"><span class="pre">SafetyType</span></code>-objects:</p>
 <ul class="simple">
-<li><strong>TemperatureSafety</strong>, monitors the joint temperatures. Depending on which threshold is exceeded an warning, non-fatal or fatal is thrown.</li>
-<li><strong>InputDeviceSafety</strong>, checks if the input device is still connected. Otherwise a non-fatal is thrown.</li>
-<li><strong>TrajectorySafety</strong>, checks whether the trajectory controller is within its trajectory constraints. Once the constraints
-have been passed a position hold command is sent, completed and then the trajectory controller is stopped.</li>
+<li><code class="docutils literal"><span class="pre">TemperatureSafety</span></code>, monitors the joint temperatures. Depending on which threshold is exceeded an warning, non-fatal or fatal is thrown.</li>
+<li><code class="docutils literal"><span class="pre">InputDeviceSafety</span></code>, checks if the input device is still connected. Otherwise a non-fatal is thrown.</li>
 </ul>
 </div>
 </div>
@@ -520,7 +519,15 @@ Therefore, the system should terminate.</p>
 <h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nodes">
 <h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
-<p><em>march_safety</em> - This node reads parameters from the parameter server and runs all <strong>SafetyType</strong>-objects.</p>
+<p><em>march_safety</em> - This node reads parameters from the parameter server and runs all <code class="docutils literal"><span class="pre">SafetyType</span></code>-objects.</p>
+</div>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">std_msgs/Time</a>)</dt>
+<dd>Listens to connected input devices and throws an error when an input device lost connection and
+logs when a new input device reconnects.</dd>
+</dl>
 </div>
 <div class="section" id="published-topics">
 <h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
@@ -542,35 +549,37 @@ Therefore, the system should terminate.</p>
 <h3>Add new safety rule to existing SafetyType<a class="headerlink" href="#add-new-safety-rule-to-existing-safetytype" title="Permalink to this headline">¶</a></h3>
 <p>This is pretty straightforward to do. This tutorial will mostly give remarks and tips:</p>
 <ul class="simple">
-<li>Add your new rule to the most suited <strong>SafetyType</strong>, if no <em>SafetyTypes</em> are suited create a new one (see <a class="reference internal" href="#march-safety-add-new-rule-label"><span class="std std-ref">Create new SafetyType</span></a>).</li>
-<li>When using values that are probably going to change in the future place them as parameter in the <strong>march_safety.launch</strong> file.
-Definitely do this with values that are probably going to be changed by other team members, by placing the value in the
-launch file you make it much easier for them.</li>
+<li>Add your new rule to the most suited <code class="docutils literal"><span class="pre">SafetyType</span></code>, if no <code class="docutils literal"><span class="pre">SafetyType</span></code> implementations are suited,
+create a new one (see <a class="reference internal" href="#march-safety-add-new-rule-label"><span class="std std-ref">Create new SafetyType</span></a>).</li>
+<li>When using values that are probably going to change in the future place them as parameter in the
+<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_safety/launch/safety_settings.yaml">safety_settings.yaml</a> file. Definitely do this
+with values that are probably going to be changed by other team members, by placing the value in the
+settings file you make it much easier for them.</li>
 <li>It’s possible that the new rule is automatically called, for example because it’s a callback. However, when this is not the case
-call the new rule in the <strong>update</strong> method of the <strong>SafetyType</strong>. This method is executed every cycle of the <strong>SafetyNode</strong>.</li>
+call the new rule in the <code class="docutils literal"><span class="pre">update</span></code> method of the <code class="docutils literal"><span class="pre">SafetyType</span></code>. This method is executed every cycle of the node.</li>
 </ul>
 </div>
 <div class="section" id="create-new-safetytype">
 <span id="march-safety-add-new-rule-label"></span><h3>Create new SafetyType<a class="headerlink" href="#create-new-safetytype" title="Permalink to this headline">¶</a></h3>
 <p>For this example we will create a safety type which checks the temperature.</p>
 <ul>
-<li><p class="first">Set temperature threshold in the <strong>march_safety.launch</strong> file, this way the threshold is easy to adjust.</p>
+<li><p class="first">Set temperature threshold in the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_safety/launch/safety_settings.yaml">safety_settings.yaml</a> file, this way the threshold is easy to adjust.</p>
 </li>
-<li><p class="first">Create a class <strong>TemperatureSafety</strong> which extends <strong>SafetyType</strong></p>
+<li><p class="first">Create a class <code class="docutils literal"><span class="pre">TemperatureSafety</span></code> which extends <code class="docutils literal"><span class="pre">SafetyType</span></code></p>
 </li>
 <li><p class="first">In the constructor of this class you probably want to:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Pass on a reference to the <em>NodeHandle</em> and <em>SafetyHandle</em>.</li>
-<li>Obtain the threshold parameter form the parameter service.</li>
+<li>Pass on a pointer to the <code class="docutils literal"><span class="pre">NodeHandle</span></code> and <code class="docutils literal"><span class="pre">SafetyHandle</span></code>.</li>
+<li>Obtain the threshold parameter from the parameter service.</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">-&gt;</span><span class="n">getParam</span><span class="p">(</span><span class="n">ros</span><span class="p">::</span><span class="n">this_node</span><span class="p">::</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/temperature_threshold_non_fatal&quot;</span><span class="p">,</span> <span class="n">non_fatal_temperature_threshold</span><span class="p">);</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="n">ros</span><span class="p">::</span><span class="n">param</span><span class="p">::</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;~non_fatal_temperature_threshold&quot;</span><span class="p">,</span> <span class="n">this</span><span class="o">-&gt;</span><span class="n">non_fatal_temperature_threshold_</span><span class="p">);</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Subscribe to the temperature topic.</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">ros</span><span class="p">::</span><span class="n">Subscriber</span> <span class="n">subscriber_temperature</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">subscribe</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">Temperature</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;/march/temperature&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">temperatureCallback</span><span class="p">);</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="n">ros</span><span class="p">::</span><span class="n">Subscriber</span> <span class="n">subscriber_temperature</span> <span class="o">=</span> <span class="n">n</span><span class="o">-&gt;</span><span class="n">subscribe</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="p">::</span><span class="n">Temperature</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;/march/temperature&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">temperatureCallback</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -580,33 +589,33 @@ call the new rule in the <strong>update</strong> method of the <strong>SafetyTyp
 <div><ul class="simple">
 <li>In this callback you want to compare the received value with the threshold</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">temperature</span> <span class="o">&gt;</span> <span class="n">non_fatal_temperature_threshold</span><span class="p">)</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">temperature</span> <span class="o">&gt;</span> <span class="n">this</span><span class="o">-&gt;</span><span class="n">non_fatal_temperature_threshold_</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="o">//</span> <span class="n">Temperature</span> <span class="n">exceeds</span> <span class="n">threshold</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>When the threshold is exceeded you probably want to call the non-fatal method form the <em>SafetyHandle</em>. This is example code:</li>
+<li>When the threshold is exceeded you probably want to call the non-fatal method from the <code class="docutils literal"><span class="pre">SafetyHandle</span></code>. This is example code:</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">safety_handler</span><span class="o">-&gt;</span><span class="n">publishNonFatal</span><span class="p">(</span><span class="n">error_message</span><span class="p">);</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="n">this</span><span class="o">-&gt;</span><span class="n">safety_handler_</span><span class="o">-&gt;</span><span class="n">publishNonFatal</span><span class="p">(</span><span class="n">error_message</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">You have to overwrite the <strong>update</strong> method from the <strong>SafetyType</strong>. However, in this example we are not using the update method.
-This method is used when you want to execute some code every <strong>SafetyNode</strong> cycle. For example if you want to check if a certain node
+<li><p class="first">You have to overwrite the <code class="docutils literal"><span class="pre">update</span></code> method from the <code class="docutils literal"><span class="pre">SafetyType</span></code>. However, in this example we are not using the update method.
+This method is used when you want to execute some code every <code class="docutils literal"><span class="pre">SafetyNode</span></code> cycle. For example if you want to check if a certain node
 is still alive this would be de perfect place to call this code. For this example we will overwrite this method, but keep it empty:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">update</span><span class="p">()</span> <span class="n">override</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">update</span><span class="p">(</span><span class="n">const</span> <span class="n">ros</span><span class="p">::</span><span class="n">Time</span><span class="o">&amp;</span> <span class="o">/*</span> <span class="n">now</span> <span class="o">*/</span><span class="p">)</span> <span class="n">override</span>
 <span class="p">{</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Finally you need to add the <strong>TemperatureSafety</strong> to the <strong>safety_list</strong> in the <strong>SafetyNode.cpp</strong>:</p>
+<li><p class="first">Finally you need to add the <code class="docutils literal"><span class="pre">TemperatureSafety</span></code> to the <code class="docutils literal"><span class="pre">safety_list</span></code> in the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_safety/src/safety_node.cpp">safety_node.cpp</a>:</p>
 </li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">safety_list</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SafetyType</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new</span> <span class="n">TemperatureSafety</span><span class="p">(</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">safetyHandler</span><span class="p">)));</span>
+<div class="code cpp highlight-default"><div class="highlight"><pre><span></span><span class="n">safety_list</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">TemperatureSafety</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">safety_handler</span><span class="p">,</span> <span class="n">joint_names</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
