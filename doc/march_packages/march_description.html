@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_hardware_builder &mdash; Project March Melodic documentation</title>
+  <title>march_description &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="march_hardware_interface" href="march_hardware_interface.html"/>
-        <link rel="prev" title="march_hardware" href="march_hardware.html"/> 
+        <link rel="next" title="march_fake_sensor_data" href="march_fake_sensor_data.html"/>
+        <link rel="prev" title="Add a new gait" href="../development/add_a_new_gait.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -270,8 +270,8 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="march_description.html">march_description</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="march_description.html#see-also">See also</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_fake_sensor_data.html">march_fake_sensor_data</a><ul>
@@ -308,11 +308,11 @@
 <li class="toctree-l2"><a class="reference internal" href="march_hardware.html#ros-api">ROS API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_hardware_builder</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-package">Using the package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#ros-api">ROS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_hardware_builder.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_hardware_builder.html#using-the-package">Using the package</a></li>
 </ul>
 </li>
 </ul>
@@ -471,75 +471,59 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_description.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>march_hardware_builder</li>
+    <li>march_description</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-hardware-builder">
-<span id="march-hardware-builder-label"></span><h1>march_hardware_builder<a class="headerlink" href="#march-hardware-builder" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This package contains a library which can be included to create a <code class="docutils literal"><span class="pre">MarchRobot</span></code> from YAML config files
-and a robot description in URDF. Whereas the YAML describes some properties of the hardware used in the robot,
-the hardware builder uses the URDF for joint limits. The joints in the YAML and the URDF must match.
-The implementation is rather straightforward and nearly all of the logic can be found in the
-<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/src/hardware_builder.cpp">HardwareBuilder class</a>.</p>
-</div>
-<div class="section" id="ros-api">
-<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
-<p>The hardware builder is written without depending on ROS to ensure that it can remain functional even when ROS will no longer be used.
-The package does depend on ROS for logging, but that can be easily changed if needed.</p>
-</div>
-<div class="section" id="tutorials">
-<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-the-package">
-<h3>Using the package<a class="headerlink" href="#using-the-package" title="Permalink to this headline">¶</a></h3>
-<p>Add a dependency on this package to your project and <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;march_hardware_builder/hardware_builder.h&gt;</span></code> to start using the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/hardware_builder.h">HardwareBuilder class</a>.</p>
-<p>There are four main ways to interact with the hardware builder:</p>
-<ul>
-<li><p class="first">Instantiate with an AllowedRobot:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">(</span><span class="n">AllowedRobot</span><span class="p">::</span><span class="n">march4</span><span class="p">);</span>
-<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">();</span>
+  <div class="section" id="march-description">
+<span id="march-description-label"></span><h1>march_description<a class="headerlink" href="#march-description" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">march_description</span></code> package contains all robot descriptions used by Project March.
+The robot descriptions are formatted in the <a class="reference external" href="https://wiki.ros.org/urdf">Unified Robot Description Format (URDF)</a>,
+URDF is an xml format and is preferred to be written using <a class="reference external" href="https://wiki.ros.org/xacro">xacro</a>, which is
+an xml macro language. This enables us to write shorter and more readable robot descriptions.</p>
+<p>Since the ROS <code class="docutils literal"><span class="pre">urdf</span></code> package can only parse the URDF format, we must first process the xacro files.
+This is done at build time and is described in the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_description/CMakeLists.txt">CMakeLists.txt</a>.
+Both the <code class="docutils literal"><span class="pre">*.urdf</span></code> and <code class="docutils literal"><span class="pre">*.xacro</span></code> files are installed into the <code class="docutils literal"><span class="pre">march_description</span></code> package.
+In the launch files these files can be uploaded to the parameter server at <code class="docutils literal"><span class="pre">/robot_description</span></code>,
+so that they are available for all nodes.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">param</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;robot_description&quot;</span> <span class="n">textfile</span><span class="o">=</span><span class="s2">&quot;$(find march_description)/urdf/march4.urdf&quot;</span><span class="o">/&gt;</span>
 </pre></div>
 </div>
-<p>A list of currently allowed robots can be seen in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/include/march_hardware_builder/allowed_robot.h">include/AllowedRobot.h</a></p>
-</li>
-<li><p class="first">Instantiate with a path to a yaml file:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">(</span><span class="s2">&quot;path/to/robot/march4.yaml&quot;</span><span class="p">);</span>
-<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">();</span>
+<p>The <code class="docutils literal"><span class="pre">*.xacro</span></code> files are also installed since xacro allows for file arguments.
+This is used in the <a class="reference external" href="https://github.com/project-march/simulation/tree/develop/march_simulation/launch/march_world.launch">march_world.launch</a>.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>&lt;param name=&quot;robot_description&quot;
+       command=&quot;$(find xacro)/xacro &#39;$(find march_description)/urdf/$(arg robot).xacro&#39;
+                k_velocity_value_hfe:=60.0 k_velocity_value_kfe:=60.0
+                k_velocity_value_haa:=60.0 k_velocity_value_adpf:=60.0
+                k_position_value_hfe:=50.0 k_position_value_kfe:=50.0
+                k_position_value_haa:=50.0 k_position_value_adpf:=50.0
+                max_effort_rotary:=200.0 max_effort_linear:=40.0
+                ground_gait:=$(arg ground_gait)&quot; /&gt;
 </pre></div>
 </div>
-<p>An example yaml file can be seen in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots/march4.yaml">robots/march4.yaml</a></p>
-</li>
-<li><p class="first">Instantiate empty. This function is mostly used for testing wrongly configured robots and is not needed in a release.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This means you are responsible for passing a YAML::Node to the .createMarchRobot() function!</p>
-</div>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">YAML</span><span class="p">::</span><span class="n">Node</span> <span class="n">robotConfig</span> <span class="o">=</span> <span class="n">YAML</span><span class="p">::</span><span class="n">LoadFile</span><span class="p">(</span><span class="s2">&quot;path/to/robot.yaml&quot;</span><span class="p">);</span>
-<span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">();</span>
-<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createMarchRobot</span><span class="p">(</span><span class="n">robotConfig</span><span class="p">);</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">It is also possible to create parts of a MarchRobot (IMotionCubes, Encoders, etc…) in a similar way.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">YAML</span><span class="p">::</span><span class="n">Node</span> <span class="n">encoderConfig</span> <span class="o">=</span> <span class="n">YAML</span><span class="p">::</span><span class="n">LoadFile</span><span class="p">(</span><span class="s2">&quot;path/to/encoder.yaml&quot;</span><span class="p">);</span>
-<span class="n">HardwareBuilder</span> <span class="n">hardwareBuilder</span> <span class="o">=</span> <span class="n">HardwareBuilder</span><span class="p">();</span>
-<span class="n">marchRobot</span> <span class="o">=</span> <span class="n">hardwareBuilder</span><span class="o">.</span><span class="n">createEncoder</span><span class="p">(</span><span class="n">encoderConfig</span><span class="p">);</span>
-</pre></div>
-</div>
-</li>
+<p>It uses the <code class="docutils literal"><span class="pre">xacro</span></code> command to process the <code class="docutils literal"><span class="pre">*.xacro</span></code> files and add arguments to change the properties
+of the robot in simulation.</p>
+<p>Aside from the robot descriptions, the <code class="docutils literal"><span class="pre">march_description</span></code> package also contains <code class="docutils literal"><span class="pre">*.stl</span></code> files,
+which contain visualization for the robots, since URDF only describes the properties of a robot.
+These <code class="docutils literal"><span class="pre">*.stl</span></code> files have been exported from the robot assembly in Catia.
+These visualization files are included in the xacro, which can be used by tools like RViz and Gazebo
+to visualize the robot.</p>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a></li>
+<li><a class="reference internal" href="march_simulation.html#march-simulation-label"><span class="std std-ref">march_simulation</span></a></li>
+<li><a class="reference internal" href="march_launch.html#march-launch-label"><span class="std std-ref">march_launch</span></a></li>
 </ul>
-</div>
 </div>
 </div>
 
@@ -547,7 +531,7 @@ The package does depend on ROS for logging, but that can be easily changed if ne
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_hardware_builder.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_description.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -556,10 +540,10 @@ The package does depend on ROS for logging, but that can be easily changed if ne
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_hardware_interface.html" class="btn btn-neutral float-right" title="march_hardware_interface" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_fake_sensor_data.html" class="btn btn-neutral float-right" title="march_fake_sensor_data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_hardware.html" class="btn btn-neutral" title="march_hardware" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../development/add_a_new_gait.html" class="btn btn-neutral" title="Add a new gait" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
