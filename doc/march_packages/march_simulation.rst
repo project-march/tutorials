@@ -26,7 +26,8 @@ so that the exoskeleton can move relative to the world. The launch command becom
   roslaunch march_launch march_simulation.launch rviz:=false gazebo_ui:=true ground_gait:=true
 
 One can add an obstacle in simulation by adding the "obstacle:=<<obstacle_name>>" to the command. The possible
-obstacles can be found in the obstacles folder of the march_simulation package.
+obstacles can be found in the obstacles folder of the march_simulation package. The current obstacles were created
+after four of the obstacles in the Cybathlon 2020.
 
 Code structure
 --------------
