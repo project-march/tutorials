@@ -424,6 +424,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#shutdown">SHUTDOWN</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#services">Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#add-a-state-to-the-state-machine">Add a state to the state machine</a></li>
 </ul>
@@ -483,42 +491,120 @@
 <span id="march-state-machine-label"></span><h1>march_state_machine<a class="headerlink" href="#march-state-machine" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march_state_machine contains the general behavior of the March exoskeleton. Simply put after launching the exoskeleton gait can be performed.
-The state machine also knows which gait can be executed in every possible state. For example after sitting you can stand-up, but you cannot walk.</p>
-<p>We are using an hierarchical state machine, which is a state machines whose states are them- selves state machines. We also use SMACH  this is a task-level
+<p>The march_state_machine contains the general behavior of the March exoskeleton. Simply
+put, after launching the exoskeleton the state machine decides which gaits
+can be performed. The state machine also knows which gait can be executed in
+every possible state. For example after sitting you can stand-up, but you
+cannot walk.</p>
+<p>We are using an hierarchical state machine, which is a state machine whose
+states can be state machines as well. We also use SMACH, this is a task-level
 architecture for rapidly creating complex robot behavior(see <a class="reference internal" href="../useful_ros_tools/smach.html#smach-label"><span class="std std-ref">SMACH</span></a>).</p>
 </div>
 <div class="section" id="behavior">
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
-<p>There are 4 general states in the state machine: <strong>LAUNCH</strong>, <strong>HEALTHY</strong>, <strong>SHUTDOWN</strong>, <strong>ERROR</strong>. <strong>LAUNCH</strong> and <strong>HEALTHY</strong> are also state machines.
-As mentioned above this is possible in a hierarchical state machine.</p>
+<p>There are 4 general states in the state machine: <strong>LAUNCH</strong>, <strong>HEALTHY</strong>,
+<strong>SHUTDOWN</strong>, <strong>ERROR</strong>, where <strong>LAUNCH</strong> and <strong>HEALTHY</strong> are also state
+machines. As mentioned above this is possible in a hierarchical state machine.</p>
 <div class="figure align-center">
 <img alt="../../_images/march_state_machine.png" src="../../_images/march_state_machine.png" />
 </div>
+<p>The above image is a screenshot from the
+<a class="reference external" href="https://wiki.ros.org/smach_viewer">smach_viewer</a>. This visualizes the states
+of the state machine and makes active ones green. This screenshot only shows
+the high level states. The smach_viewer can be launched with the
+<code class="docutils literal"><span class="pre">state_machine_viewer</span></code> launch argument, which defaults to <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_state_machine</span> <span class="n">state_machine</span><span class="o">.</span><span class="n">launch</span> <span class="n">state_machine_viewer</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>When you get an error saying that it failed to load Gtk, you need to install
+<code class="docutils literal"><span class="pre">python-gi-cairo</span></code> from the Ubuntu repositories:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">gi</span><span class="o">-</span><span class="n">cairo</span>
+</pre></div>
+</div>
+<p class="last">See <a class="reference external" href="https://github.com/ros-visualization/executive_smach_visualization/issues/20">https://github.com/ros-visualization/executive_smach_visualization/issues/20</a>
+for more info.</p>
+</div>
 <div class="section" id="launch">
 <h3>LAUNCH<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h3>
-<p>Launch starts with a <strong>WAIT ON SETTINGS</strong> state. This state waits on user input to select what to start and what to skip. After the input is received the state machine
-continues. Depending on the the user’s input, the <strong>HARDWARE SEQUENCE</strong> or the <strong>SIMULATION SEQUENCE</strong> is started.
-Read <a class="reference external" href="http://wiki.ros.org/smach/Tutorials/Sequence%20container">SMACH sequences</a> to understand sequences. Both sequences start the required or requested packages.
-After this the last sequence starts all remaining packages that are required or requested. This is done in the <strong>DEFAULT SEQUENCE</strong>.</p>
+<p>Launch starts with a <strong>WAIT FOR GAIT SERVER</strong> state. This state waits for the
+gait selection server to be available, since that is where the state machine
+sends requests for executing gaits.</p>
 </div>
 <div class="section" id="healthy">
 <h3>HEALTHY<a class="headerlink" href="#healthy" title="Permalink to this headline">¶</a></h3>
-<p>When launched successful the <strong>HEALTHY</strong> state machine is active. This part contains all possible gaits. Besides gaits we also have <em>idle</em> states such as <strong>STANDING</strong>, <strong>SITTING</strong>, <strong>UNKNOWN</strong>.
-<strong>UNKNOWN</strong> is the state in which the current position is not known. This can be on start-up, but also after an error is thrown and the March exoskeleton did not fully execute the intended gait.
-Transitions between <em>idle-states</em> to <em>gait-states</em> are present only when it’s safe to execute this gait at that moment.</p>
-<p>In this state machine the <strong>SAFETY</strong> state is always active. However, this is not the only active state.
-Multiple active states the same time are called <a class="reference external" href="http://wiki.ros.org/smach/Tutorials/Concurrent%20States">concurrent states</a>. The <strong>SAFETY</strong> state is responsible for
-monitoring possible errors (see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a>). This is done in a concurrent state, this way not every states in <strong>HEALTHY</strong> needs to have this responsibility.</p>
+<p>When launched successful the <strong>HEALTHY</strong> state machine is active. This part
+contains all possible gaits. Besides gaits we also have <em>idle</em> states such as
+<strong>STANDING</strong>, <strong>SITTING</strong> and <strong>UNKNOWN</strong>. <strong>UNKNOWN</strong> is the state in which
+the current position is not known. This can be on start-up, but also after an
+error is thrown and the March exoskeleton did not fully execute the intended gait.
+Transitions between <em>idle-states</em> to <em>gait-states</em> are present only when it
+is safe to execute this gait at that moment. For example, from the idle state
+<strong>SITTING</strong> you can only stand-up.</p>
+<p>In this state machine the <strong>SAFETY</strong> state is always active. However, this is
+not the only active state. Multiple active states at the same time are called
+<a class="reference external" href="http://wiki.ros.org/smach/Tutorials/Concurrent%20States">concurrent states</a>.
+The <strong>SAFETY</strong> state is responsible for monitoring possible errors
+(see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a>). This is done in a concurrent state and can
+preempt any active state in the <strong>HEALTHY</strong> state machine when a fatal error
+occurs.</p>
 </div>
 <div class="section" id="error">
 <h3>ERROR<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h3>
-<p>After an error is thrown (see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> when this happens) <strong>ERROR</strong> will become active instead of <strong>HEALTHY</strong>. After 5 seconds the state machine will try to recover.
-This is done by going to the <strong>UNKNOWN</strong> state in <strong>HEALTHY</strong>.</p>
+<p>After an error is thrown (see <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> when this happens),
+<strong>SAFETY</strong> state preempts the <strong>HEALTHY</strong> state and <strong>ERROR</strong> will become
+active. For now the <strong>ERROR</strong> state will automatically go to <strong>SHUTDOWN</strong>,
+but could be used later to recover from errors.</p>
 </div>
 <div class="section" id="shutdown">
 <h3>SHUTDOWN<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
-<p><strong>SHUTDOWN</strong> is not implemented at this moment.</p>
+<p><strong>SHUTDOWN</strong> shuts down ROS when it was called, without ROS being shutdown.
+Furthermore, it tries to kill the Gazebo server sending a <code class="docutils literal"><span class="pre">SIGTERM</span></code>, since
+Gazebo has trouble shutting down by itself.</p>
+</div>
+</div>
+<div class="section" id="ros-api">
+<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nodes">
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
+<p><em>march_state_machine</em> - Launches the state machine and keeps track of states.</p>
+</div>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/input_device/instruction</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">march_shared_resources/GaitInstruction</a>)</dt>
+<dd>Listens for instructions and executes them when there are possible state transitions.</dd>
+</dl>
+</div>
+<div class="section" id="published-topics">
+<h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/gait/current</em> (<a class="reference external" href="https://docs.ros.org/melodic/api/std_msgs/html/msg/String.html">std_msgs/String</a>)</dt>
+<dd>Publishes the current active gait once when it starts.</dd>
+<dt><em>/march/input_device/instruction_response</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstructionResponse.msg">march_shared_resources/GaitInstructionResponse</a>)</dt>
+<dd>Publishes whether a gait was accepted, rejected or finished.</dd>
+</dl>
+</div>
+<div class="section" id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/state_machine/get_possible_gaits</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/PossibleGaits.srv">march_shared_resources/PossibleGaits</a>)</dt>
+<dd>Returns a list of names of possible gaits than can be executed next.</dd>
+<dt><em>/march/state_machine/current_states</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/CurrentState.srv">march_shared_resources/CurrentState</a>)</dt>
+<dd>Returns the current active state and its type.</dd>
+</dl>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>state_machine/state_machine_viewer</em> (<em>bool</em>, default: <code class="docutils literal"><span class="pre">false</span></code>)</dt>
+<dd>Whether to launch the smach_viewer.</dd>
+<dt><em>state_machine/unpause</em> (<em>bool</em>, default: <code class="docutils literal"><span class="pre">true</span></code>)</dt>
+<dd>Unpauses the simulation, since the Gazebo simulation always starts paused.</dd>
+<dt><em>state_machine/sounds</em> (<em>bool</em>, default: <code class="docutils literal"><span class="pre">false</span></code>)</dt>
+<dd>Whether to play sounds using the soundplay_node.</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="tutorials">
