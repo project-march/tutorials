@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_simulation &mdash; Project March Melodic documentation</title>
+  <title>march_imu_manager &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,7 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="prev" title="march_state_machine" href="march_state_machine.html"/> 
+        <link rel="next" title="march_input_device" href="march_input_device.html"/>
+        <link rel="prev" title="march_hardware_interface" href="march_hardware_interface.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -317,14 +318,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_imu_manager.html">march_imu_manager</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="march_imu_manager.html#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="march_imu_manager.html#launch">Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="march_imu_manager.html#interaction">Interaction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="march_imu_manager.html#placement">Placement</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_imu_manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launch">Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interaction">Interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#placement">Placement</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="march_imu_manager.html#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a><ul>
@@ -447,11 +448,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_simulation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-structure">Code structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#com-controller-plugin">CoM controller plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_simulation.html">march_simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#code-structure">Code structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_simulation.html#com-controller-plugin">CoM controller plugin</a></li>
 </ul>
 </li>
 </ul>
@@ -483,65 +484,82 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_simulation.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_imu_manager.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>march_simulation</li>
+    <li>march_imu_manager</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-simulation">
-<span id="march-simulation-label"></span><h1>march_simulation<a class="headerlink" href="#march-simulation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="march-imu-manager">
+<span id="march-imu-manager-label"></span><h1>march_imu_manager<a class="headerlink" href="#march-imu-manager" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march simulation package launches <a class="reference external" href="http://gazebosim.org/">Gazebo</a> and spawns the <a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span class="std std-ref">URDF</span></a> of the March exoskeleton.
-Its goal is to provide an interface for our high-level code to call similar to that of the <a class="reference internal" href="march_hardware_interface.html#march-hardware-interface-label"><span class="std std-ref">march_hardware_interface</span></a>.</p>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>The simulation can be launched using</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_simulation</span><span class="o">.</span><span class="n">launch</span>
+<p>The <code class="docutils literal"><span class="pre">march_imu_manager</span></code> interfaces between ROS and the <a class="reference external" href="https://www.xsens.com/products/mtw-awinda">XSense MTw Awinda IMU’s</a>.
+The IMU’s connect wireless to an USB dongle, which should be inserted in the computer before the node is launched.
+The package contains and uses the Xsens library belonging to the IMU to read the data from the dongle. The data is then published in a
+<a class="reference external" href="http://docs.ros.org/melodic/api/sensor_msgs/html/msg/Imu.html">sensors_msgs/imu message</a> on the <code class="docutils literal"><span class="pre">/march/imu</span></code> rostopic.</p>
+<div class="section" id="launch">
+<h3>Launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h3>
+<p>The node is not automatically launched when launching from <cite>march_launch</cite> at the moment. It has no launch file, but can be launched with:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rosrun</span> <span class="n">march_imu_manager</span> <span class="n">march_imu_manager_node</span>
 </pre></div>
 </div>
-<p>This will launch the simulation using the rviz GUI. The backpack is fixed in space so the exoskeleton will move
-similarly to airgaiting. It is also possible to groundgait in the simulation. We will need the Gazebo GUI for that,
-so that the exoskeleton can move relative to the world. The launch command becomes</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march_simulation</span><span class="o">.</span><span class="n">launch</span> <span class="n">rviz</span><span class="p">:</span><span class="o">=</span><span class="n">false</span> <span class="n">gazebo_ui</span><span class="p">:</span><span class="o">=</span><span class="n">true</span> <span class="n">ground_gait</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
+</div>
+<div class="section" id="interaction">
+<h3>Interaction<a class="headerlink" href="#interaction" title="Permalink to this headline">¶</a></h3>
+<p>The IMU position is defined as a link in the
+<a class="reference external" href="https://wiki.ros.org/urdf">URDF</a>, see <a class="reference internal" href="march_description.html#march-description-label"><span class="std std-ref">march_description</span></a>. Linking the IMU to an existing frame can be done by setting <code class="docutils literal"><span class="pre">imu/header/fame_id</span></code>.
+Linking an IMU to a frame allows for nice integrations with ROS. For instance, the data coming from the IMU is used in the march_data_collector package to update the tf2 (<a class="reference internal" href="../useful_ros_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a>) data.
+Thereby updating the orientation of the joints with respect to world, which is used for other calculations.</p>
+</div>
+<div class="section" id="placement">
+<h3>Placement<a class="headerlink" href="#placement" title="Permalink to this headline">¶</a></h3>
+<p>Currently there is only support for one IMU position, namely in the backpack. This is also defined in the URDF with the <code class="docutils literal"><span class="pre">imu_link</span></code>.
+The IMU should be placed in a special spot next to the battery. The IMU should be orientated with the LED towards the pilot.</p>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>In this section IMU specific problems are mentioned, it is assumed everything with ROS works perfectly.</p>
+<ul>
+<li><dl class="first docutils">
+<dt>No wireless master found:</dt>
+<dd><p class="first">The package is unable to locate the USB dongle.</p>
+<ul class="last">
+<li><p class="first">Is the USB dongle inserted in the computer on which the node runs?</p>
+</li>
+<li><p class="first">Are you in a group (often <cite>dialout</cite> or <cite>uucp</cite>) that can read the USB port?</p>
+<blockquote>
+<div><p>This can be checked by running the following.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ ls -l /dev/ttyUSB0
+$ groups
 </pre></div>
 </div>
-<p>One can add an obstacle in simulation by adding the “obstacle:=&lt;&lt;obstacle_name&gt;&gt;” to the command. The possible
-obstacles can be found in the obstacles folder of the march_simulation package. The current obstacles were created
-after four of the obstacles in the Cybathlon 2020.</p>
+<p>You can set yourself to the right group by running the following. Replace ‘dialout’ with your own USB group.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>$ sudo usermod -G dialout -a $USER
+$ newgrp dialout
+</pre></div>
 </div>
-<div class="section" id="code-structure">
-<h2>Code structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
-<p>There are two important packages in the simulation repository.</p>
-<p>march_simulation contains all basic functionality: launch file, world description, controller configuration
-(config folder). It also contains URDFs of the obstacles.</p>
-<p>march_gazebo_plugins contains the CoM controller gazebo plugin that allows the exoskeleton to groundgait without
-falling in simulation.</p>
-</div>
-<div class="section" id="com-controller-plugin">
-<h2>CoM controller plugin<a class="headerlink" href="#com-controller-plugin" title="Permalink to this headline">¶</a></h2>
-<p>Just like the real exoskeleton, the exoskeleton in simulation cannot stably walk without help. For this purpose the
-CoM controller plugin was created. It seeks to mock not the pilot, but the coach during a ground gait session. This
-for the simple reason that the behaviour of the pilot is more erratic and therefore much harder to accurately simulate.</p>
-<p>The plugin works by controlling the position of the Center of Mass (CoM). There is a target function describing the
-desired location of the CoM. This target function moves in the x-direction (movement direction of exo) with speed
-step_size / step_duration. The y-direction target is constantly the stable leg during a swing. It therefore switches
-discontinuously from one leg to the other at the end of each swing.</p>
-<p>The plugin ensures that the CoM does not stray far from the target through a PID controller. The controller applies
-a compensating <em>torque</em> to each of the links (parts) in the exoskeleton.</p>
-<p>Note the following:
-1. The plugin assumes the subgait names start with left/right and end with open/swing/close. It will do nothing for
-other subgaits.
-2. The plugin might have to be re-tuned for an obstacle.</p>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>The package found a wireless master, but does not connect with an IMU:</dt>
+<dd><p class="first last">The IMU is off or out of reach. Turn the IMU on by pressing the button until the LED blinks.</p>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 </div>
 
@@ -549,7 +567,7 @@ other subgaits.
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_simulation.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_imu_manager.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -558,8 +576,10 @@ other subgaits.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="march_input_device.html" class="btn btn-neutral float-right" title="march_input_device" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="march_state_machine.html" class="btn btn-neutral" title="march_state_machine" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="march_hardware_interface.html" class="btn btn-neutral" title="march_hardware_interface" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
