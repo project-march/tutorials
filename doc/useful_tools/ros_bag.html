@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Robot model &mdash; Project March Melodic documentation</title>
+  <title>ROS bag &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="ros_control" href="ros_control.html"/>
-        <link rel="prev" title="Create your workspace" href="../getting_started/create_your_workspace.html"/> 
+        <link rel="next" title="Gazebo" href="gazebo.html"/>
+        <link rel="prev" title="RQT" href="rqt.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -101,16 +101,16 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Useful ROS tools</span></p>
+<p class="caption"><span class="caption-text">Useful tools</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Robot model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tf2">tf2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#urdf">urdf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#joint-state-publisher">joint_state_publisher</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#robot-state-publisher">robot_state_publisher</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rviz">rviz</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robot_model.html">Robot model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#tf2">tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#urdf">urdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#joint-state-publisher">joint_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#robot-state-publisher">robot_state_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#rviz">rviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot_model.html#see-also">See also</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ros_control.html">ros_control</a></li>
@@ -118,14 +118,24 @@
 <li class="toctree-l2"><a class="reference internal" href="rqt.html#see-also">See also</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ros_bag.html">ROS bag</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ros_bag.html#recording-bags">Recording bags</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROS bag</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#recording-bags">Recording bags</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gazebo.html">Gazebo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="smach.html">SMACH</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="smach.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smach.html#smach-viewer">smach_viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="event_stream_processing.html">Event stream Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#how-does-sas-esp-work">How does SAS ESP work?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="event_stream_processing.html#window-types">Window types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event_stream_processing.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#launching-with-esp">Launching with <cite>ESP</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -205,6 +215,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_exoskeleton/using_the_pressure_soles.html">Using the pressure soles</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
@@ -270,6 +281,23 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_data_collector.html">march_data_collector</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#calculating-com-and-cp">Calculating <cite>CoM</cite> and <cite>CP</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#event-stream-processing">Event Stream Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#adding-a-publisher-into-esp">Adding a publisher into <cite>ESP</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#pressure-soles">Pressure Soles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#subscribed-topics">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../march_packages/march_description.html">march_description</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../march_packages/march_description.html#see-also">See also</a></li>
 </ul>
@@ -492,63 +520,51 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/robot_model.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_tools/ros_bag.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Robot model</li>
+    <li>ROS bag</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="robot-model">
-<span id="robot-model-label"></span><h1>Robot model<a class="headerlink" href="#robot-model" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial lists the main components that allow you to visualize a robot model.
-As the official documentation of these components is sufficient, we will only provide a brief description of each component.</p>
-<div class="section" id="tf2">
-<h2>tf2<a class="headerlink" href="#tf2" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://wiki.ros.org/tf2">tf2</a> is the second generation of the transform library.
-There is very rarely a need to interact with tf frames directly, but it is still important to be aware of their existence.
-They are used by the robot_state_publisher and rviz to properly visualize your robot.</p>
+  <div class="section" id="ros-bag">
+<span id="ros-bag-label"></span><h1>ROS bag<a class="headerlink" href="#ros-bag" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The official documentation for <a class="reference external" href="http://wiki.ros.org/rosbag">rosbag</a> and <a class="reference external" href="http://wiki.ros.org/rqt_bag">rqt_bag</a>
+are quite comprehensive. Please refer to them if you have any questions.</p>
 </div>
-<div class="section" id="urdf">
-<h2>urdf<a class="headerlink" href="#urdf" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://wiki.ros.org/urdf">urdf</a> is an xml format used to describe robots. It contains of visuals as well as collisions.
-<a class="reference external" href="http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File">xacro</a> is a macro language which allows you to use variables and other neat shortcuts in urdf files.
-To gain practical experience, please see the <a class="reference external" href="http://wiki.ros.org/urdf/Tutorials">official tutorials</a>.</p>
+<p><a class="reference external" href="http://wiki.ros.org/rosbag">rosbag</a> is an excellent tool which allows you to record any topics you want during runtime.
+The recorded topics are saved to a bagfile. These bags can be easily inspected with an rqt_plugin called
+<a class="reference external" href="http://wiki.ros.org/rqt_bag">rqt_bag</a> to plot the data.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/example_ros_bag.png" src="../../_images/example_ros_bag.png" />
+<p class="caption"><span class="caption-text">Example of rqt_bag</span></p>
 </div>
-<div class="section" id="joint-state-publisher">
-<h2>joint_state_publisher<a class="headerlink" href="#joint-state-publisher" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://wiki.ros.org/joint_state_publisher">joint_state_publisher</a> is a very useful package,
-which reads your urdf and publishes a <a class="reference external" href="http://docs.ros.org/api/sensor_msgs/html/msg/JointState.html">JointState message</a> for all your joints.</p>
-</div>
-<div class="section" id="robot-state-publisher">
-<h2>robot_state_publisher<a class="headerlink" href="#robot-state-publisher" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://wiki.ros.org/robot_state_publisher">robot_state_publisher</a> takes your urdf and the joint states, and calculates the respective tf frames.</p>
-</div>
-<div class="section" id="rviz">
-<h2>rviz<a class="headerlink" href="#rviz" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://wiki.ros.org/rviz">rviz</a> is a 3D visualization tool which is capable of displaying information about your robot and its surroundings.
-The visualization combines the urdf and the tf frames to show the robot model.
-Please check the <a class="reference external" href="http://wiki.ros.org/rviz/UserGuide">official userguide</a> to start using it!</p>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>An example launchfile has been provided in <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/doc/useful_ros_tools/launch/robot_model.launch">robot_model.launch</a>.</p>
-<p>Inspect the file to see how the different nodes are launched, and try it out yourself with the following command!</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_tutorials</span> <span class="n">robot_model</span><span class="o">.</span><span class="n">launch</span>
+<div class="section" id="recording-bags">
+<h2>Recording bags<a class="headerlink" href="#recording-bags" title="Permalink to this headline">¶</a></h2>
+<p>There are many ways to record a rosbag: Using the RQT plugin, with the commandline, or adding it to the launchfile.</p>
+<p>Adding it to the launchfile is the least effort, and is done by starting the following node:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">node</span>
+  <span class="n">pkg</span><span class="o">=</span><span class="s2">&quot;rosbag&quot;</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
+  <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
+  <span class="n">output</span><span class="o">=</span><span class="s2">&quot;screen&quot;</span>
+  <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-o &lt;output_directory&gt; /topic1 /topic2&quot;</span>
+<span class="o">/&gt;</span>
 </pre></div>
 </div>
-<p>If no robot shows up, make sure to add a <code class="docutils literal"><span class="pre">RobotModel</span></code> to the displays on the left.</p>
-<p>If your robot shows up but appears in white/red, make sure the global option for <code class="docutils literal"><span class="pre">Fixed</span> <span class="pre">Frame</span></code> is set to <code class="docutils literal"><span class="pre">world</span></code> instead of <code class="docutils literal"><span class="pre">map</span></code>.</p>
+<p>Use the option -a to record all topics.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If you don’t specify an output directory, the log files are located in the ros home folder (~/.ros)</p>
 </div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://answers.ros.org/question/275079/joint-state-publisher-and-robot-state-publisher">Difference between robot_state_publisher and joint_state_publisher</a></p>
 </div>
 </div>
 
@@ -556,7 +572,7 @@ Please check the <a class="reference external" href="http://wiki.ros.org/rviz/Us
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/robot_model.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_tools/ros_bag.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -565,10 +581,10 @@ Please check the <a class="reference external" href="http://wiki.ros.org/rviz/Us
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ros_control.html" class="btn btn-neutral float-right" title="ros_control" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gazebo.html" class="btn btn-neutral float-right" title="Gazebo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../getting_started/create_your_workspace.html" class="btn btn-neutral" title="Create your workspace" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rqt.html" class="btn btn-neutral" title="RQT" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

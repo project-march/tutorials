@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SMACH &mdash; Project March Melodic documentation</title>
+  <title>Gazebo &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="High level overview" href="../using_the_march_exoskeleton/high_level_overview.html"/>
-        <link rel="prev" title="Gazebo" href="gazebo.html"/> 
+        <link rel="next" title="SMACH" href="smach.html"/>
+        <link rel="prev" title="ROS bag" href="ros_bag.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -101,7 +101,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Useful ROS tools</span></p>
+<p class="caption"><span class="caption-text">Useful tools</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="robot_model.html">Robot model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="robot_model.html#tf2">tf2</a></li>
@@ -122,10 +122,20 @@
 <li class="toctree-l2"><a class="reference internal" href="ros_bag.html#recording-bags">Recording bags</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gazebo.html">Gazebo</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SMACH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#smach-viewer">smach_viewer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gazebo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smach.html">SMACH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smach.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smach.html#smach-viewer">smach_viewer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="event_stream_processing.html">Event stream Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#how-does-sas-esp-work">How does SAS ESP work?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="event_stream_processing.html#window-types">Window types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event_stream_processing.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="event_stream_processing.html#launching-with-esp">Launching with <cite>ESP</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -205,6 +215,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../using_the_march_exoskeleton/error_codes.html#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../using_the_march_exoskeleton/using_the_pressure_soles.html">Using the pressure soles</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
@@ -270,6 +281,23 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../march_packages/march_data_collector.html">march_data_collector</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#calculating-com-and-cp">Calculating <cite>CoM</cite> and <cite>CP</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#event-stream-processing">Event Stream Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#adding-a-publisher-into-esp">Adding a publisher into <cite>ESP</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#pressure-soles">Pressure Soles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../march_packages/march_data_collector.html#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#subscribed-topics">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../march_packages/march_data_collector.html#parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../march_packages/march_description.html">march_description</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../march_packages/march_description.html#see-also">See also</a></li>
 </ul>
@@ -492,46 +520,28 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/smach.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_tools/gazebo.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>SMACH</li>
+    <li>Gazebo</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="smach">
-<span id="smach-label"></span><h1>SMACH<a class="headerlink" href="#smach" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The official documentation for <a class="reference external" href="http://wiki.ros.org/smach">smach</a> is quite comprehensive. Please refer to it if you have any questions.</p>
-</div>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>SMACH is a task-level architecture for rapidly creating complex robot behavior.
-At its core, SMACH is a ROS-independent Python library to build hierarchical state machines.</p>
-<p>SMACH makes it easy to get an overview of the behaviour of the exoskeleton.
-It includes a visualization called the Introspection Server.</p>
-<p>SMACH is well documented on the <a class="reference external" href="http://wiki.ros.org/smach">ros wiki</a>.
-If you have to work with SMACH, make sure you have completed all their tutorials first.</p>
+  <div class="section" id="gazebo">
+<span id="gazebo-label"></span><h1>Gazebo<a class="headerlink" href="#gazebo" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://gazebosim.org/">Gazebo</a> is a robot simulator that is capable of simulating worlds, robots and complex physics.
+Gazebo can integrate with ros using the packages in <a class="reference external" href="https://wiki.ros.org/gazebo_ros_pkgs">gazebo_ros_pkgs</a>.</p>
+<p>The simulation packages and plugins for the March exoskeleton are contained in the <a class="reference external" href="https://github.com/project-march/simulation/tree/develop/">project-march/simulation</a>
+repository.</p>
 <div class="figure align-center" id="id2">
-<img alt="../../_images/smach.png" src="../../_images/smach.png" />
-<p class="caption"><span class="caption-text">Snippet of the March state machine</span></p>
-</div>
-</div>
-<div class="section" id="smach-viewer">
-<h2>smach_viewer<a class="headerlink" href="#smach-viewer" title="Permalink to this headline">¶</a></h2>
-<p>SMACH also contains a viewer. This displays all state and transitions of the state machine. This visualization can highlight the current state during runtime.
-This package is documented <a class="reference external" href="http://wiki.ros.org/smach_viewer">here</a>.</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">To get started read a few <a class="reference external" href="http://wiki.ros.org/smach/Tutorials">SMACH tutorials or examples</a>.</p>
-</div>
+<img alt="../../_images/gazebo.png" src="../../_images/gazebo.png" />
+<p class="caption"><span class="caption-text">Gazebo sim GUI</span></p>
 </div>
 </div>
 
@@ -539,7 +549,7 @@ This package is documented <a class="reference external" href="http://wiki.ros.o
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_ros_tools/smach.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/useful_tools/gazebo.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -548,10 +558,10 @@ This package is documented <a class="reference external" href="http://wiki.ros.o
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../using_the_march_exoskeleton/high_level_overview.html" class="btn btn-neutral float-right" title="High level overview" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="smach.html" class="btn btn-neutral float-right" title="SMACH" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gazebo.html" class="btn btn-neutral" title="Gazebo" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ros_bag.html" class="btn btn-neutral" title="ROS bag" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

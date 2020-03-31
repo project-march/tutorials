@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_shared_classes &mdash; Project March Melodic documentation</title>
+  <title>march_data_collector &mdash; Project March Melodic documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Project March Melodic documentation" href="../../index.html"/>
-        <link rel="next" title="march_shared_resources" href="march_shared_resources.html"/>
-        <link rel="prev" title="march_safety" href="march_safety.html"/> 
+        <link rel="next" title="march_description" href="march_description.html"/>
+        <link rel="prev" title="Add a new gait" href="../development/add_a_new_gait.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -281,19 +281,19 @@
 </ul>
 <p class="caption"><span class="caption-text">March Packages</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="march_data_collector.html">march_data_collector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="march_data_collector.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="march_data_collector.html#calculating-com-and-cp">Calculating <cite>CoM</cite> and <cite>CP</cite></a></li>
-<li class="toctree-l2"><a class="reference internal" href="march_data_collector.html#event-stream-processing">Event Stream Processing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="march_data_collector.html#adding-a-publisher-into-esp">Adding a publisher into <cite>ESP</cite></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_data_collector</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calculating-com-and-cp">Calculating <cite>CoM</cite> and <cite>CP</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-stream-processing">Event Stream Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-publisher-into-esp">Adding a publisher into <cite>ESP</cite></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="march_data_collector.html#pressure-soles">Pressure Soles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="march_data_collector.html#ros-api">ROS API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="march_data_collector.html#nodes">Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="march_data_collector.html#subscribed-topics">Subscribed Topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="march_data_collector.html#published-topics">Published Topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="march_data_collector.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pressure-soles">Pressure Soles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics">Subscribed Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -449,10 +449,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_shared_classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-gait-classes">The Gait classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="march_shared_classes.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="march_shared_classes.html#the-gait-classes">The Gait classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="march_shared_classes.html#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -520,48 +520,126 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_shared_classes.rst" class="fa fa-github"> Edit on GitHub</a>
+          <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_data_collector.rst" class="fa fa-github"> Edit on GitHub</a>
         
       
     </li>
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>march_shared_classes</li>
+    <li>march_data_collector</li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-shared-classes">
-<span id="march-shared-classes-label"></span><h1>march_shared_classes<a class="headerlink" href="#march-shared-classes" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="march-data-collector">
+<span id="march-data-collector-label"></span><h1>march_data_collector<a class="headerlink" href="#march-data-collector" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march_shared_classes package contains classes that are useful in different workspaces of the project. It currently
-only contains the Gait classes.</p>
+<p>The <cite>march_data_collector</cite> package subscribes to the topics on which data is published to process the data. Basically three things are happening to the data:</p>
+<ul class="simple">
+<li>Based on the position, the acceleration and jerk (through second and third order backward Euler) are calculated for future analysis.</li>
+<li>The IMU is used to adapt the tf frames and based on this the center of mass (CoM) and the capture point (CP) are calculated.</li>
+<li>The data is send to an <cite>Event Stream Processing</cite> Engine.</li>
+</ul>
+<p>Furthermore the  package also publishes incoming data from the pressure soles and sends data to the software that came with the pressure soles.</p>
 </div>
-<div class="section" id="the-gait-classes">
-<h2>The Gait classes<a class="headerlink" href="#the-gait-classes" title="Permalink to this headline">¶</a></h2>
-<p>The Gait classes consist of the classes Gait, Subgait, JointTrajectory, Limits and Setpoint. These classes can be used
-to store a gait. Every Gait object contains a list of Subgait objects. Every Subgait contains a list containing one
-JointTrajectory object for each joint in the exoskeleton. Every JointTrajectory object contains a Limits object and a
-list of Setpoints. A JointTrajectory object can interpolate between its setpoints to obtain the trajectory the joint
-will follow.</p>
-<div class="section" id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<p>The Gait classes are typically constructed by reading a gait file. This can be done with</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Subgait</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">robot</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="calculating-com-and-cp">
+<h2>Calculating <cite>CoM</cite> and <cite>CP</cite><a class="headerlink" href="#calculating-com-and-cp" title="Permalink to this headline">¶</a></h2>
+<p>The data from the IMU (<a class="reference internal" href="march_imu_manager.html#march-imu-manager-label"><span class="std std-ref">march_imu_manager</span></a>) is used to change the tf frames (see <a class="reference internal" href="../useful_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a>).
+such that the tf frames are orientated with respect to the world correctly.
+The tf frames together with the masses of the links from the <a class="reference internal" href="../useful_tools/robot_model.html#robot-model-label"><span class="std std-ref">URDF</span></a> can be used to calculate the center of mass.
+This is then published as a marker on <code class="docutils literal"><span class="pre">/march/com_marker</span></code>.
+The calculation is based on an implementation from <a class="reference external" href="https://github.com/bit-bots">Hamburg Bit-Bots</a>.
+The marker can also be visualized in <a class="reference internal" href="../useful_tools/robot_model.html#robot-model-label"><span class="std std-ref">rviz</span></a>. The tf frames and CoM can be combined to calculate the capture point.
+This is the point where one should place their foot in order to return to a stable standing position.
+This calculation is done for both feet and published as a marker on <code class="docutils literal"><span class="pre">/march/cp_marker_ankle_plate_{left|right}</span></code>
+The center of mass and capture point are used for (research on) balancing the exoskeleton.</p>
 </div>
-<p>to read a single .subgait file or</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Gait</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">robot</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="event-stream-processing">
+<h2>Event Stream Processing<a class="headerlink" href="#event-stream-processing" title="Permalink to this headline">¶</a></h2>
+<p>At March we use the <cite>Event Stream Processing</cite> engine from <a class="reference external" href="https://www.sas.com/nl_nl/home.html">SAS</a>.
+Here we will just describe the integration in the <cite>march_data_collector</cite>, but more information on <cite>ESP</cite> and how we use it can be found at <a class="reference internal" href="../useful_tools/event_stream_processing.html#event-stream-processing-label"><span class="std std-ref">event stream processing</span></a>.
+The engine allows for real-time data analysis and processing. With the installation also comes a module to inject events, which is used in this package.
+The <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_data_collector/src/march_data_collector/esp_adapter.py">esp_adapter.py</a> functions as the interface between our software and ESP. This ROS node subscribes to
+ROS topics containing interesting data. It converts the ROS messages into csv strings and injects the data into the correct window of the ESP engine.
+Injecting data can only happen into a source window.</p>
+<div class="section" id="adding-a-publisher-into-esp">
+<h3>Adding a publisher into <cite>ESP</cite><a class="headerlink" href="#adding-a-publisher-into-esp" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Add a source window to the <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_data_collector/esp_models/march.xml">model</a>.</li>
+<li>Create a callback function that takes a ROS message and calls the <code class="docutils literal"><span class="pre">send_to_esp</span></code> function with the msgs as csv
+string in <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_data_collector/src/march_data_collector/esp_adapter.py">esp_adapter.py</a>.</li>
+<li>In the same file add a call to <code class="docutils literal"><span class="pre">configure_source</span></code> to the <code class="docutils literal"><span class="pre">__init__</span></code>.</li>
+</ol>
 </div>
-<p>to read all the .subgait files in a gait folder at once.</p>
-<p>Communication with the controller usually goes via ros messages. Transform a Subgait to a subgait message through</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Subgait</span><span class="o">.</span><span class="n">to_subgait_msg</span><span class="p">()</span>
-</pre></div>
 </div>
+<div class="section" id="pressure-soles">
+<h2>Pressure Soles<a class="headerlink" href="#pressure-soles" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>march_data_collector</cite> interfaces between the Moticon pressure soles and the exoskeleton software.
+It  sends data to and receives data from the desktop software that came with the pressure soles.
+This data is send over <a class="reference external" href="https://nl.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a>.
+More information on interacting with the Moticon software can be found <a class="reference external" href="https://www.moticon.de/doc/science_desktop_software/record/udp/">here</a>.
+The package assumes that the filter used in the Moticon software is <code class="docutils literal"><span class="pre">force</span> <span class="pre">pressure</span> <span class="pre">cop</span></code>.
+More information on using the pressure soles can be found at <a class="reference internal" href="../using_the_march_exoskeleton/using_the_pressure_soles.html#using-the-pressure-soles-label"><span class="std std-ref">using the pressure soles</span></a>.</p>
+</div>
+<div class="section" id="ros-api">
+<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nodes">
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
+<p><em>march_data_collector_node</em> - Responsible for processing data.</p>
+</div>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/controller/trajectory/follow_joint_trajectory/feedback</em> (control_msgs/JointTrajectoryControllerState)</dt>
+<dd>Compute the acceleration and jerk.</dd>
+<dt><em>/march/imu</em> (sensor_msgs/Imu)</dt>
+<dd>Use IMU data to change the orientation of the tf frames and send to <cite>ESP</cite>.</dd>
+<dt><em>/march/pressure_soles</em> (march_shared_resources/PressureSole)</dt>
+<dd>Send pressure sole data to <cite>ESP</cite>.</dd>
+<dt><em>/march/imc_states</em> (march_shared_resources/ImcState)</dt>
+<dd>Send iMOTIONCUBE data to <cite>ESP</cite>.</dd>
+<dt><em>/march/gait/schedule/goal</em> (march_shared_resources/GaitActionGoal)</dt>
+<dd>Send gait data to <cite>ESP</cite>.</dd>
+<dt><em>/march/com_marker</em> (visualization_msgs/Marker)</dt>
+<dd>Send center of mass to <cite>ESP</cite>.</dd>
+<dt><em>/march/joint_values</em> (march_shared_resources/JointValues)</dt>
+<dd>Send position, velocity, acceleration and jerk of joints to <cite>ESP</cite>.</dd>
+<dt><em>/march/joint_states</em> (sensor_msgs/JointState)</dt>
+<dd>Send actual effort to <cite>ESP</cite>.</dd>
+<dt><em>/march/controller/after_limit_joint_command</em> (march_shared_resources/AfterLimitJointCommand)</dt>
+<dd>Send effort command to <cite>ESP</cite>.</dd>
+<dt><em>/march/temperature/*</em> (sensor_msgs/Temperature)</dt>
+<dd>Send temperature command to <cite>ESP</cite> for each joint.</dd>
+</dl>
+<p>Subscribes to the tf frames trough a <a class="reference external" href="http://wiki.ros.org/tf2">tf2</a> buffer.</p>
+</div>
+<div class="section" id="published-topics">
+<h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/com_marker</em> (visualization_msgs/Marker)</dt>
+<dd>A marker with the CoM point.</dd>
+<dt><em>/march/cp_marker_ankle_plate_left</em> (visualization_msgs/Marker)</dt>
+<dd>A marker with the capture point for the left foot.</dd>
+<dt><em>/march/cp_marker_ankle_plate_right</em> (visualization_msgs/Marker)</dt>
+<dd>A marker with the capture point for the right foot.</dd>
+<dt><em>/march/pressure_soles</em> (march_shared_resources/PressureSole)</dt>
+<dd>A marker with the capture point for the right foot.</dd>
+<dt><em>/march/pressure_soles</em> (march_shared_resources/JointValues)</dt>
+<dd>Send the data from the pressure soles.</dd>
+</dl>
+<p>Publishes into tf via a <a class="reference external" href="http://wiki.ros.org/tf2">tf2</a> broadcaster.</p>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/march_data_collector/moticon_ip</em> (<em>string</em>, default: 192.168.8.105)</dt>
+<dd>IP-address the Moticon desktop software is running</dd>
+<dt><em>/march/march_data_collector/pressure_soles</em> (<em>bool</em>, default: false)</dt>
+<dd>Whether to connect with the pressure soles.</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -570,7 +648,7 @@ will follow.</p>
             
             <div class="admonition note">
               <p class="first admonition-title">Open Source Feedback</p>
-              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_shared_classes.rst" class="fa fa-github"> GitHub page</a></p>
+              <p class="last">See something that needs improvement? Please open a pull request on this <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_data_collector.rst" class="fa fa-github"> GitHub page</a></p>
             </div>
             
            </div>
@@ -579,10 +657,10 @@ will follow.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_shared_resources.html" class="btn btn-neutral float-right" title="march_shared_resources" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_description.html" class="btn btn-neutral float-right" title="march_description" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_safety.html" class="btn btn-neutral" title="march_safety" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../development/add_a_new_gait.html" class="btn btn-neutral" title="Add a new gait" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
