@@ -509,18 +509,26 @@
 <h1>High level overview<a class="headerlink" href="#high-level-overview" title="Permalink to this headline">¶</a></h1>
 <p>A high level overview of the components that make up the March exoskeleton.</p>
 <div class="figure align-center" id="id1">
-<img alt="../../_images/software_stack.png" src="../../_images/software_stack.png" />
-<p class="caption"><span class="caption-text">The March software stack</span></p>
+<img alt="../../_images/high_level_architecture.svg" src="../../_images/high_level_architecture.svg" /><p class="caption"><span class="caption-text">The March software stack</span></p>
 </div>
 <div class="section" id="simulation-versus-exoskeleton">
 <h2>Simulation versus Exoskeleton<a class="headerlink" href="#simulation-versus-exoskeleton" title="Permalink to this headline">¶</a></h2>
-<p>As our exoskeleton is under construction most of the time, we have made use of a simulation to ensure we can verify our higher level nodes work.
-As seen in the above image, most of the hardware components have a simulated counterpart.</p>
-<p>At launch time, the user is asked if they are trying to run on the exoskeleton or on the simulation.
-Based on this selection, the required components are started.</p>
+<p>As the March exoskeleton is under construction most of the time, we have made use of
+a simulation to ensure we can verify our higher level nodes work. As seen in
+the above image, most of the hardware components have a simulated counterpart.</p>
+<p>When launching, the user can choose whether to launch the simulation or the
+hardware. See <a class="reference internal" href="../march_packages/march_launch.html#march-launch-label"><span class="std std-ref">march_launch</span></a> for more information on launching the
+exoskeleton.</p>
 </div>
 <div class="section" id="input-device">
 <h2>Input Device<a class="headerlink" href="#input-device" title="Permalink to this headline">¶</a></h2>
+<p>The pilot of the exoskeleton can give input on which gait they want to perform
+through the input device embedded in one of the crutches, see
+<a class="reference internal" href="../march_packages/march_input_device.html#march-input-device-label"><span class="std std-ref">march_input_device</span></a>. Furthermore, there exists a developer input
+device in the form of an RQT plugin, see <a class="reference internal" href="../march_packages/march_rqt_input_device.html#march-rqt-input-device-label"><span class="std std-ref">march_rqt_input_device</span></a>.
+Both of these ways of input can either be used in the simulation or the
+hardware. They are not dependent on the configuration in which the exoskeleton
+is run.</p>
 </div>
 </div>
 
