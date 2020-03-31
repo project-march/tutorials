@@ -562,13 +562,17 @@ to give input to the software running on the March exoskeleton.</p>
 This can be run wired via usb cable or wireless via wifi connection.</p>
 <div class="section" id="sending-messages">
 <h3>Sending messages<a class="headerlink" href="#sending-messages" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Gait Instruction Message</a> This is a instruction to start the sent gait right now, if this is possible.</p>
-<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Stop Message</a> This message can stop a repeating gait (such as walk). After receiving the stop message the exoskeleton will go to the standing pose.</p>
-<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is send. This way <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> can detect when the input device loses connection.</p>
+<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Gait Instruction Message</a> This is an instruction to start
+the sent gait right now, if this is possible.</p>
+<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Stop Message</a> This message can stop a repeating gait (such
+as walk). After receiving the stop message, the exoskeleton will go to the standing pose.</p>
+<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is
+sent. This way <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> can detect when the input device loses connection.</p>
 </div>
 <div class="section" id="receiving-messages">
 <h3>Receiving messages<a class="headerlink" href="#receiving-messages" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Bool.html">Gait Instruction Response Message</a>  This message indicate that the last gait instruction is handled. The value represent successful handled or rejected.</p>
+<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Bool.html">Gait Instruction Response Message</a>  This message
+indicates that the last gait instruction is handled. The value represents success or rejection.</p>
 </div>
 </div>
 <div class="section" id="tutorials">
@@ -691,7 +695,8 @@ to run and upload the code see the <a class="reference external" href="https://g
 </pre></div>
 </div>
 <ul class="simple">
-<li>Add a new entry to the <em>stateToGaitMapping</em>. Do this by adding a extra line in the constructor of the <em>StateMachine.cpp</em>:</li>
+<li>Add a new entry to the <em>stateToGaitMapping</em>. Do this by adding an extra line in the constructor of the
+<em>StateMachine.cpp</em>:</li>
 </ul>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">stateToGaitMapping</span><span class="p">[</span><span class="n">State</span><span class="p">::</span><span class="o">&lt;</span><span class="n">name_activated_state</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&lt;gait_name&gt;&quot;</span><span class="p">;</span>
 </pre></div>

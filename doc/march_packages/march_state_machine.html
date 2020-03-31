@@ -558,7 +558,7 @@ put, after launching the exoskeleton the state machine decides which gaits
 can be performed. The state machine also knows which gait can be executed in
 every possible state. For example after sitting you can stand-up, but you
 cannot walk.</p>
-<p>We are using an hierarchical state machine, which is a state machine whose
+<p>We are using a hierarchical state machine, which is a state machine whose
 states can be state machines as well. We also use SMACH, this is a task-level
 architecture for rapidly creating complex robot behavior(see <a class="reference internal" href="../useful_tools/smach.html#smach-label"><span class="std std-ref">SMACH</span></a>).</p>
 </div>
@@ -566,7 +566,7 @@ architecture for rapidly creating complex robot behavior(see <a class="reference
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
 <p>There are 4 general states in the state machine: <strong>LAUNCH</strong>, <strong>HEALTHY</strong>,
 <strong>SHUTDOWN</strong>, <strong>ERROR</strong>, where <strong>LAUNCH</strong> and <strong>HEALTHY</strong> are also state
-machines. As mentioned above this is possible in a hierarchical state machine.</p>
+machines. As mentioned above, this is possible in a hierarchical state machine.</p>
 <div class="figure align-center">
 <img alt="../../_images/march_state_machine.png" src="../../_images/march_state_machine.png" />
 </div>
@@ -597,7 +597,7 @@ sends requests for executing gaits.</p>
 <div class="section" id="healthy">
 <h3>HEALTHY<a class="headerlink" href="#healthy" title="Permalink to this headline">¶</a></h3>
 <p>When launched successful the <strong>HEALTHY</strong> state machine is active. This part
-contains all possible gaits. Besides gaits we also have <em>idle</em> states such as
+contains all possible gaits. Besides gaits, we also have <em>idle</em> states such as
 <strong>STANDING</strong>, <strong>SITTING</strong> and <strong>UNKNOWN</strong>. <strong>UNKNOWN</strong> is the state in which
 the current position is not known. This can be on start-up, but also after an
 error is thrown and the March exoskeleton did not fully execute the intended gait.

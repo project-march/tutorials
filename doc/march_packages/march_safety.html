@@ -561,8 +561,9 @@ will be logged. Depending on the severity the system can also be stopped or term
 violated, the object will call the <code class="docutils literal"><span class="pre">SafetyHandler</span></code> to invoke an error. The <code class="docutils literal"><span class="pre">SafetyHandler</span></code> is responsible for sending error messages and sounds.
 All <code class="docutils literal"><span class="pre">SafetyType</span></code>-objects:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">TemperatureSafety</span></code>, monitors the joint temperatures. Depending on which threshold is exceeded an warning, non-fatal or fatal is thrown.</li>
-<li><code class="docutils literal"><span class="pre">InputDeviceSafety</span></code>, checks if the input device is still connected. Otherwise a non-fatal is thrown.</li>
+<li><code class="docutils literal"><span class="pre">TemperatureSafety</span></code>, monitors the joint temperatures. Depending on which threshold is exceeded a warning,
+non-fatal or fatal is thrown.</li>
+<li><code class="docutils literal"><span class="pre">InputDeviceSafety</span></code>, checks if the input device is still connected. Otherwise, a non-fatal is thrown.</li>
 </ul>
 </div>
 </div>
@@ -575,13 +576,13 @@ The system will continue running. The event will only be logged.</p>
 </div>
 <div class="section" id="non-fatal">
 <h3>Non-Fatal<a class="headerlink" href="#non-fatal" title="Permalink to this headline">¶</a></h3>
-<p>This event is a deviation from the normal behavior. Which has consequences the system should deal with.
-An stop message is send indistinguishable from a stop message from an input device.</p>
+<p>This event is a deviation from the normal behavior, which has consequences the system should deal with.
+A stop message is send indistinguishable from a stop message from an input device.</p>
 </div>
 <div class="section" id="fatal">
 <h3>Fatal<a class="headerlink" href="#fatal" title="Permalink to this headline">¶</a></h3>
-<p>This event is a unrecoverable deviation from the normal behavior. There is no (safe) way to make the system behave properly again.
-Therefore, the system should terminate.</p>
+<p>This event is an unrecoverable deviation from the normal behavior. There is no (safe) way to make the system behave
+properly again. Therefore, the system should terminate.</p>
 </div>
 </div>
 <div class="section" id="ros-api">

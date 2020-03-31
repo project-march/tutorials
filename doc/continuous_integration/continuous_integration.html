@@ -566,7 +566,7 @@ in order to merge. You can download a template <a class="reference external" hre
 for new repositories.</p>
 <div class="section" id="build-notifications">
 <h3>Build Notifications<a class="headerlink" href="#build-notifications" title="Permalink to this headline">¶</a></h3>
-<p>Travis builds can send notifications when builds succeed or fail. By default
+<p>Travis builds can send notifications when builds succeed or fail. By default,
 Travis sends emails about builds. The march repositories disable the email
 notifications and enable secure slack integration. This is done by the
 following setting in <code class="docutils literal"><span class="pre">.travis.yml</span></code>.</p>
@@ -615,8 +615,8 @@ The other type of workspace that can be used is the <code class="docutils litera
 The downstream workspace contains packages that depend on the current package.
 It builds and runs tests on downstream packages to check if there are any
 breaking changes. This is currently only used in <a class="reference external" href="https://github.com/project-march/march/tree/develop/.travis.yml">march</a>.</p>
-<p>Finally there is the <code class="docutils literal"><span class="pre">AFTER_SCRIPT</span></code> option. This runs the given script after
-all the default tests. Currently it is set in the template to run roslint on
+<p>Finally, there is the <code class="docutils literal"><span class="pre">AFTER_SCRIPT</span></code> option. This runs the given script after
+all the default tests. Currently, it is set in the template to run roslint on
 the target packages. The build can fail if the after script fails.</p>
 </div>
 <div class="section" id="running-industrial-ci">

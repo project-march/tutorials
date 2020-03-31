@@ -557,9 +557,10 @@
 <ul class="simple">
 <li>Based on the position, the acceleration and jerk (through second and third order backward Euler) are calculated for future analysis.</li>
 <li>The IMU is used to adapt the tf frames and based on this the center of mass (CoM) and the capture point (CP) are calculated.</li>
-<li>The data is send to an <cite>Event Stream Processing</cite> Engine.</li>
+<li>The data is sent to an <cite>Event Stream Processing</cite> Engine.</li>
 </ul>
-<p>Furthermore the  package also publishes incoming data from the pressure soles and sends data to the software that came with the pressure soles.</p>
+<p>Furthermore, the package also publishes incoming data from the pressure soles and sends data to the software that
+came with the pressure soles.</p>
 </div>
 <div class="section" id="calculating-com-and-cp">
 <h2>Calculating <cite>CoM</cite> and <cite>CP</cite><a class="headerlink" href="#calculating-com-and-cp" title="Permalink to this headline">¶</a></h2>
@@ -595,7 +596,7 @@ string in <a class="reference external" href="https://github.com/project-march/m
 <h2>Pressure Soles<a class="headerlink" href="#pressure-soles" title="Permalink to this headline">¶</a></h2>
 <p>The <cite>march_data_collector</cite> interfaces between the Moticon pressure soles and the exoskeleton software.
 It  sends data to and receives data from the desktop software that came with the pressure soles.
-This data is send over <a class="reference external" href="https://nl.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a>.
+This data is sent over <a class="reference external" href="https://nl.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a>.
 More information on interacting with the Moticon software can be found <a class="reference external" href="https://www.moticon.de/doc/science_desktop_software/record/udp/">here</a>.
 The package assumes that the filter used in the Moticon software is <code class="docutils literal"><span class="pre">force</span> <span class="pre">pressure</span> <span class="pre">cop</span></code>.
 More information on using the pressure soles can be found at <a class="reference internal" href="../using_the_march_exoskeleton/using_the_pressure_soles.html#using-the-pressure-soles-label"><span class="std std-ref">using the pressure soles</span></a>.</p>

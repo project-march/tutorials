@@ -553,7 +553,7 @@
 <span id="using-the-gait-generator-label"></span><h1>Using the gait generator<a class="headerlink" href="#using-the-gait-generator" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is highly recommended to follow the <a class="reference internal" href="../useful_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a> to better understand how ros works with robots.</p>
+<p class="last">It is highly recommended following the <a class="reference internal" href="../useful_tools/robot_model.html#robot-model-label"><span class="std std-ref">Robot model</span></a> to better understand how ros works with robots.</p>
 </div>
 <p>This tutorial will teach how to use the March gait generator to create your own gaits and subgaits.</p>
 <div class="admonition-todo admonition" id="index-0">
@@ -562,7 +562,8 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This tutorial covers how to use the gait generator, if you want to develop the gait generator, please check the package description.</p>
+<p class="last">This tutorial covers how to use the gait generator, if you want to develop the gait generator, please check the
+package description.</p>
 </div>
 <div class="section" id="the-basics">
 <h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
@@ -595,7 +596,7 @@ The speed is defined as a percentage of the actual speed.</p>
 <p>In the bottom right of the gait generator it is possible to change the duration of the gait file.
 By ticking the box <code class="docutils literal"><span class="pre">Scale</span> <span class="pre">Setpoints</span></code>, you can scale all the setpoints to the new duration of the gait, so that the relative amount of time between the setpoints will stay the same.
 Without ticking this box the total amount of time of the gait will change without changing the absolute amount of time between setpoints.
-This means, when decreasing the total amount of time it is possible that some of the last setpoints will be deleted as they exceed the new duration.
+This means, when decreasing the total amount of time it is possible that some last setpoints will be deleted as they exceed the new duration.
 When this happens, a warning will be given by the gait generator.</p>
 </div>
 <div class="section" id="velocity-markers">
@@ -607,7 +608,8 @@ The lines represent the velocity for each setpoint in degrees per second.</p>
 <h2>Mirroring<a class="headerlink" href="#mirroring" title="Permalink to this headline">¶</a></h2>
 <p>The feature called mirroring allows you to mirror a gait. This means, for the mirrored gait the trajectories of the left and right joints are switched.
 One requirement to do this is that the last setpoint of the left leg has to have the same values as the first setpoint of the right leg and the other way around.
-Otherwise the gait generator will give you a warning that gait mirroring is not possible. Furthermore, either the word ‘left’ or ‘right’ should be in the name of the subgait.
+Otherwise, the gait generator will give you a warning that gait mirroring is not possible. Furthermore, either the
+word ‘left’ or ‘right’ should be in the name of the subgait.
 The mirrored version will be saved with the same version name as the original file, but the word ‘left’ or ‘right’ in the subgait folder is changed to the opposite one.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>

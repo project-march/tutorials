@@ -553,7 +553,7 @@
 <span id="march-rqt-input-device-label"></span><h1>march_rqt_input_device<a class="headerlink" href="#march-rqt-input-device" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march_rqt_input_device is an rqt plugin that features as a mock input device during training and development.
+<p>The march_rqt_input_device is a rqt plugin that features as a mock input device during training and development.
 It allows you to easily send gait instructions and stop commands, as well as fake errors.</p>
 <p>The march_rqt_input_device was designed to easily allow you to add custom buttons.</p>
 <div class="figure align-center">
@@ -597,7 +597,7 @@ normal input device should cause the <em>safety node</em> to throw an error.</p>
 <span id="add-a-new-button-label"></span><h3>Add a new button<a class="headerlink" href="#add-a-new-button" title="Permalink to this headline">¶</a></h3>
 <p>In this tutorial we will add a new button which will have a custom callback that publishes on a new topic
 Our button will publish a boolean message if this tutorial works on the topic <code class="docutils literal"><span class="pre">/march/this/tutorial/works</span></code></p>
-<p>We will need to add code to <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_view.py">input_device.py</a> and <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_controller.py">input_device.py</a>. The <code class="docutils literal"><span class="pre">InputDeviceView</span></code> class contains code for layout, colour and buttons, where the <code class="docutils literal"><span class="pre">InputDeviceController</span></code> class contains code for publishing on topics.
+<p>We will need to add code to <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_view.py">input_device.py</a> and <a class="reference external" href="https://github.com/project-march/monitor/tree/develop/march_rqt_input_device/src/march_rqt_input_device/input_device_controller.py">input_device.py</a>. The <code class="docutils literal"><span class="pre">InputDeviceView</span></code> class contains code for layout, color and buttons, where the <code class="docutils literal"><span class="pre">InputDeviceController</span></code> class contains code for publishing on topics.
 Make sure to check these files before you start as it contains many examples of existing buttons.</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
