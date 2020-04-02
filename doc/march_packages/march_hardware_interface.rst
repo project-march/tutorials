@@ -48,10 +48,15 @@ mechanical limits of the joints. The soft limit values are loaded from the URDF.
 The job of the limits interface is to limit the output of the controllers as to
 not exceed the joint limits defined in the URDF. Enforcing the limits occurs at
 the start of the ``write`` function, before writing the actuate commands to the
-robot. See the `Joint Limits`_ section on the ros_control wiki for more info on
-the joint limits.
+robot.
+
+.. seealso::
+  See the `Joint Limits`_ section on the ros_control wiki for more info on
+  the joint limits. Also see `Joint Safety Limits Explained`_ for more info on
+  how the limits work.
 
 .. _joint limits: https://wiki.ros.org/ros_control#Joint_Limits
+.. _Joint Safety Limits Explained: https://wiki.ros.org/pr2_controller_manager/safety_limits
 
 Custom Controller Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
