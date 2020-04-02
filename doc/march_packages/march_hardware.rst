@@ -106,15 +106,13 @@ The PowerDistributionBoard class contains a HighVoltage and a LowVoltage class w
 
 Exceptions
 ----------
-Because safety is very important, the march_hardware package will throw an exception whenever it encounters something that shouldn't happen.
-
-The main exceptions are
-
-  * Incorrect configuration of joints (e.g. higher min position than max position)
-  * Hardware failures
-  * Incorrect actuate command is sent (outside of limits or too far from current position)
-
-When such an exception occurs, the high voltage is turned off and the exoskeleton will stop moving.
+Because safety is very important, the march_hardware package will throw an
+exception whenever it encounters something that should not happen. The
+march_hardware package implements custom exceptions in the
+:hardware-interface:`error module <march_hardware/include/march_hardware/error>`
+with error types for different situations. See :ref:`error-codes` for all types
+of errors and how to possibly fix them. When such an exception occurs, the high
+voltage is turned off and the exoskeleton will stop moving.
 
 ROS API
 -------
