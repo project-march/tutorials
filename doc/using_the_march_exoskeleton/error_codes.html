@@ -212,6 +212,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#e115-invalid-slave-configuration"><code class="docutils literal"><span class="pre">E115</span></code>: Invalid slave configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e116-not-allowed-to-actuate"><code class="docutils literal"><span class="pre">E116</span></code>: Not allowed to actuate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e117-invalid-slave-index"><code class="docutils literal"><span class="pre">E117</span></code>: Invalid slave index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e118-missing-urdf-joint"><code class="docutils literal"><span class="pre">E118</span></code>: Missing URDF joint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e119-missing-required-key"><code class="docutils literal"><span class="pre">E119</span></code>: Missing required key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e120-urdf-initialization-failed"><code class="docutils literal"><span class="pre">E120</span></code>: URDF Initialization failed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#e999-unknown-error"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </li>
@@ -594,7 +597,10 @@ If you encounter an error that is not documented, consider creating
 <li><a class="reference internal" href="#e115-invalid-slave-configuration" id="id16"><code class="docutils literal"><span class="pre">E115</span></code>: Invalid slave configuration</a></li>
 <li><a class="reference internal" href="#e116-not-allowed-to-actuate" id="id17"><code class="docutils literal"><span class="pre">E116</span></code>: Not allowed to actuate</a></li>
 <li><a class="reference internal" href="#e117-invalid-slave-index" id="id18"><code class="docutils literal"><span class="pre">E117</span></code>: Invalid slave index</a></li>
-<li><a class="reference internal" href="#e999-unknown-error" id="id19"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
+<li><a class="reference internal" href="#e118-missing-urdf-joint" id="id19"><code class="docutils literal"><span class="pre">E118</span></code>: Missing URDF joint</a></li>
+<li><a class="reference internal" href="#e119-missing-required-key" id="id20"><code class="docutils literal"><span class="pre">E119</span></code>: Missing required key</a></li>
+<li><a class="reference internal" href="#e120-urdf-initialization-failed" id="id21"><code class="docutils literal"><span class="pre">E120</span></code>: URDF Initialization failed</a></li>
+<li><a class="reference internal" href="#e999-unknown-error" id="id22"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a></li>
 </ul>
 </div>
 <div class="section" id="e100-invalid-actuation-mode">
@@ -755,8 +761,38 @@ Since index 0 is the master itself and values lower than 0 are not valid indices
 <p><strong>Fix:</strong> If you are using a <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>, make sure that all
 slave indices are defined as integers higher than 0.</p>
 </div>
+<div class="section" id="e118-missing-urdf-joint">
+<span id="e118"></span><h2><a class="toc-backref" href="#id19"><code class="docutils literal"><span class="pre">E118</span></code>: Missing URDF joint</a><a class="headerlink" href="#e118-missing-urdf-joint" title="Permalink to this headline">¶</a></h2>
+<p>A required joint was not defined in the URDF.</p>
+<p><strong>Cause:</strong> The <code class="docutils literal"><span class="pre">march_hardware_builder</span></code> package uses the URDF and the robots
+yaml for building a March robot. The joints defined in the URDF are required for the
+soft and hard limits of the joint and the builder cannot continue without them.</p>
+<p><strong>Fix:</strong> Check that all the joints defined in the
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a> are defined
+in the URDF that you are using from <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_description/urdf">march_description/urdf</a>.</p>
+</div>
+<div class="section" id="e119-missing-required-key">
+<span id="e119"></span><h2><a class="toc-backref" href="#id20"><code class="docutils literal"><span class="pre">E119</span></code>: Missing required key</a><a class="headerlink" href="#e119-missing-required-key" title="Permalink to this headline">¶</a></h2>
+<p>A required robot config key from the robots yaml was not defined.</p>
+<p><strong>Cause:</strong> Some keys in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a>
+are required to build a functional robot and the build cannot be finished without
+these keys.</p>
+<p><strong>Fix:</strong> Define the missing key in the robots yaml that you are using.</p>
+</div>
+<div class="section" id="e120-urdf-initialization-failed">
+<span id="e120"></span><h2><a class="toc-backref" href="#id21"><code class="docutils literal"><span class="pre">E120</span></code>: URDF Initialization failed</a><a class="headerlink" href="#e120-urdf-initialization-failed" title="Permalink to this headline">¶</a></h2>
+<p>The URDF could not be loaded from the ROS parameter server.</p>
+<p><strong>Cause:</strong> The <code class="docutils literal"><span class="pre">march_hardware_builder</span></code> retrieves the URDF from the ROS
+parameter server under the <code class="docutils literal"><span class="pre">/robot_description</span></code> parameter. It throws this
+exception when it was not able to retrieve it, probably because it was not uploaded.</p>
+<p><strong>Fix:</strong> Check if the URDF has been uploaded to the ROS parameter server. To
+check the value of a ROS parameter run:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">rosparam</span> <span class="n">get</span> <span class="o">/</span><span class="n">robot_description</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="e999-unknown-error">
-<span id="e999"></span><h2><a class="toc-backref" href="#id19"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
+<span id="e999"></span><h2><a class="toc-backref" href="#id22"><code class="docutils literal"><span class="pre">E999</span></code>: Unknown error</a><a class="headerlink" href="#e999-unknown-error" title="Permalink to this headline">¶</a></h2>
 <p>Unknown error occurred which was not given an error code.</p>
 <p><strong>Cause:</strong> An <code class="docutils literal"><span class="pre">HardwareException</span></code> was thrown without specifying an <code class="docutils literal"><span class="pre">ErrorType</span></code>.</p>
 <p><strong>Fix:</strong> Find where this exception was thrown and create a documented error.</p>
