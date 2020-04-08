@@ -371,13 +371,13 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">march_input_device</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#communication">Communication</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sending-messages">Sending messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#receiving-messages">Receiving messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#published-topics">Published Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics">Subscribed Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#set-correct-ubuntu-permissions">Set correct ubuntu permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-correct-permissions-on-linux">Set correct permissions on Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-run-wired">How to run wired</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#upload-the-code-on-the-input-device">Upload the code on the input device</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-the-software">Start the software</a></li>
@@ -567,38 +567,41 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The march_input_device is the software running on the March exoskeleton input device. The input device is used
-to give input to the software running on the March exoskeleton.</p>
+to give input to the software running on the March exoskeleton. See the
+<a class="reference external" href="https://github.com/project-march/input-device/tree/develop/">project-march/input-device</a> repository for more info.</p>
 </div>
-<div class="section" id="communication">
-<h2>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ros-api">
+<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
 <p>The communication between the input device and the March exoskeleton is done with <a class="reference external" href="http://wiki.ros.org/rosserial">rosserial</a>.
 This can be run wired via usb cable or wireless via wifi connection.</p>
-<div class="section" id="sending-messages">
-<h3>Sending messages<a class="headerlink" href="#sending-messages" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Gait Instruction Message</a> This is an instruction to start
-the sent gait right now, if this is possible.</p>
-<p><a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">Stop Message</a> This message can stop a repeating gait (such
-as walk). After receiving the stop message, the exoskeleton will go to the standing pose.</p>
-<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">Stay Alive Message</a>  Every loop a stay alive message is
-sent. This way <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> can detect when the input device loses connection.</p>
+<div class="section" id="published-topics">
+<h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/input_device/instruction</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstruction.msg">march_shared_resources/GaitInstruction</a>)</dt>
+<dd>Sends instructions to execute</dd>
+<dt><em>/march/input_device/alive</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Time.html">std_msgs/Time</a>)</dt>
+<dd>Publish empty alive messages so <a class="reference internal" href="march_safety.html#march-safety-label"><span class="std std-ref">march_safety</span></a> does not throw an error.</dd>
+</dl>
 </div>
-<div class="section" id="receiving-messages">
-<h3>Receiving messages<a class="headerlink" href="#receiving-messages" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://docs.ros.org/melodic/api/std_msgs/html/msg/Bool.html">Gait Instruction Response Message</a>  This message
-indicates that the last gait instruction is handled. The value represents success or rejection.</p>
+<div class="section" id="subscribed-topics">
+<h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><em>/march/input_device/instruction_response</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/GaitInstructionResponse.msg">march_shared_resources/GaitInstructionResponse</a>)</dt>
+<dd>Receives responses to instructions executed on <em>/march/input_device/instruction</em></dd>
+</dl>
 </div>
 </div>
 <div class="section" id="tutorials">
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="set-correct-ubuntu-permissions">
-<h3>Set correct ubuntu permissions<a class="headerlink" href="#set-correct-ubuntu-permissions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="set-correct-permissions-on-linux">
+<h3>Set correct permissions on Linux<a class="headerlink" href="#set-correct-permissions-on-linux" title="Permalink to this headline">¶</a></h3>
 <p>The following error can occur when trying to access the ttyUSB port:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Cannot</span> <span class="nb">open</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
 </pre></div>
 </div>
 <p>To make sure your user is allowed to access the port, add your user to the required groups:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">tty</span> <span class="o">&lt;</span><span class="n">your_username</span><span class="o">&gt;</span>
-<span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">dialout</span> <span class="o">&lt;</span><span class="n">your_username</span><span class="o">&gt;</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
 </pre></div>
 </div>
 <p>Now log out on your computer and log back in, the error should be resolved.</p>
@@ -608,12 +611,11 @@ indicates that the last gait instruction is handled. The value represents succes
 <h3>How to run wired<a class="headerlink" href="#how-to-run-wired" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="upload-the-code-on-the-input-device">
 <h4>Upload the code on the input device<a class="headerlink" href="#upload-the-code-on-the-input-device" title="Permalink to this headline">¶</a></h4>
-<p>Skip this section if the correct code for running wired is already on the input device. More detailed information on how
-to run and upload the code see the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/">ReadMe</a>.</p>
-<ul class="simple">
-<li>Comment <code class="code docutils literal"><span class="pre">#define</span> <span class="pre">USE_WIRELESS</span></code> in the main.cpp.</li>
-<li>Upload to input device.</li>
-</ul>
+<p>Skip this section if the correct code for running wired is already on the input device.
+For more detailed information on how to run and upload the code see the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/">README</a>.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">pio</span> <span class="n">run</span> <span class="o">-</span><span class="n">t</span> <span class="n">upload</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="start-the-software">
 <h4>Start the software<a class="headerlink" href="#start-the-software" title="Permalink to this headline">¶</a></h4>
@@ -622,7 +624,7 @@ to run and upload the code see the <a class="reference external" href="https://g
 <li>Connect the input device via usb cable, this powers and launches the input device automatically.</li>
 <li>Type in a terminal:</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span> <span class="n">tcp</span><span class="p">:</span><span class="o">=</span><span class="n">false</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
 </div>
@@ -635,112 +637,85 @@ to run and upload the code see the <a class="reference external" href="https://g
 </div>
 <div class="section" id="id1">
 <h4>Upload the code on the input device<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Skip this section if the correct code for running wireless is already on the input device. More detailed information on how
-to run and upload the code see the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/">ReadMe</a>.</p>
+<p>Skip this section if the correct code for running wireless is already on the input device.
+For more detailed information on how to run and upload the code see the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/">README</a>.</p>
 <ul class="simple">
-<li>Type in terminal: <code class="code docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code> Remember the output, this is the hostname. You have to use this address for the next instructions. From this point we call this value <strong>your_hostname</strong>.</li>
-<li>Uncomment <code class="code docutils literal"><span class="pre">#define</span> <span class="pre">USE_WIRELESS</span></code> in the <em>main.cpp</em>.</li>
-<li>Change <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(x,</span> <span class="pre">x,</span> <span class="pre">x,</span> <span class="pre">x)</span></code> to <code class="code docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(your_hostname)</span></code> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/wireless_connection.h">wireless_connection.h</a></li>
-<li>Upload to input device.</li>
+<li>Uncomment <code class="docutils literal"><span class="pre">#define</span> <span class="pre">USE_WIRELESS</span></code> in the <em>main.cpp</em>.</li>
+<li>Type in terminal: <code class="docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code>, this is your IP address.</li>
+<li>Open <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/wireless_connection.h">wireless_connection.h</a><ul>
+<li>at <code class="docutils literal"><span class="pre">IPAddress</span> <span class="pre">server(x,</span> <span class="pre">x,</span> <span class="pre">x,</span> <span class="pre">x)</span></code> fill the xs with the four numbers
+of your IP address from the previous step.</li>
+<li>Change the value of <code class="docutils literal"><span class="pre">ssid</span></code> to the name of the WiFi network.</li>
+<li>Change the value of <code class="docutils literal"><span class="pre">password</span></code> to the password of the WiFi network.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you want to change the network name and password that the input device uses: Change <strong>ssid</strong> and <strong>password</strong> in the <a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/wireless_connection.h">wireless_connection.h</a></p>
-</div>
+</li>
+<li>Compile and upload to the input device.</li>
+</ul>
 </div>
 <div class="section" id="id2">
 <h4>Start the software<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>Type in every terminal you are going to use:</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">ROS_MASTER_URI</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">your_hostname</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">11311</span><span class="o">/</span>
+<ul>
+<li><p class="first">Type in every terminal you are going to use (replace <code class="docutils literal"><span class="pre">&lt;your_ip_address&gt;</span></code> with the output from <code class="docutils literal"><span class="pre">hostname</span> <span class="pre">-I</span></code>):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://&lt;your_ip_address&gt;:11311/
 </pre></div>
 </div>
-<ul class="simple">
-<li>Type in a terminal:</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span>
+</li>
+<li><p class="first">Type in a terminal:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">serial_connection</span><span class="o">.</span><span class="n">launch</span> <span class="n">wireless</span><span class="p">:</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Make sure the batteries are charged and in the input device.</li>
-<li>Make sure the jumper cap in the electronics holder is placed so the input device is powered by the batteries rather than via a USB cable.</li>
-<li>Press the on/off button to turn on the input device. The button is located on the electronics holder of the input device.</li>
+</li>
+<li><p class="first">Make sure the batteries are charged and in the input device.</p>
+</li>
+<li><p class="first">Make sure the jumper cap in the electronics holder is placed so the input device is powered by the batteries rather than via a USB cable.</p>
+</li>
+<li><p class="first">Press the on/off button to turn on the input device. The button is located on the electronics holder of the input device.</p>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="how-to-add-a-gait">
 <span id="how-to-add-a-gait-label"></span><h3>How to add a gait<a class="headerlink" href="#how-to-add-a-gait" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Make new screens for the new gait.</li>
-<li>Make sure the new gait/new screens fit in the menu &amp; create a selected &amp; activated screen for the new gait.</li>
-<li>Put the screens on the SD card. Use the 4D Systems Workshop4 IDE software for this.</li>
-<li>Create a new state, a new gait, in the <em>StateMachine.cpp</em>.</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">:;</span>
+<ul>
+<li><p class="first">Make new screens for the new gait, for normal, selected and activated.</p>
+</li>
+<li><p class="first">Make sure the new gait/new screens fit in the menu &amp; create a selected &amp; activated screen for the new gait.</p>
+</li>
+<li><p class="first">Put the screens on the SD card. Use the 4D Systems Workshop4 IDE software for this.</p>
+</li>
+<li><p class="first">Define the sector address of the images to be loaded on the screen in <em>sd_sector_addresses.h</em>.
+These addresses can be found via the 4D Systems Workshop4 IDE software. First
+load the desired images on the uSD card, then find the sector addresses of
+said images via the generated .Gc file. Example:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// New gait</span>
+<span class="cp">#define NEW_GAIT SectorAddress { 0x0000, 0x0050 }</span>
+<span class="cp">#define NEW_GAIT_SELECTED SectorAddress { 0x0000, 0x0100 }</span>
+<span class="cp">#define NEW_GAIT_ACTIVATED SectorAddress { 0x0000, 0x0200 }</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Implement the correct button actions which cause state transitions to the code. For example:</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">joystickPress</span> <span class="o">==</span> <span class="s2">&quot;PUSH&quot;</span><span class="p">){</span>
-    <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitSelected</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">break</span><span class="p">;</span>
+<p>The first value is the high part of the address and the second the low part.</p>
+</li>
+<li><p class="first">For this example, we will create a new gait screen next to the walk screen.
+Create a new state, i.e. gait, in the constructor of <em>state_machine.cpp</em>.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">State</span><span class="o">&amp;</span> <span class="n">new_gait</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">createGaitState</span><span class="p">(</span><span class="n">NEW_GAIT</span><span class="p">,</span> <span class="n">NEW_GAIT_SELECTED</span><span class="p">,</span> <span class="n">NEW_GAIT_ACTIVATED</span><span class="p">,</span> <span class="s">&quot;new_gait&quot;</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Create a new state for your selected and activated gait.</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitSelected</span><span class="p">:</span>
-         <span class="k">if</span><span class="p">(</span><span class="n">triggerPress</span> <span class="o">==</span> <span class="s2">&quot;PUSH&quot;</span><span class="p">){</span>
-             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitActivated</span><span class="p">;</span>
-         <span class="p">}</span>
-         <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">joystickPress</span> <span class="o">==</span> <span class="s2">&quot;DOUBLE&quot;</span><span class="p">){</span>
-             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">;</span>
-         <span class="p">}</span>
-         <span class="k">break</span><span class="p">;</span>
-<span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGaitActivated</span><span class="p">:</span>
-         <span class="k">if</span><span class="p">(</span><span class="n">triggerPress</span> <span class="o">==</span> <span class="s2">&quot;EXIT_GAIT&quot;</span><span class="p">){</span>
-             <span class="n">this</span><span class="o">-&gt;</span><span class="n">currentState</span> <span class="o">=</span> <span class="n">State</span><span class="p">::</span><span class="n">StandUp</span><span class="p">;</span>
-         <span class="p">}</span>
-         <span class="k">break</span><span class="p">;</span>
+<p>The <code class="docutils literal"><span class="pre">createGaitState</span></code> function automatically creates 3 new states for the
+normal, selected and activated screen with connections between them and adds
+the state to the state machine. The final argument is a pointer to a state the
+gait should go to once succeeded. In our case we want to return to the
+new_gait screen after it succeeded, so we pass <code class="docutils literal"><span class="pre">nullptr</span></code>.</p>
+</li>
+<li><p class="first">Now connect the new state to the walk state</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">new_gait</span><span class="p">.</span><span class="n">withRight</span><span class="p">(</span><span class="o">&amp;</span><span class="n">walk</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Add a new entry to the <em>stateToGaitMapping</em>. Do this by adding an extra line in the constructor of the
-<em>StateMachine.cpp</em>:</li>
+<p>This creates a connection between the new_gait and walk screens. From new_gait
+we can move right to walk and from walk we can move left to new_gait. See the
+<a class="reference external" href="https://github.com/project-march/input-device/tree/develop/include/state.h">state.h</a> header file for more methods to
+connect states.</p>
+</li>
 </ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">stateToGaitMapping</span><span class="p">[</span><span class="n">State</span><span class="p">::</span><span class="o">&lt;</span><span class="n">name_activated_state</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&lt;gait_name&gt;&quot;</span><span class="p">;</span>
-</pre></div>
-</div>
-<p><strong>&lt;name_activated_state&gt;</strong> name of the activated state</p>
-<p><strong>&lt;gait_name&gt;</strong> name of the gait</p>
-<ul class="simple">
-<li>Return the SD addresses of the image that should be drawn in the current state in the <em>getScreenImage()</em> method in <em>StateMachine.cpp</em>:</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">State</span><span class="p">::</span><span class="n">NewGait</span><span class="p">:</span>
-    <span class="n">currentSdAddresses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewGait_Hi</span><span class="p">;</span>
-    <span class="n">currentSdAddresses</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewGait_Lo</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li>Add the created states in the <em>Statemachine.h</em>.</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="k">class</span> <span class="nc">State</span> <span class="p">{</span><span class="n">NewGait</span><span class="p">,</span>
-                  <span class="n">NewGaitSelected</span><span class="p">,</span>
-                  <span class="n">NewGaitActivated</span><span class="p">};</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li>Define the sector address of the images to be loaded on the screen in the <em>SD_sector_addresses.h</em>. These addresses can be found via the 4D Systems Workshop4 IDE software. First load the desired images on the uSD card, then find the sector addresses of said images via the generated .Gc file.</li>
-</ul>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">NewGait</span>
-   <span class="c1">#define NewGait_Hi     0x0000</span>
-   <span class="c1">#define NewGait_Lo     0x0051</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
