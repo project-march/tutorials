@@ -113,9 +113,6 @@
 <li class="toctree-l1"><a class="reference internal" href="how_to_view_live_data.html">How to view live data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Log files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#rosbag">Rosbag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exoskeleton">Exoskeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cloudstation">Cloudstation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#uploading-the-logs">Uploading the logs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="using_the_gait_generator.html">Using the gait generator</a></li>
@@ -221,34 +218,9 @@
 <div class="section" id="rosbag">
 <h2>Rosbag<a class="headerlink" href="#rosbag" title="Permalink to this headline">¶</a></h2>
 <p>The log files are recorded with a tool called rosbag.
-Please check the <a class="reference external" href="http://wiki.ros.org/rosbag">official documentation</a> or <a class="reference internal" href="../useful_tools/ros_bag.html#ros-bag-label"><span class="std std-ref">ROS bag</span></a>.</p>
-</div>
-<div class="section" id="exoskeleton">
-<h2>Exoskeleton<a class="headerlink" href="#exoskeleton" title="Permalink to this headline">¶</a></h2>
-<p>For each session, a new directory should be made with the following structure: <strong>yyyy_mm_dd-activity_name</strong></p>
-<dl class="docutils">
-<dt>Examples:</dt>
-<dd><ul class="first last simple">
-<li>2019_07_03-first_training</li>
-<li>2019_06_01-airgait_with_torque_mode</li>
-</ul>
-</dd>
-</dl>
-<p>The files are located at: <code class="docutils literal"><span class="pre">/home/march/Documents/log_files/&lt;yyyy_mm_dd-activity_name&gt;</span></code></p>
-</div>
-<div class="section" id="cloudstation">
-<h2>Cloudstation<a class="headerlink" href="#cloudstation" title="Permalink to this headline">¶</a></h2>
-<p>The log files are stored on the Cloudstation in a shared folder called <strong>March IV log files</strong>.
-A special user <strong>log</strong> has been created to read/write these logs.</p>
-</div>
-<div class="section" id="uploading-the-logs">
-<h2>Uploading the logs<a class="headerlink" href="#uploading-the-logs" title="Permalink to this headline">¶</a></h2>
-<p>First ssh into the computer of the exoskeleton.
-A tutorial on how to connect with the exoskeleton and ssh into it can be found at <a class="reference internal" href="connecting_to_the_exoskeleton.html#connecting-to-the-exoskeleton-label"><span class="std std-ref">Connecting to the exoskeleton</span></a>.
-The following command will upload all the logs to the cloudstation and create a folder with the correct &lt;activity_name&gt;.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">-</span><span class="n">r</span> <span class="o">&lt;/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">yyyy_mm_dd</span><span class="o">-</span><span class="n">activity_name</span><span class="o">&gt;</span> <span class="n">log</span><span class="nd">@cloudstation</span><span class="o">.</span><span class="n">projectmarch</span><span class="o">.</span><span class="n">nl</span><span class="p">:</span><span class="s2">&quot;/volume1/Log\ Files/March\ IV\ Log\ Files/&quot;</span>
-</pre></div>
-</div>
+Please check the <a class="reference external" href="http://wiki.ros.org/rosbag">official documentation</a> or <a class="reference internal" href="../useful_tools/ros_bag.html#ros-bag-label"><span class="std std-ref">ROS bag</span></a>.
+The log files are created by default with the following name: <code class="docutils literal"><span class="pre">log_yyyy-mm-dd-hh-mm-ss.bag</span></code>. You can find them in the
+<code class="docutils literal"><span class="pre">~/.ros</span></code> directory.</p>
 </div>
 </div>
 
@@ -274,7 +246,7 @@ The following command will upload all the logs to the cloudstation and create a 
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Apr 14, 2020.
+        Last updated on Apr 15, 2020.
       </span>
 
     </p>
