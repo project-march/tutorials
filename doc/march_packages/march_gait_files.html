@@ -133,10 +133,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">march_gait_files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#clarification">Clarification</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a></li>
@@ -228,9 +225,17 @@ Most gaits are created by the gait generator, but as they are simply text files 
 </div>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Version</span></code>: A filled <a class="reference external" href="http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.</p>
-<p><code class="docutils literal"><span class="pre">Subgait</span></code>: A name for a physical movement, can contain multiple versions.</p>
-<p><code class="docutils literal"><span class="pre">Gait</span></code>: A directed graph of subgaits with defined transitions from subgait to subgait.</p>
+<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">folder</span></code>: A folder named after a physical movement. Contains multiple subgait files for different versions.</p>
+<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">file</span></code>: A text file containing a version of a subgait in the form of a
+<a class="reference external" href="http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.
+The file is named &lt;version&gt;.subgait.</p>
+<p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">folder</span></code>: A folder containing a gait file and the subgait folders that constitute the gait.</p>
+<p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">file</span></code>: A text file defining the gait’s transitions from subgait to subgait.
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/walk/walk.gait">Example</a></p>
+<p><code class="docutils literal"><span class="pre">&lt;gait_directory&gt;</span></code> is a folder used to group gaits together, some gaits are ready for a training, while some are only for airgaiting.
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait">Example</a></p>
+<p><code class="docutils literal"><span class="pre">default.yaml</span></code> is required for each gait_directory. It specifies which versions of gaits are loaded by default when loading this gait_directory.
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/default.yaml">Example</a></p>
 <p>Example:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -282,15 +287,6 @@ Most gaits are created by the gait generator, but as they are simply text files 
      │    └─── walk.gait
      └─── default.yaml
 </pre></div>
-</div>
-<div class="section" id="clarification">
-<h3>Clarification<a class="headerlink" href="#clarification" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">&lt;gait_directory&gt;</span></code> is a folder used to group gaits together, some gaits are ready for a training, while some are only for airgaiting.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait">Example</a></p>
-<p><code class="docutils literal"><span class="pre">default.yaml</span></code> is required for each gait_directory. It specifies which versions of gaits are loaded by default when loading this gait_directory.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/default.yaml">Example</a></p>
-<p><code class="docutils literal"><span class="pre">&lt;gait_name&gt;.gait</span></code> is used to combine the subgaits together. It defines a graph of transitions between subgaits.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/walk/walk.gait">Example</a></p>
 </div>
 </div>
 </div>
