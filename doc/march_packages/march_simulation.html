@@ -147,7 +147,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-structure">Code structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#com-controller-plugin">CoM controller plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#com-controller-plugin">CoM controller plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-function">Target function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#walk-target-function">Walk target function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#torque-application">Torque application</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -237,7 +244,9 @@ so that the exoskeleton can move relative to the world. The launch command becom
 </div>
 <p>One can add an obstacle in simulation by adding the “obstacle:=&lt;&lt;obstacle_name&gt;&gt;” to the command. The possible
 obstacles can be found in the obstacles folder of the march_simulation package. The current obstacles were created
-after four of the obstacles in the Cybathlon 2020.</p>
+after four of the <a class="reference external" href="https://ethz.ch/content/dam/ethz/special-interest/conference-websites-dam/cybathlon-dam/documents/CYBATHLON_Races_and_Rules.pdf/">obstacles</a>
+in the Cybathlon 2020. Creating a new xacro file in the obstacles folder is all that is needed to create a new obstacle
+for the simulation.</p>
 </div>
 <div class="section" id="code-structure">
 <h2>Code structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
@@ -252,16 +261,36 @@ falling in simulation.</p>
 <p>Just like the real exoskeleton, the exoskeleton in simulation cannot stably walk without help. For this purpose the
 CoM controller plugin was created. It seeks to mock not the pilot, but the coach during a ground gait session. This
 for the simple reason that the behavior of the pilot is more erratic and therefore much harder to accurately simulate.</p>
-<p>The plugin works by controlling the position of the Center of Mass (CoM). There is a target function describing the
-desired location of the CoM. This target function moves in the x-direction (movement direction of exo) with speed
-step_size / step_duration. The y-direction target is constantly the stable leg during a swing. It therefore switches
-discontinuously from one leg to the other at the end of each swing.</p>
-<p>The plugin ensures that the CoM does not stray far from the target through a PID controller. The controller applies
-a compensating <em>torque</em> to each of the links (parts) in the exoskeleton.</p>
+<p>The controller consists of two parts: a target function that describes a desired x and y coordinate for the CoM, and a
+PID controller that manipulates the CoM by applying <em>torque</em> to each of the parts. More details below.</p>
 <p>Note the following:
 1. The plugin assumes the subgait names start with left/right and end with open/swing/close. It will do nothing for
 other subgaits.
 2. The plugin might have to be re-tuned for an obstacle.</p>
+<div class="section" id="target-function">
+<h3>Target function<a class="headerlink" href="#target-function" title="Permalink to this headline">¶</a></h3>
+<p>The target function for the CoM can depend on the obstacle. Furthermore, it needs to know which leg is stable (i.e. not
+in swing), so it listens to the gait scheduler topic.</p>
+<div class="section" id="walk-target-function">
+<h4>Walk target function<a class="headerlink" href="#walk-target-function" title="Permalink to this headline">¶</a></h4>
+<p>The target function for walk moves in the x-direction (movement direction of exo) with speed step_size / step_duration.
+The y-direction target is constantly the stable leg during a swing. It therefore switches discontinuously from one leg
+to the other at the end of each swing.</p>
+</div>
+</div>
+<div class="section" id="torque-application">
+<h3>Torque application<a class="headerlink" href="#torque-application" title="Permalink to this headline">¶</a></h3>
+<p>The plugin ensures that the CoM does not stray far from the target through a PID controller. The controller applies a
+compensating <em>torque</em> to each of the links (parts) in the exoskeleton. See image below for the definition of the axes
+of rotation. Note that these axes are relative to the world, and do not change if the exoskeleton rotates. Hence, the
+exoskeleton will always walk in a fixed direction (along the negative x-axis).</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/axes_of_rotation.png" src="../../_images/axes_of_rotation.png" />
+<p class="caption"><span class="caption-text">The definition of the axes of rotation in the simulation. The axes are relative to the world.</span></p>
+</div>
+<p>Pitch and yaw torque is applied to each of the links. Roll toque is only applied to the 4 links in the stable leg.
+This is necessary because roll torque will force the LHAA’s apart when applied to both legs.</p>
+</div>
 </div>
 </div>
 
@@ -285,7 +314,7 @@ other subgaits.
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Apr 21, 2020.
+        Last updated on Apr 24, 2020.
       </span>
 
     </p>
