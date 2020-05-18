@@ -303,8 +303,8 @@ march_hardware package (e.g. Joint, IMotionCube, Encoder, PowerDistributionBoard
 For example, the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/encoder/Encoder.h">Encoder class</a>
 <code class="docutils literal"><span class="pre">getAngleIU()</span></code> function reads and returns the latest encoder value that was
 received by the EthercatMaster. Functions such as <code class="docutils literal"><span class="pre">getAngleIU()</span></code> all call the
-same generic functions for reading from and writing to slaves. These generic
-functions are defined in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/EtherCAT/EthercatIO.cpp">EthercatIO.cpp</a>.</p>
+same generic interface for reading from and writing to slaves. The generic
+interface is defined in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/EtherCAT/pdo_interface.h">pdo_interface.cpp</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>When reading or writing PDO messages over EtherCAT via SOEM, you need three
@@ -323,7 +323,7 @@ this is configurable during startup through a process called PDO mapping.</p>
 <h3>SDO messages<a class="headerlink" href="#sdo-messages" title="Permalink to this headline">¶</a></h3>
 <p>Service Data Objects (SDOs) are non-cyclic EtherCAT messages. They are used for
 sending one-time messages, for example when initializing an IMotionCube.
-The generic SDO messaging functions can be found in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/EtherCAT/EthercatSDO.cpp">EthercatSDO.cpp</a>.</p>
+The generic SDO interface can be found in <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/EtherCAT/sdo_interface.h">sdo_interface.h</a>.</p>
 </div>
 </div>
 <div class="section" id="power-distribution-board">
@@ -392,7 +392,7 @@ on ROS for logging, but that can be easily changed if needed.</p>
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Apr 28, 2020.
+        Last updated on May 18, 2020.
       </span>
 
     </p>
