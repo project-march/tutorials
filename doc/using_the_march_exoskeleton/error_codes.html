@@ -333,7 +333,7 @@ are behind their trajectory path.</p>
 <p>The to be added PDO object was not defined.</p>
 <p><strong>Cause:</strong> The PDO that is being mapped does not have a defined address and size.</p>
 <p><strong>Fix:</strong> Check that the PDO is defined in the <code class="docutils literal"><span class="pre">all_objects</span></code> map in the
-<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/PDOmap.cpp">PDOmap</a> class.</p>
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/src/ethercat/pdo_map.cpp">PDOmap</a> class.</p>
 </div>
 <div class="section" id="e107-pdo-register-overflow">
 <span id="e107"></span><h2><a class="toc-backref" href="#id9"><code class="docutils literal"><span class="pre">E107</span></code>: PDO register overflow</a><a class="headerlink" href="#e107-pdo-register-overflow" title="Permalink to this headline">¶</a></h2>
@@ -395,7 +395,7 @@ verify that those are correct.</p>
 <span id="e112"></span><h2><a class="toc-backref" href="#id14"><code class="docutils literal"><span class="pre">E112</span></code>: Invalid encoder resolution</a><a class="headerlink" href="#e112-invalid-encoder-resolution" title="Permalink to this headline">¶</a></h2>
 <p>The encoder resolution is outside the allowed range.</p>
 <p><strong>Cause:</strong> The given encoder resolution to construct an encoder are outside its allowed limits defined in
-<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/encoder/Encoder.h">Encoder.h</a>.</p>
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware/include/march_hardware/encoder/encoder.h">encoder.h</a>.</p>
 <p><strong>Fix:</strong> Check if the resolutions given in the <a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop/march_hardware_builder/robots">robots yaml</a> are
 within this range.</p>
 </div>
@@ -494,7 +494,7 @@ check the value of a ROS parameter run:</p>
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on May 21, 2020.
+        Last updated on Jun 03, 2020.
       </span>
 
     </p>
