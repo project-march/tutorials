@@ -128,13 +128,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#general-guidelines-to-writing-tests">General guidelines to writing tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-tests">Writing your own tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#writing-c-unit-tests">Writing C++ unit tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-c-node-tests">Writing C++ node tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-python-unit-tests">Writing python unit tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-python-node-tests">Writing python node tests</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-tests">Writing your own tests</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Style Guide</a></li>
@@ -286,6 +280,16 @@ a <code class="docutils literal"><span class="pre">package.xml</span></code> or 
 <li>Make a test for every edge case!</li>
 <li>Usually, your test code is about as long as your normal code.</li>
 </ol>
+<p>Next to these rules there exist some conventions in structuring tests:</p>
+<ol class="arabic simple">
+<li>Put your tests in a separate directory next to <code class="docutils literal"><span class="pre">src/</span></code> named <code class="docutils literal"><span class="pre">test/</span></code>.</li>
+<li>The same as for all filenames, name the test files using snake_case.</li>
+<li>Put rostest <code class="docutils literal"><span class="pre">.test</span></code> launch files inside <code class="docutils literal"><span class="pre">test/launch/</span></code>.</li>
+<li>Put rostest source files inside <code class="docutils literal"><span class="pre">test/rostest/</span></code>.</li>
+<li>If writing unittests and rostests for Python, put the unit tests inside <code class="docutils literal"><span class="pre">test/unittests/</span></code>.</li>
+<li>Put necessary resources, e.g. files, for tests in a separate directory inside <code class="docutils literal"><span class="pre">test/</span></code>.</li>
+</ol>
+<p>See the March packages for examples on how to write and structure tests.</p>
 </div>
 <div class="section" id="writing-your-own-tests">
 <h2>Writing your own tests<a class="headerlink" href="#writing-your-own-tests" title="Permalink to this headline">¶</a></h2>
@@ -299,110 +303,13 @@ The unit tests are different for C++ and python projects. C++ projects use the
 <a class="reference external" href="https://github.com/google/googletest">gtest</a> framework, whereas Python projects use
 <a class="reference external" href="http://pythontesting.net/framework/unittest/unittest-introduction/">unittest</a>.
 For node level tests, <a class="reference external" href="https://wiki.ros.org/rostest">rostest</a> is used.
-Rostest uses launch files to launch the nodes under test and the actual tests.</p>
-<p>The next sections will describe the process of writing tests. For this
-tutorial we will use the <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/doc/development/ros_test_tutorial">ros_test_tutorial package</a>.
-This package already includes some C++ and python code to write tests for.</p>
-<div class="section" id="writing-c-unit-tests">
-<h3>Writing C++ unit tests<a class="headerlink" href="#writing-c-unit-tests" title="Permalink to this headline">¶</a></h3>
-<p>As an example we will create tests for the <code class="docutils literal"><span class="pre">Add.cpp</span></code> class that is located in
-this repository. Tests are always located in the <code class="docutils literal"><span class="pre">test/</span></code> directory of a
-package. To create a test we create a new cpp file in the <code class="docutils literal"><span class="pre">test</span></code> directory
-called <code class="docutils literal"><span class="pre">AddTest.cpp</span></code> with the following contents.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &lt;gtest/gtest.h&gt;</span>
-
-<span class="c1">#include &quot;ros_test_tutorial/Add.h&quot;</span>
-
-<span class="n">TEST</span><span class="p">(</span><span class="n">AddTest</span><span class="p">,</span> <span class="n">addTwoAndOne</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Add</span> <span class="n">add</span><span class="p">;</span>
-    <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="n">testing</span><span class="p">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">RUN_ALL_TESTS</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Feel free to experiment with writing tests. The actual test is written using
-the <code class="docutils literal"><span class="pre">TEST</span></code> macro.  The first argument is the test suite, the same as the
-filename in this case.  The second argument is name of the actual test. So this
-would be another example of a test.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">TEST</span><span class="p">(</span><span class="n">AddTest</span><span class="p">,</span> <span class="n">addNegative</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Add</span> <span class="n">add</span><span class="p">;</span>
-    <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>In order to build and run the unit tests we must add <code class="docutils literal"><span class="pre">rosunit</span></code> as test
-dependency to our package. So normally we would add the following to the
-<code class="docutils literal"><span class="pre">package.xml</span></code>. However, this has already been done in the highlevel
-<code class="docutils literal"><span class="pre">package.xml</span></code> for this repository, so this is not necessary in this example.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">test_depend</span><span class="o">&gt;</span><span class="n">rosunit</span><span class="o">&lt;/</span><span class="n">test_depend</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Next we must tell cmake which tests it has to build. So add the following to the <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span>if(CATKIN_ENABLE_TESTING)
-    catkin_add_gtest(add_test test/AddTest.cpp)
-    target_link_libraries(add_test ros_test_tutorial ${catkin_LIBRARIES})
-endif()
-</pre></div>
-</div>
-<p>Here we tell <code class="docutils literal"><span class="pre">cmake</span></code> to build the test and use our library. The
-<code class="docutils literal"><span class="pre">catkin_add_gtest</span></code> command creates a new test called <code class="docutils literal"><span class="pre">add_test</span></code> from the
-source file <code class="docutils literal"><span class="pre">AddTest.cpp</span></code>. Now when <code class="docutils literal"><span class="pre">colcon</span> <span class="pre">test</span></code> is run from the workspace
-root you should see tests passing.</p>
-</div>
-<div class="section" id="writing-c-node-tests">
-<h3>Writing C++ node tests<a class="headerlink" href="#writing-c-node-tests" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="writing-python-unit-tests">
-<h3>Writing python unit tests<a class="headerlink" href="#writing-python-unit-tests" title="Permalink to this headline">¶</a></h3>
-<p>As an example we will create tests for the function <code class="docutils literal"><span class="pre">Multiply.py</span></code> that is
-located in this repository. Tests are always located in the <code class="docutils literal"><span class="pre">test/</span></code>
-directory. We will first start by writing our test. So create the
-<code class="docutils literal"><span class="pre">MultiplyTest.py</span></code> file to your <code class="docutils literal"><span class="pre">test/</span></code> directory and fill it with the
-following contents.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="n">PKG</span> <span class="o">=</span> <span class="s1">&#39;march_tutorials&#39;</span>
-
-<span class="kn">import</span> <span class="nn">unittest</span>
-<span class="kn">import</span> <span class="nn">rosunit</span>
-
-<span class="kn">from</span> <span class="nn">ros_test_tutorial</span> <span class="k">import</span> <span class="n">multiply</span>
-
-<span class="k">class</span> <span class="nc">MultiplyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">test_multiply_one_and_one</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">rosunit</span><span class="o">.</span><span class="n">unitrun</span><span class="p">(</span><span class="n">PKG</span><span class="p">,</span> <span class="s1">&#39;test_multiply&#39;</span><span class="p">,</span> <span class="n">MultiplyTest</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The last line will run all test methods inside the <code class="docutils literal"><span class="pre">MultiplyTest</span></code> class that
-start with <code class="docutils literal"><span class="pre">test</span></code>, where <code class="docutils literal"><span class="pre">'test_multiply'</span></code> is the name of the test case.
-See if you can add more tests (and make them fail). See the <a class="reference external" href="https://docs.python.org/3/library/unittest.html">python unittest
-documentation</a> for more
-information on writing tests.</p>
-<p>Next we must tell <code class="docutils literal"><span class="pre">cmake</span></code> how to build the tests. We do this by adding
-<code class="docutils literal"><span class="pre">catkin_add_nosetests()</span></code> inside our <code class="docutils literal"><span class="pre">CATKIN_ENABLE_TESTING</span></code> of <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>.</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">CATKIN_ENABLE_TESTING</span><span class="p">)</span>
-    <span class="o">...</span>
-    <span class="n">catkin_add_nosetests</span><span class="p">(</span><span class="n">test</span><span class="o">/</span><span class="n">MultiplyTest</span><span class="o">.</span><span class="n">py</span><span class="p">)</span>
-    <span class="o">...</span>
-<span class="n">endif</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>After building, the tests can now be run with <code class="docutils literal"><span class="pre">colcon</span> <span class="pre">test</span></code>.
-Also see the <a class="reference external" href="https://wiki.ros.org/unittest#Code-level_Python_Unit_Tests">ros wiki on writing unit tests for python</a>.</p>
-</div>
-<div class="section" id="writing-python-node-tests">
-<h3>Writing python node tests<a class="headerlink" href="#writing-python-node-tests" title="Permalink to this headline">¶</a></h3>
-</div>
+Rostest uses launch files to launch the nodes under test and the actual tests.
+See the following tutorials on writing tests using ROS:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.ros.org/gtest">Writing C++ tests with gtest</a></li>
+<li><a class="reference external" href="https://wiki.ros.org/unittest">Writing Python tests with unittest</a></li>
+<li><a class="reference external" href="https://wiki.ros.org/rostest/Writing">Writing rostest files</a></li>
+</ul>
 </div>
 </div>
 
@@ -428,7 +335,7 @@ Also see the <a class="reference external" href="https://wiki.ros.org/unittest#C
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Jun 03, 2020.
+        Last updated on Jun 05, 2020.
       </span>
 
     </p>
