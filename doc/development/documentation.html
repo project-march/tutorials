@@ -127,7 +127,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#install-gem-and-html-proofer">Install Gem and html-proofer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-additional-dependencies">Install Additional dependencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-the-html">Generate the html</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#browser-sync-optional">Browser sync (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sphinx-autobuild">sphinx-autobuild</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#deploy-with-travis">Deploy with Travis</a></li>
@@ -241,10 +241,9 @@ You can either build the documentation locally when following the tutorials or d
 <div class="section" id="clone-the-repository">
 <h3>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>Add the following entry to your <code class="docutils literal"><span class="pre">.rosinstall</span></code> file (recommended):</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">git</span><span class="p">:</span>
-    <span class="n">local</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">march_tutorials</span>
-    <span class="n">uri</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span>
-    <span class="n">version</span><span class="p">:</span> <span class="n">develop</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">local-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">march_tutorials</span>
+    <span class="l l-Scalar l-Scalar-Plain">uri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/project-march/tutorials</span>
 </pre></div>
 </div>
 <p>And use wstool to update your workspace:</p>
@@ -254,7 +253,7 @@ You can either build the documentation locally when following the tutorials or d
 </div>
 <p>Or clone the repository manually in your source directory:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">project</span><span class="o">-</span><span class="n">march</span><span class="o">/</span><span class="n">tutorials</span> <span class="n">march_tutorials</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -289,8 +288,9 @@ html-proofer is a tool that can validate your generated html for mistakes like b
 <h3>Install Additional dependencies<a class="headerlink" href="#install-additional-dependencies" title="Permalink to this headline">¶</a></h3>
 <p>Pygit is used so we can tell Sphinx what branch we are on. That way links to GitHub files can be verified against the proper branch.
 This prevents html-proofer from not being able to find newly added files on develop, as it checks against the current branch.
-Install Pygit from the Ubuntu repositories:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pygit2</span>
+Furthermore, we use the sphinx-rtd-theme for the theme of the pages.
+You can install both packages from the Ubuntu repositories:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pygit2</span> <span class="n">python</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
 </pre></div>
 </div>
 </div>
@@ -319,8 +319,8 @@ Install Pygit from the Ubuntu repositories:</p>
 </pre></div>
 </div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p>You might get the following error if sphinx is installed using pip3:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="ne">Exception</span> <span class="n">occurred</span><span class="p">:</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">222</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_call_with_frames_removed</span>
@@ -341,31 +341,20 @@ Install Pygit from the Ubuntu repositories:</p>
 Push your files and build locally again to solve this problem.</p>
 </div>
 </div>
-<div class="section" id="browser-sync-optional">
-<h3>Browser sync (Optional)<a class="headerlink" href="#browser-sync-optional" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://www.browsersync.io/">Browser sync</a> is a tool that can refresh your browser when files get updated.
-We have a python script called <a class="reference external" href="https://github.com/project-march/tutorials/tree/master/watch.py">watch.py</a> that will watch your doc files and rebuild them with Sphinx when something changes.
-Browser sync is then notified and will refresh the browser.</p>
-<p>Install it globally with npm:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">browser</span><span class="o">-</span><span class="n">sync</span>
+<div class="section" id="sphinx-autobuild">
+<h3>sphinx-autobuild<a class="headerlink" href="#sphinx-autobuild" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> is a tool that
+watches your doc files and live updates your changes.</p>
+<p>You can install it with pip:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span>
 </pre></div>
 </div>
-<p>Start the python watch script:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">march_tutorials</span>
-<span class="n">python</span> <span class="n">watch</span><span class="o">.</span><span class="n">py</span>
+<p>Start the auto build:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span> <span class="o">.</span> <span class="n">build</span><span class="o">/</span><span class="n">html</span>
 </pre></div>
 </div>
-<p>In another terminal, start browser-sync:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">march_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">march_tutorials</span>
-<span class="n">browser</span><span class="o">-</span><span class="n">sync</span> <span class="n">start</span> <span class="o">-</span><span class="n">s</span> <span class="n">build</span><span class="o">/</span><span class="n">html</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;build/html/*.html&quot;</span>
-</pre></div>
-</div>
-<p>A localhost instance should now be opened, and refreshed whenever you change a <code class="docutils literal"><span class="pre">.rst</span></code> file.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Browser sync does not work perfectly, sometimes you will have to refresh the page manually,
-or change something in the file for it to start generating properly.</p>
-</div>
+<p>When you go to <code class="docutils literal"><span class="pre">localhost:8000</span></code> it should open the documentation and live refresh
+when a file is changed and saved to disk.</p>
 </div>
 </div>
 <div class="section" id="deploy-with-travis">
@@ -406,7 +395,7 @@ To make sure it shows up in the Table of Contents, add it to the <a class="refer
     <p>
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Jun 05, 2020.
+        Last updated on Jun 16, 2020.
       </span>
 
     </p>
