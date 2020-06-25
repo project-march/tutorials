@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/override.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript">
@@ -40,11 +46,6 @@
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/override.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="march_simulation" href="march_simulation.html" />
@@ -85,6 +86,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -166,6 +168,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -204,7 +207,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>march_gait_selection</li>
     
@@ -279,7 +282,7 @@ If this is calculated correctly, the new subgait trajectory is sent to the march
 <dl class="docutils">
 <dt><em>/march/gait_selection/get_version_map</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_srvs/html/srv/Trigger.html">std_srvs/srv/Trigger</a>)</dt>
 <dd>Returns the current loaded gait version map.</dd>
-<dt><em>/march/gait_selection/set_version_map</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/StringTrigger.srv">march_shared_resources/srv/StringTrigger</a>)</dt>
+<dt><em>/march/gait_selection/set_gait_version</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/SetGaitVersion.srv">march_shared_resources/srv/SetGaitVersion</a>)</dt>
 <dd>Sets a new gait version map in the gait_selection.</dd>
 <dt><em>/march/gait_selection/get_directory_structure</em> (<a class="reference external" href="http://docs.ros.org/melodic/api/std_srvs/html/srv/Trigger.html">std_srvs/srv/Trigger</a>)</dt>
 <dd>Returns the directory structure of the gait_files repository.</dd>
@@ -321,14 +324,22 @@ If this is calculated correctly, the new subgait trajectory is sent to the march
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Jun 16, 2020.
+        Last updated on Jun 25, 2020.
       </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -339,7 +350,6 @@ If this is calculated correctly, the new subgait trajectory is sent to the march
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
