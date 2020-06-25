@@ -52,7 +52,7 @@ Services
 */march/gait_selection/get_version_map* (:ros_docs:`std_srvs/srv/Trigger <api/std_srvs/html/srv/Trigger.html>`)
   Returns the current loaded gait version map.
 
-*/march/gait_selection/set_version_map* (:march:`march_shared_resources/srv/StringTrigger <march_shared_resources/srv/StringTrigger.srv>`)
+*/march/gait_selection/set_gait_version* (:march:`march_shared_resources/srv/SetGaitVersion <march_shared_resources/srv/SetGaitVersion.srv>`)
   Sets a new gait version map in the gait_selection.
 
 */march/gait_selection/get_directory_structure* (:ros_docs:`std_srvs/srv/Trigger <api/std_srvs/html/srv/Trigger.html>`)
