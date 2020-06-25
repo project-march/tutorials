@@ -2,13 +2,13 @@
 # Adapted from 'Test build the MoveIt! tutorials'. Original Author: Dave Coleman
 
 os: linux
-dist: bionic
+dist: focal
 version: ~> 1.0
 language: generic
 rvm:
   - 2.4
 python:
-  - 2.7
+  - 3.8
 
 notifications:
   slack:
@@ -17,7 +17,7 @@ notifications:
 
 env:
   global:
-    - ROS_DISTRO=melodic
+    - ROS_DISTRO=noetic
     - CI_SOURCE_PATH="$(pwd)"
     - PYTHONPATH="$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages"
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
@@ -26,11 +26,11 @@ before_install:
   - sudo -E sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
   - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
   - sudo apt-get update -qq
-  - sudo apt-get install -qq -y python-rosdep ros-melodic-rosdoc-lite
+  - sudo apt-get install -qq -y python-rosdep ros-${ROS_DISTRO}-rosdoc-lite
   # Setup rosdep
   - sudo rosdep init
   - rosdep update
-  - source /opt/ros/melodic/setup.bash
+  - source /opt/ros/${ROS_DISTRO}/setup.bash
 
 install:
   # Install htmlproofer
