@@ -26,7 +26,7 @@ Install with
 
 .. code::
 
-  sudo apt-get install ros-melodic-rqt-multiplot
+  sudo apt-get install ros-${ROS_DISTRO}-rqt-multiplot
 
 Launch with
 

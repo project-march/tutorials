@@ -48,7 +48,7 @@ We use the package rosdoc_lite to generate the documentation with Sphinx
 
 .. code::
 
-  sudo apt-get install ros-melodic-rosdoc-lite
+  sudo apt-get install ros-${ROS_DISTRO}-rosdoc-lite
 
 
 Install Gem and html-proofer

@@ -15,7 +15,7 @@ Terminology
 ``Subgait folder``: A folder named after a physical movement. Contains multiple subgait files for different versions.
 
 ``Subgait file``: A text file containing a version of a subgait in the form of a
-`JointTrajectory Message <http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html>`_.
+:ros_docs:`JointTrajectory Message <api/trajectory_msgs/html/msg/JointTrajectory.html>`.
 The file is named <version>.subgait.
 
 ``Gait folder``: A folder containing a gait file and the subgait folders that constitute the gait.

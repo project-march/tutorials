@@ -28,7 +28,7 @@ To gain practical experience, please see the `official tutorials <http://wiki.ro
 joint_state_publisher
 ^^^^^^^^^^^^^^^^^^^^^
 The `joint_state_publisher <http://wiki.ros.org/joint_state_publisher>`_ is a very useful package,
-which reads your urdf and publishes a `JointState message <http://docs.ros.org/api/sensor_msgs/html/msg/JointState.html>`_ for all your joints.
+which reads your urdf and publishes a :ros_docs:`JointState message <api/sensor_msgs/html/msg/JointState.html>` for all your joints.
 
 
 robot_state_publisher

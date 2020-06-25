@@ -4,7 +4,7 @@ Create your workspace
 =====================
 .. inclusion-introduction-start
 
-This tutorial will help you set up a ROS workspace with all packages needed to run the |march|.
+This tutorial will help you set up a ROS |ros_distro| workspace with all packages needed to run the |march|.
 
 .. inclusion-introduction-end
 
@@ -13,7 +13,7 @@ This tutorial will help you set up a ROS workspace with all packages needed to r
 
 Install ROS and Colcon
 ^^^^^^^^^^^^^^^^^^^^^^
-`Install ROS Melodic <https://wiki.ros.org/melodic/Installation/Ubuntu>`_.
+:ros_wiki:`Install ROS </Installation/Ubuntu>` |ros_distro|.
 It is easy to miss steps when going through the ROS installation tutorial. If you run into errors in the next few steps, a good place to start is to go back and make sure you have installed ROS correctly.
 
 Once you have ROS installed, make sure you have the most up to date packages:

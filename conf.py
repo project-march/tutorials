@@ -25,9 +25,9 @@ copyright = '2020, Project March'
 # built documents.
 #
 # The short X.Y version.
-version = 'Melodic'
+version = 'Noetic'
 # The full version, including alpha/beta/rc tags.
-release = 'Melodic'
+release = 'Noetic'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
@@ -59,10 +59,13 @@ html_context = {
     "logo": "logo.png"
 }
 
+ros_distro = 'Noetic'
+
 # Global substitutions
 rst_prolog = """
 .. |march| replace:: March exoskeleton
-"""
+.. |ros_distro| replace:: {distro}
+""".format(distro=ros_distro)
 
 # Links
 extlinks = {'codedir': ('https://github.com/' + html_context['github_user'] + '/tutorials/tree/' + html_context['github_version'] + '/doc/%s', ''),
@@ -76,7 +79,10 @@ extlinks = {'codedir': ('https://github.com/' + html_context['github_user'] + '/
             'gait-files': ('https://github.com/' + html_context['github_user'] + '/gait-files/tree/develop/%s', ''),
             'ethercat-slaves': ('https://github.com/' + html_context['github_user'] + '/ethercat-slaves/tree/develop/%s', ''),
             'gait-generation': ('https://github.com/' + html_context['github_user'] + '/gait-generation/tree/develop/%s', ''),
-            'march_website': ('http://projectmarch.nl', '')}
+            'march_website': ('http://projectmarch.nl', ''),
+            'ros_wiki': ('https://wiki.ros.org/{distro}/%s'.format(distro=ros_distro.lower()), ''),
+            'ros_docs': ('https://docs.ros.org/{distro}/%s'.format(distro=ros_distro.lower()), ''),
+            }
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'MarchDocumentation'

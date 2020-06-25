@@ -48,7 +48,7 @@ variables.
 
 The ``global`` variables are used for every Travis build, whereas the
 variables inside ``jobs/include`` are used for different builds. So the template runs one
-job on Melodic. It is possible to add new jobs, for example, flake8 and
+job on |ros_distro|. It is possible to add new jobs, for example, flake8 and
 clang-format. ``BUILDER`` configures to use ``colcon`` as build tool,
 since that is not the default for ROS1 packages. ``CATKIN_LINT`` configures
 to run ``catkin_lint`` and fail on warnings and give error descriptions.

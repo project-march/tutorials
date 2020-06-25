@@ -99,7 +99,7 @@ Subscribed Topics
 
 Published Topics
 ^^^^^^^^^^^^^^^^
-*/march/gait/current* (`std_msgs/String <https://docs.ros.org/melodic/api/std_msgs/html/msg/String.html>`_)
+*/march/gait/current* (:ros_docs:`std_msgs/String <api/std_msgs/html/msg/String.html>`)
   Publishes the current active gait once when it starts.
 
 */march/input_device/instruction_response* (:march:`march_shared_resources/GaitInstructionResponse <march_shared_resources/msg/GaitInstructionResponse.msg>`)

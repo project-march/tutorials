@@ -26,8 +26,8 @@ env:
 
 jobs:
   include:
-    - name: "Melodic"
-      env: ROS_DISTRO=melodic
+    - name: "Noetic"
+      env: ROS_DISTRO=noetic
 
 # clone and run industrial_ci
 install:
