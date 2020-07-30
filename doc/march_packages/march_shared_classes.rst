@@ -16,6 +16,11 @@ JointTrajectory object for each joint in the exoskeleton. Every JointTrajectory 
 list of Setpoints. A JointTrajectory object can interpolate between its setpoints to obtain the trajectory the joint
 will follow.
 
+The gait classes are used in the gait selection. At startup, gait and subgait files are read and transformed into gait
+and subgait objects. Additionally, gait classes for dynamic gaits should inherit from the gait classes, implementing
+the same interface. This will allow easy usage in the gait selection. Finally the gait generator also uses child
+classes of the gait classes, the ModifiableGait classes.
+
 Usage
 ^^^^^
 
@@ -38,3 +43,10 @@ Communication with the controller usually goes via ros messages. Transform a Sub
 .. code::
 
   Subgait.to_subgait_msg()
+
+Application
+^^^^^^^^^^^
+
+In most of the code, gaits are stored in the form of the gait classes.
+
+
