@@ -18,7 +18,7 @@ will follow.
 
 The gait classes are used in the gait selection. At startup, gait and subgait files are read and transformed into gait
 and subgait objects. Additionally, gait classes for dynamic gaits should inherit from the gait classes, implementing
-the same interface. This will allow easy usage in the gait selection. Finally the gait generator also uses child
+the same interface. This will allow easy usage in the gait selection. Finally, the gait generator also uses child
 classes of the gait classes, the ModifiableGait classes.
 
 Usage
@@ -38,11 +38,11 @@ to read a single .subgait file or
 
 to read all the .subgait files in a gait folder at once.
 
-Communication with the controller usually goes via ros messages. Transform a Subgait to a subgait message through
+Communication with the controller usually goes via ros messages. Transform a Subgait to a trajectory message through
 
 .. code::
 
-  Subgait.to_subgait_msg()
+  Subgait.to_joint_trajectory_msg()
 
 Application
 ^^^^^^^^^^^
