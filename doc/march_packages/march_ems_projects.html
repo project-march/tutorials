@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_launch &mdash; Project March Melodic documentation</title>
+  <title>march_ems_projects &mdash; Project March Melodic documentation</title>
   
 
   
@@ -48,8 +48,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="march_rqt_input_device" href="march_rqt_input_device.html" />
-    <link rel="prev" title="march_input_device" href="march_input_device.html" /> 
+    <link rel="next" title="march_fake_sensor_data" href="march_fake_sensor_data.html" />
+    <link rel="prev" title="march_description" href="march_description.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -131,7 +131,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="march_data_collector.html">march_data_collector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_description.html">march_description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_ems_projects.html">march_ems_projects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_ems_projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-an-sw-file">Creating an sw-file</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="march_fake_sensor_data.html">march_fake_sensor_data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gain_scheduling.html">march_gain_scheduling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gait_files.html">march_gait_files</a></li>
@@ -140,7 +144,7 @@
 <li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_imu_manager.html">march_imu_manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_launch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_launch.html">march_launch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_rqt_input_device.html">march_rqt_input_device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
@@ -194,14 +198,14 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>march_launch</li>
+      <li>march_ems_projects</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_launch.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_ems_projects.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -215,27 +219,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-launch">
-<span id="march-launch-label"></span><h1>march_launch<a class="headerlink" href="#march-launch" title="Permalink to this headline">¶</a></h1>
-<p>The march_launch package is a collection of launch files which are used to start the exoskeleton.</p>
-<p>The launch files are split up into different launch files, where higher level launch files can include other launch
-files to launch a set of nodes or set parameters. The central high level launch file is
-<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/launch/march.launch">march.launch</a>. This launch file has many arguments to launch different
-configurations of nodes. To see all possible arguments use:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span> <span class="n">march_launch</span> <span class="n">march</span><span class="o">.</span><span class="n">launch</span>
-</pre></div>
+  <div class="section" id="march-ems-projects">
+<span id="march-ems-projects-label"></span><h1>march_ems_projects<a class="headerlink" href="#march-ems-projects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The march_ems_projects package contains the EasyMotion Studio (ems) projects of the iMotionCubes. The other folders in the
+ems-projects repository contain old projects which you will hopefully never need. march_ems_projects/ems_projects
+contains the projects you can open in EasyMotionStudio. The sw_files folder contains the corresponding sw_files; this
+is the format in which the project is saved on the iMC. At startup, we check whether the sw file on the iMC still
+Matches that on the master, and if not, we rewrite the sw file via ethercat. See IMotionCube::verifySetup in
+<a class="reference external" href="https://github.com/project-march/hardware-interface/tree/develop//march_hardware/src/imotioncube/imotioncube.cpp">imotioncube.cpp</a>.</p>
 </div>
-<p>The most important one is <code class="docutils literal"><span class="pre">configuration</span></code>, which decides whether to launch the simulation or the hardware.
-Since these configurations are used most of the time in a predefined configuration, there exist two more high level
-launch files: <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/launch/march_simulation.launch">march_simulation.launch</a> and
-<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_launch/launch/march_headless.launch">march_headless.launch</a>. The first is configured for the simulation
-and the second for the hardware, without any GUI applications. These launch files simply include the <code class="docutils literal"><span class="pre">march.launch</span></code>
-file and set some default parameters. The default parameters for <code class="docutils literal"><span class="pre">march.launch</span></code> are set to launch the hardware
-with RQT input device, so you can use this on the exoskeleton to launch:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">march_launch</span> <span class="n">march</span><span class="o">.</span><span class="n">launch</span>
-</pre></div>
+<div class="section" id="creating-an-sw-file">
+<h2>Creating an sw-file<a class="headerlink" href="#creating-an-sw-file" title="Permalink to this headline">¶</a></h2>
+<p>When you change one of the ems projects, the corresponding sw file must also be updated. You can do this via
+“file/export to EEPROM/setup only”, see image below.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/making_an_sw_file.png" src="../../_images/making_an_sw_file.png" />
+<p class="caption"><span class="caption-text">How to make an sw file</span></p>
 </div>
-<p>For more information on how to launch the exoskeleton, see <a class="reference internal" href="../using_the_march_exoskeleton/how_to_airgait.html#how-to-airgait-label"><span class="std std-ref">How to airgait</span></a>.</p>
+</div>
 </div>
 
 
@@ -246,10 +249,10 @@ with RQT input device, so you can use this on the exoskeleton to launch:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_rqt_input_device.html" class="btn btn-neutral float-right" title="march_rqt_input_device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_fake_sensor_data.html" class="btn btn-neutral float-right" title="march_fake_sensor_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_input_device.html" class="btn btn-neutral float-left" title="march_input_device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="march_description.html" class="btn btn-neutral float-left" title="march_description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
