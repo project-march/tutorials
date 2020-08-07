@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>march_gait_files &mdash; Project March Melodic documentation</title>
+  <title>march_moveit &mdash; Project March Melodic documentation</title>
   
 
   
@@ -48,8 +48,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="march_gait_selection" href="march_gait_selection.html" />
-    <link rel="prev" title="march_gain_scheduling" href="march_gain_scheduling.html" /> 
+    <link rel="next" title="march_rqt_input_device" href="march_rqt_input_device.html" />
+    <link rel="prev" title="march_launch" href="march_launch.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -134,12 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="march_ems_projects.html">march_ems_projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_fake_sensor_data.html">march_fake_sensor_data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gain_scheduling.html">march_gain_scheduling</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">march_gait_files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="march_gait_files.html">march_gait_files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gait_selection.html">march_gait_selection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a></li>
@@ -147,7 +142,15 @@
 <li class="toctree-l1"><a class="reference internal" href="march_imu_manager.html">march_imu_manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_launch.html">march_launch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_moveit.html">march_moveit</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">march_moveit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Tutorials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-the-setup-assistant">How to use the setup-assistant</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="march_rqt_input_device.html">march_rqt_input_device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
@@ -200,14 +203,14 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>march_gait_files</li>
+      <li>march_moveit</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_gait_files.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/project-march/tutorials/blob/master/doc/march_packages/march_moveit.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -221,78 +224,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="march-gait-files">
-<span id="march-gait-files-label"></span><h1>march_gait_files<a class="headerlink" href="#march-gait-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This is a static package that contains only information about the gaits. Most gaits are created by the
-<cite>gait generator &lt;https://docs.projectmarch.nl/doc/using_the_march_exoskeleton/using_the_gait_generator.html&gt;</cite>,
-but as they are simply text files they can also be edited manually.</p>
+  <div class="section" id="march-moveit">
+<span id="march-moveit-label"></span><h1>march_moveit<a class="headerlink" href="#march-moveit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The march_moveit package is the package that contains all files necessary for the integration of
+<a class="reference external" href="https://moveit.ros.org/">MoveIt</a>. MoveIt is an open source project that is the result of the combined efforts
+of a large international community and multiple organizations. MoveIt is a framework for everything that has to do
+with motion planning. There are a lot of <a class="reference external" href="https://ros-planning.github.io/moveit_tutorials/">tutorials</a> on the project.</p>
+<p>We started using MoveIt for implementing capture point. More information on that is in <a class="reference internal" href="march_gait_selection.html#march-gait-selection-label"><span class="std std-ref">march_gait_selection</span></a>.
+Here we use the <a class="reference external" href="http://docs.ros.org/jade/api/moveit_commander/html/index.html">Python MoveIt Commander</a> as the interface to MoveIt.
+The integration allows using MoveIt for all kinds of dynamic gaits.</p>
+<p>The files in this package are generated by the MoveIt Setup Assistant. Manually editing the files in this packages is not
+recommended.</p>
 </div>
-<div class="section" id="terminology">
-<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">folder</span></code>: A folder named after a physical movement. Contains multiple subgait files for different versions.</p>
-<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">file</span></code>: A text file containing a version of a subgait in the form of a
-<a class="reference external" href="http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.
-The file is named &lt;version&gt;.subgait.</p>
-<p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">folder</span></code>: A folder containing a gait file and the subgait folders that constitute the gait.</p>
-<p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">file</span></code>: A text file defining the gait’s transitions from subgait to subgait.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/walk/walk.gait">Example</a></p>
-<p><code class="docutils literal"><span class="pre">&lt;gait_directory&gt;</span></code> is a folder used to group gaits together, some gaits are ready for a training, while some are only for airgaiting.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait">Example</a></p>
-<p><code class="docutils literal"><span class="pre">default.yaml</span></code> is required for each gait_directory. It specifies which versions of gaits are loaded by default when loading this gait_directory.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/default.yaml">Example</a></p>
-<p>Example:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="13%" />
-<col width="34%" />
-<col width="53%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Gait</td>
-<td>Subgait</td>
-<td>Version</td>
-</tr>
-<tr class="row-even"><td>walk</td>
-<td>right_open</td>
-<td>default</td>
-</tr>
-<tr class="row-odd"><td>walk</td>
-<td>right_open</td>
-<td>slower</td>
-</tr>
-<tr class="row-even"><td>walk</td>
-<td>left_swing</td>
-<td>move_ankle_higher</td>
-</tr>
-<tr class="row-odd"><td>sit</td>
-<td>prepare_sit</td>
-<td>now_a_bit_slower</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="ros-api">
+<h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
+<p>The package has a very extensive ROS API, because MoveIt is very well integrated with ROS. This will not all be listed
+here as most of it is only used by MoveIt itself. An important thing to note is that MoveIt can publish position and
+velocity commands directly to the controller. We are avoiding this, because we want to stay in control.</p>
 </div>
-<div class="section" id="structure">
-<span id="march-gait-files-structure-label"></span><h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
-<div class="code highlight-default"><div class="highlight"><pre><span></span>march_gait_files
-├─── &lt;gait_directory&gt;
-│    ├─── &lt;gait_name&gt;
-│    │    ├─── &lt;subgait_name&gt;
-│    │    │    └─── &lt;version&gt;.subgait
-|    │    └─── &lt;gaint_name&gt;.gait
-|    └─── default.yaml
-└─── airgait
-     ├─── walk
-     │    ├─── right_open
-     │    │    ├─── normal.subgait
-     │    │    └─── a_bit_slower.subgait
-     │    ├─── left_swing
-     │    │    ├─── normal.subgait
-     │    │    └─── a_bit_faster.subgait
-     │    └─── walk.gait
-     └─── default.yaml
+<div class="section" id="id1">
+<h2>Tutorials<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-use-the-setup-assistant">
+<h3>How to use the setup-assistant<a class="headerlink" href="#how-to-use-the-setup-assistant" title="Permalink to this headline">¶</a></h3>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">moveit_setup_assistant</span> <span class="n">setup_assistant</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
+</div>
+<p>Select the <cite>march_moveit</cite> as the package to alter.
+You can now change the MoveIt integration. The necessary files will be automatically generated. More information on this
+can be found at <a class="reference external" href="https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html">setup assistant tutorials</a>.</p>
 </div>
 </div>
 </div>
@@ -305,10 +266,10 @@ The file is named &lt;version&gt;.subgait.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_gait_selection.html" class="btn btn-neutral float-right" title="march_gait_selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_rqt_input_device.html" class="btn btn-neutral float-right" title="march_rqt_input_device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_gain_scheduling.html" class="btn btn-neutral float-left" title="march_gain_scheduling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="march_launch.html" class="btn btn-neutral float-left" title="march_launch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

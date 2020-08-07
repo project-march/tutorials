@@ -48,8 +48,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="march_simulation" href="march_simulation.html" />
-    <link rel="prev" title="march_state_machine" href="march_state_machine.html" /> 
+    <link rel="next" title="march_hardware" href="march_hardware.html" />
+    <link rel="prev" title="march_gait_files" href="march_gait_files.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -135,21 +135,11 @@
 <li class="toctree-l1"><a class="reference internal" href="march_fake_sensor_data.html">march_fake_sensor_data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gain_scheduling.html">march_gain_scheduling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_gait_files.html">march_gait_files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_imu_manager.html">march_imu_manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_launch.html">march_launch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_rqt_input_device.html">march_rqt_input_device</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_shared_resources.html">march_shared_resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_state_machine.html">march_state_machine</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">march_gait_selection</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior">Behavior</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#transition-subgait">Transition_subgait</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#balance-walk">Balance walk</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a><ul>
@@ -162,6 +152,18 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware.html">march_hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware_builder.html">march_hardware_builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_hardware_interface.html">march_hardware_interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_imu_manager.html">march_imu_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_input_device.html">march_input_device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_launch.html">march_launch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_moveit.html">march_moveit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_rqt_input_device.html">march_rqt_input_device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_shared_resources.html">march_shared_resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="march_state_machine.html">march_state_machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_simulation.html">march_simulation</a></li>
 </ul>
 
@@ -256,6 +258,25 @@ of an old and new gait name. This structure requires that both gait names have m
 transition. Using the two subgait trajectories a new transition trajectory is calculated and stored as a subgait object.
 If this is calculated correctly, the new subgait trajectory is sent to the march_gait_scheduler.</p>
 </div>
+<div class="section" id="balance-walk">
+<h3>Balance walk<a class="headerlink" href="#balance-walk" title="Permalink to this headline">¶</a></h3>
+<p>The gait selection packages is currently also the package where we store dynamic gaits. One such dynamic gait is the
+balance walk gait. The graph of the balance walk gait is defined in the <a class="reference internal" href="march_gait_files.html#march-gait-files-label"><span class="std std-ref">march_gait_files</span></a>.
+Some of the subgaits in this gait are just static subgaits defined by a subgaitfile. However, some of the subgaits are dynamic.
+In these subgaits we try to move towards a capture point. A capture point is a point on the ground such that if you would
+place your foot there, you would come to a full stop. There are a lot of papers on the internet about this, most importantly
+the one introducing the principle is this <a class="reference external" href="https://ieeexplore-ieee-org.tudelft.idm.oclc.org/document/4115602">paper</a>
+A capture point is calculated in the <a class="reference internal" href="march_data_collector.html#march-data-collector-label"><span class="std std-ref">march_data_collector</span></a> based on the inverted pendulum model and the movement of the center of mass.
+We use the motion planning framework MoveIt to calculate a trajectory for the swing leg towards this point. For the stance leg, the regular
+gait file is used to determine the endpoint and MoveIt is then used to calculate a trajectory towards this point.
+The balance gait class then uses the <a class="reference external" href="http://docs.ros.org/jade/api/moveit_commander/html/classmoveit__commander_1_1move__group_1_1MoveGroupCommander.html">python moveIt commander Interface</a> to plan. More information on MoveIt and
+the integration can be found at <a class="reference internal" href="march_moveit.html#march-moveit-label"><span class="std std-ref">march_moveit</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Improved versions of the balance walk gait are continuously researched and developed.
+The above description is likely slightly outdated.</p>
+</div>
+</div>
 </div>
 <div class="section" id="ros-api">
 <h2>ROS API<a class="headerlink" href="#ros-api" title="Permalink to this headline">¶</a></h2>
@@ -312,10 +333,10 @@ If this is calculated correctly, the new subgait trajectory is sent to the march
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="march_simulation.html" class="btn btn-neutral float-right" title="march_simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="march_hardware.html" class="btn btn-neutral float-right" title="march_hardware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="march_state_machine.html" class="btn btn-neutral float-left" title="march_state_machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="march_gait_files.html" class="btn btn-neutral float-left" title="march_gait_files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -327,7 +348,7 @@ If this is calculated correctly, the new subgait trajectory is sent to the march
         
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Aug 02, 2020.
+        Last updated on Aug 07, 2020.
       </span>
 
     </p>
