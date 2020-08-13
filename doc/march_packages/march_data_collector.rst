@@ -77,8 +77,8 @@ Subscribed Topics
 */march/pressure_soles* (march_shared_resources/PressureSole)
   Send pressure sole data to `ESP`.
 
-*/march/imc_states* (march_shared_resources/ImcState)
-  Send iMOTIONCUBE data to `ESP`.
+*/march/motor_controller_states* (march_shared_resources/MotorControllerState)
+  Send motor controller data to `ESP`.
 
 */march/gait/schedule/goal* (march_shared_resources/GaitActionGoal)
   Send gait data to `ESP`.

@@ -93,8 +93,8 @@ march_hardware_interface_node
 
 Published Topics
 ^^^^^^^^^^^^^^^^
-*/march/imc_states* (:march:`march_shared_resources/ImcState <march_shared_resources/msg/ImcState.msg>`)
-  Publishes statuses of all iMotionCubes every control loop.
+*/march/motor_controller_states* (:march:`march_shared_resources/MotorControllerState <march_shared_resources/msg/MotorControllerState.msg>`)
+  Publishes statuses of all motor controllers every control loop.
 
 */march/controller/after_limit_joint_command* (:march:`march_shared_resources/AfterLimitJointCommand <march_shared_resources/msg/AfterLimitJointCommand.msg>`)
   Publishes joint commands after they have been limited by the joint safety
