@@ -105,7 +105,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/rqt.html">RQT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/ros_bag.html">ROS bag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/gazebo.html">Gazebo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../useful_tools/smach.html">SMACH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/event_stream_processing.html">Event stream Processing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
@@ -152,7 +151,6 @@
 <li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_resources.html">march_shared_resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_state_machine.html">march_state_machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_simulation.html">march_simulation</a></li>
 </ul>
 
@@ -232,16 +230,15 @@ but as they are simply text files they can also be edited manually.</p>
 <div class="section" id="terminology">
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">folder</span></code>: A folder named after a physical movement. Contains multiple subgait files for different versions.</p>
-<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">file</span></code>: A text file containing a version of a subgait in the form of a
-<a class="reference external" href="http://docs.ros.org/melodic/api/trajectory_msgs/html/msg/JointTrajectory.html">JointTrajectory Message</a>.
-The file is named &lt;version&gt;.subgait.</p>
+<p><code class="docutils literal"><span class="pre">Subgait</span> <span class="pre">file</span></code>: A text file containing a version of a subgait defined in
+setpoints. The file is named <code class="docutils literal"><span class="pre">&lt;version&gt;.subgait</span></code>.</p>
 <p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">folder</span></code>: A folder containing a gait file and the subgait folders that constitute the gait.</p>
 <p><code class="docutils literal"><span class="pre">Gait</span> <span class="pre">file</span></code>: A text file defining the gait’s transitions from subgait to subgait.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/walk/walk.gait">Example</a></p>
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait-v/walk/walk.gait">Example</a></p>
 <p><code class="docutils literal"><span class="pre">&lt;gait_directory&gt;</span></code> is a folder used to group gaits together, some gaits are ready for a training, while some are only for airgaiting.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait">Example</a></p>
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait-v">Example</a></p>
 <p><code class="docutils literal"><span class="pre">default.yaml</span></code> is required for each gait_directory. It specifies which versions of gaits are loaded by default when loading this gait_directory.
-<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait/default.yaml">Example</a></p>
+<a class="reference external" href="https://github.com/project-march/gait-files/tree/develop/march_gait_files/airgait-v/default.yaml">Example</a></p>
 <p>Example:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -320,7 +317,7 @@ The file is named &lt;version&gt;.subgait.</p>
         
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Aug 07, 2020.
+        Last updated on Sep 16, 2020.
       </span>
 
     </p>

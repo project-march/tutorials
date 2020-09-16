@@ -105,7 +105,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/rqt.html">RQT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/ros_bag.html">ROS bag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/gazebo.html">Gazebo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../useful_tools/smach.html">SMACH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../useful_tools/event_stream_processing.html">Event stream Processing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using the March Exoskeleton</span></p>
@@ -138,7 +137,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">march_gait_selection</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behavior">Behavior</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#transition-subgait">Transition_subgait</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gait-selection-services">Gait selection services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gait-interface">Gait interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gait-state-machine">Gait state machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gait-state-machine-input">Gait state machine input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trajectory-scheduler">Trajectory scheduler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transition-subgait">Transition subgait</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#balance-walk">Balance walk</a></li>
 </ul>
 </li>
@@ -163,7 +167,6 @@
 <li class="toctree-l1"><a class="reference internal" href="march_safety.html">march_safety</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_classes.html">march_shared_classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_shared_resources.html">march_shared_resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="march_state_machine.html">march_state_machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="march_simulation.html">march_simulation</a></li>
 </ul>
 
@@ -236,27 +239,74 @@
 <span id="march-gait-selection-label"></span><h1>march_gait_selection<a class="headerlink" href="#march-gait-selection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The march_gait_selection module provides the exoskeleton operating system with additional information about a gait in
-order to perform the requested movement. It uses the march_gait_files, which are parsed using the march_shared_classes,
-to gather this information in a standard format. These class objects are stored as attributes in the <code class="docutils literal"><span class="pre">GaitSelection</span></code>
-object. The gait selection node can use this <code class="docutils literal"><span class="pre">GaitSelection</span></code> object to extract the data corresponding to the requested
-gait/subgait name.</p>
+<p>The march_gait_selection module is responsible for loading the specified gait
+directory, generating a gait state machine and keeping track of exoskeleton
+state. It uses the march_gait_files, which are parsed using the
+march_shared_classes, to gather gait information in a standard format. Gait
+class objects are stored as attributes in the <code class="docutils literal"><span class="pre">GaitSelection</span></code> object. The gait
+selection node can use this <code class="docutils literal"><span class="pre">GaitSelection</span></code> object to extract the data
+corresponding to the requested gait/subgait name.</p>
 </div>
 <div class="section" id="behavior">
 <h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
-<p>The march_state_machine accepts or declines a gait request originating from the input device. If the gait is accepted
-by the state machine, the request will be sent over to the march_gait_selection module using the subgait sequence
-defined in the state machine. The gait selection module will extract the data from the parsed gaits, found in the
-<code class="docutils literal"><span class="pre">GaitSelection</span></code>, in order to perform the movement. If executed correctly, a subgait trajectories will be sent over to
-the march_gait_scheduler of the exoskeleton.</p>
+<p>The gait state machine accepts or declines a gait request originating from an
+input device. If the gait is accepted by the state machine, the requested gait
+will be loaded from the <code class="docutils literal"><span class="pre">GaitSelection</span></code> instance and performed. If executed
+correctly, subgait trajectories will be sent over to the trajectory controller.
+While the gait is being performed, the state machine will listen for more input
+from the user about stopping or transitioning and inform the performing gait
+when a request is made.</p>
+<div class="section" id="gait-selection-services">
+<h3>Gait selection services<a class="headerlink" href="#gait-selection-services" title="Permalink to this headline">¶</a></h3>
+<p>The gait_selection_node also acts as a server for requesting subgait versions
+and changing versions of subgaits.</p>
+</div>
+<div class="section" id="gait-interface">
+<h3>Gait interface<a class="headerlink" href="#gait-interface" title="Permalink to this headline">¶</a></h3>
+<p>The package contains a class named <code class="docutils literal"><span class="pre">GaitInterface</span></code>, which is the interface
+that should be implemented for any executable gait. The gaits loaded from the
+gait directory have their own implementation called <code class="docutils literal"><span class="pre">SetpointsGait</span></code> and the
+home gaits have their implementation named <code class="docutils literal"><span class="pre">HomeGait</span></code>. Any other gaits not
+included in these classes should be implemented separately, for example, the
+<code class="docutils literal"><span class="pre">BalanceGait</span></code>. The implemented gait can then be added to the <code class="docutils literal"><span class="pre">GaitSelection</span></code>
+and will then also be added to the gait state machine.</p>
+</div>
+<div class="section" id="gait-state-machine">
+<h3>Gait state machine<a class="headerlink" href="#gait-state-machine" title="Permalink to this headline">¶</a></h3>
+<p>The state machine has two main phases: generating and running. First, when all
+gaits have been loaded and added to the <code class="docutils literal"><span class="pre">GaitSelection</span></code> instance, the state
+machine structure is generated. This is done by comparing all start and end
+points of gaits and generating idle positions and home gaits. The transitions
+are then stored as an adjacency list for constant time access of transitions.
+When the generation phase finishes successfully, the state machine can be
+started. The starting state is always <code class="docutils literal"><span class="pre">UNKNOWN</span></code> and the first action should be
+to home to a known idle position. The state machine differentiates between to
+main states: idle and gait. When it is idle it will listen for gait input and
+when it is performing a gait it will keep updating the gait in a loop until it
+decides to stop.</p>
+<p>Finally, the state machine has the ability to add callbacks when different
+actions happen in the state machine. This is useful for publishing gait and
+state information or other actions that should trigger on certain transitions.</p>
+</div>
+<div class="section" id="gait-state-machine-input">
+<h3>Gait state machine input<a class="headerlink" href="#gait-state-machine-input" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">StateMachineInput</span></code> class is used for communicating input to the
+<code class="docutils literal"><span class="pre">GaitStateMachine</span></code>. Any implementation of this class should be able to give
+input to the <code class="docutils literal"><span class="pre">GaitStateMachine</span></code>, however, it is currently implemented to
+listen for the input device topic.</p>
+</div>
+<div class="section" id="trajectory-scheduler">
+<h3>Trajectory scheduler<a class="headerlink" href="#trajectory-scheduler" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">TrajectoryScheduler</span></code> is another dependency of the state machine. It gets
+as input a trajectory from the state machine and communicates when it fails.</p>
+</div>
 <div class="section" id="transition-subgait">
-<h3>Transition_subgait<a class="headerlink" href="#transition-subgait" title="Permalink to this headline">¶</a></h3>
-<p>It is possible to transition between two matching named subgaits of two different gaits (for example between the right
-swing of the walk small and walk large). The gait_selection module will create a transition trajectory if the requested
-gait format, found in <a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/action/GaitName.action">GaitName</a>, consists
-of an old and new gait name. This structure requires that both gait names have matching subgait names to use for the
-transition. Using the two subgait trajectories a new transition trajectory is calculated and stored as a subgait object.
-If this is calculated correctly, the new subgait trajectory is sent to the march_gait_scheduler.</p>
+<h3>Transition subgait<a class="headerlink" href="#transition-subgait" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to transition between two matching named subgaits of two
+different gaits (for example between the right swing of the walk small and walk
+large). The transitioning of gaits is currently implemented in the
+<code class="docutils literal"><span class="pre">SetpointsGait</span></code> class, which responds to the transition requests. It uses the
+underlying subgait graph for determining whether the transition is possible.</p>
 </div>
 <div class="section" id="balance-walk">
 <h3>Balance walk<a class="headerlink" href="#balance-walk" title="Permalink to this headline">¶</a></h3>
@@ -287,15 +337,17 @@ The above description is likely slightly outdated.</p>
 <div class="section" id="subscribed-topics">
 <h3>Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt><em>/march/gait/perform</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/action/GaitName.action">march_shared_resources/action/GaitName</a>)</dt>
-<dd>Receives requested subgait, with gait(s), originating from the march_state_machine.</dd>
+<dt><em>/march/error</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/Error.msg">march_shared_resources/msg/Error</a>)</dt>
+<dd>Listens for errors and shuts down when a fatal is thrown.</dd>
 </dl>
 </div>
 <div class="section" id="published-topics">
 <h3>Published Topics<a class="headerlink" href="#published-topics" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt><em>/march/gait/schedule</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/action/Gait.action">march_shared_resources/action/Gait</a>)</dt>
-<dd>Sends subgait trajectories to the march_gait_scheduler</dd>
+<dt><em>/march/gait_selection/current_state</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/CurrentState.msg">march_shared_resources/msg/CurrentState</a>)</dt>
+<dd>Publishes the current state of the state machine</dd>
+<dt><em>/march/gait_selection/current_gait</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/msg/CurrentGait.msg">march_shared_resources/msg/CurrentGait</a>)</dt>
+<dd>Sends details about the current gait being performed</dd>
 </dl>
 </div>
 <div class="section" id="services">
@@ -311,6 +363,8 @@ The above description is likely slightly outdated.</p>
 <dd>Calls the update_default_versions function of the gait_selection.</dd>
 <dt><em>/march/gait_selection/contains_gait</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/ContainsGait.srv">march_shared_resources/srv/ContainsGait</a>)</dt>
 <dd>Checks if gait is in parsed gaits in the gait selection module.</dd>
+<dt><em>/march/gait_selection/get_possible_gaits</em> (<a class="reference external" href="https://github.com/project-march/march/tree/develop/march_shared_resources/srv/PossibleGaits.srv">march_shared_resources/srv/PossibleGaits</a>)</dt>
+<dd>Checks if gait is in parsed gaits in the gait selection module.</dd>
 </dl>
 </div>
 <div class="section" id="parameters">
@@ -320,6 +374,10 @@ The above description is likely slightly outdated.</p>
 <dd>The package where the gait files are located.</dd>
 <dt><em>march_gait_selection/gait_directory</em> (<em>string</em>, default: <code class="docutils literal"><span class="pre">training-v</span></code>)</dt>
 <dd>The directory where the gait files are located, relative to the above package.</dd>
+<dt><em>march_gait_selection/update_rate</em> (<em>float</em>, default: <code class="docutils literal"><span class="pre">120.0</span></code>)</dt>
+<dd>The update rate of the gait state machine in Hertz.</dd>
+<dt><em>march_gait_selection/sounds</em> (<em>bool</em>, default: <code class="docutils literal"><span class="pre">false</span></code>)</dt>
+<dd>The update rate of the gait state machine in Hertz.</dd>
 </dl>
 </div>
 </div>
@@ -348,7 +406,7 @@ The above description is likely slightly outdated.</p>
         
         &copy; Copyright 2020, Project March
       <span class="lastupdated">
-        Last updated on Aug 07, 2020.
+        Last updated on Sep 16, 2020.
       </span>
 
     </p>
